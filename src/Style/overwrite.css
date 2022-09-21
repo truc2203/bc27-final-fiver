@@ -1,0 +1,24 @@
+.ant-layout-header {
+  height: 80px;
+  background: transparent;
+  z-index: 1080;
+  color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+}
+
+/* React bootstrap */
+.carousel-control-next,
+.carousel-control-prev,
+.carousel-indicators {
+  display: none;
+}
+
+.form-control{
+  border-radius: 0px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
