@@ -1,0 +1,6 @@
+
+@mixin btnStyle($bg,$pd1,$pd2,$color) {
+    background: $bg;
+    padding: $pd1 $pd2;
+    color: $color;
+}

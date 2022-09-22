@@ -12,7 +12,7 @@ const SliderSearch = () => {
                 className="form-control"
                 placeholder="Try 'Buiding modile app' "
               />
-              <button type="submit" className="sd-btn">
+              <button type="submit" className="s-btn">
                     Search
               </button>
             </form>

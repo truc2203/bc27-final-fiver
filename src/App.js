@@ -2,9 +2,8 @@ import {lazy, Suspense} from 'react'
 import {Routes, Route, Outlet} from 'react-router-dom'
 import MainLayout from './components/MainLayout/MainLayout';
 import Home from './modules/Home/pages/Home';
-import './Style/reset.css'
-import './Style/style.css'
-import './Style/overwrite.css'
+import './overwrite.css'
+import './main.scss'
 function App() {
   return (
     <Suspense fallback={<h1>Loading...</h1>}>

@@ -1,0 +1,49 @@
+/* Header */
+
+.fs-config{
+  @include txtStyle($color-0,$fs-2,$fw-1);
+  &:hover{
+    color:$bg-1
+  }
+  @include trans
+}
+
+.hd-sr-btn{
+    @include btnStyle($bg-2,$pd-1,$pd-3,$color-w);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    &:hover{
+        opacity: 0.8;
+    }
+    @include trans
+}
+.nav-btn{
+    border: 1px solid $bg-0;
+    padding: 6px 16px;
+    background: transparent;
+    border-radius: 4px;
+    @include txtStyle($color-w,$fs-2,$fw-2);
+    &:hover{
+        color:$color-w;
+        background: $bg-1;
+    }
+    @include trans
+}
+.nav-btn-fix{
+    border: 1px solid $bg-1;
+    padding: 6px 16px;
+    background: transparent;
+    border-radius: 4px;
+    @include txtStyle($bg-1,$fs-2,$fw-2);
+    &:hover{
+        background: $bg-1;
+        color: $color-w;
+    }
+    @include trans
+}
+
+.nav-fixed{
+    color: $color-t;
+    background: $color-w;
+    @include trans
+}

@@ -1,0 +1,16 @@
+@mixin txtStyle($txtColor,$txtFs,$txtFw) {
+    color: $txtColor;
+    font-size: $txtFs;
+    font-weight: $txtFw;
+}
+@mixin txtHover($hvColor) {
+    color: $hvColor;
+    cursor: pointer;
+    @include strans;
+}
+
+
+
+@mixin trans {
+    transition: all 0.5s;
+}

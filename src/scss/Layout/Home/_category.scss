@@ -1,0 +1,11 @@
+.ca-hd{
+    @include txtStyle($color-t,$fs-3,$fw-2)
+}
+
+.ca-item{
+    height: 345px;
+}
+
+.ca-title{
+    padding: 16px 16px 16px 32px;
+}
