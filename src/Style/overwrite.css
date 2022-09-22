@@ -22,3 +22,9 @@
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
+
+/* React slick */
+.slick-prev:before,.slick-next:before{
+  color: #faad14 !important;
+  font-size: 24px !important;
+}

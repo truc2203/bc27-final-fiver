@@ -1,15 +1,17 @@
 import React from "react";
+import Category from "../component/Category/Category";
 import Slider from "../component/Slider/Slider";
 import SliderSearch from "../component/SliderSearch";
+import Trusted from "../component/Trusted/Trusted";
 
 const Home = () => {
   return (
-    <div>
-      <div className="position-absolute" style={{ top: "0" }}>
+      <div>
         <Slider />
         <SliderSearch />
+        <Trusted />
+        <Category />
       </div>
-    </div>
   );
 };
 

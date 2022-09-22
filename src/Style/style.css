@@ -62,7 +62,7 @@
 .sd-sr{
     position: absolute;
     z-index: 999;
-    top: 30%;
+    top: 27%;
 }
 
 .sd-title{
@@ -98,3 +98,24 @@
     transition: all 0.5s;
 }
 
+/* Trusted */
+.trusted{
+    font-size: 16px;
+    font-weight: 600;
+    color: #b5b6ba;
+}
+
+/* Category */
+.ca-hd{
+    font-size: 32px;
+    font-weight: 700;
+    color: #404145;
+}
+
+.ca-item{
+    height: 345px;
+}
+
+.ca-title{
+    padding: 16px 16px 16px 32px;
+}
