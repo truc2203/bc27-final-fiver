@@ -6,10 +6,8 @@
 @mixin txtHover($hvColor) {
     color: $hvColor;
     cursor: pointer;
-    @include strans;
+    @include trans;
 }
-
-
 
 @mixin trans {
     transition: all 0.5s;

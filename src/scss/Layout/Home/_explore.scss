@@ -1,0 +1,17 @@
+.ex-w{
+    width: 20%;
+    text-align: center;
+}
+.ex-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ex-title{
+    @include txtStyle($color-t,$fs-2,$fw-0);
+    &:hover{
+        @include txtHover($bg-1)
+    }
+    
+}

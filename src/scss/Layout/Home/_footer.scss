@@ -1,0 +1,30 @@
+.ft-hd{
+    @include txtStyle($color-t,$fs-5,$fw-1)
+}
+.ft-title{
+    @include txtStyle($color-ft,$fs-2,$fw-0);
+    width: 20%;
+    & p:hover{
+        @include txtHover($color-ft);
+        text-decoration: underline;
+    }
+}
+.ft-sub{
+    @include txtStyle($color-0,$fs-1,$fw-0);
+    padding-top: 6px;
+}
+.ft-copy{
+    @include txtStyle($color-0,$fs-2,$fw-3);
+}
+.ft-social li{
+    padding: 0 16px;
+    &:hover{
+        @include txtHover($color-t)
+    }
+}
+.ft-social{
+    @include txtStyle($color-ft,$fs-2,$fw-3);
+}
+.ft-social-sub{
+    @include txtStyle($color-ft,$fs-1,$fw-0);
+}

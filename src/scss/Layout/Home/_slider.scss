@@ -1,7 +1,7 @@
 .sd-sr {
   position: absolute;
   z-index: 999;
-  top: 27%;
+  top: 180px;
 }
 .s-btn{
   @include btnStyle($bg-1,$pd-1,$pd-2,$color-w);

@@ -7,7 +7,7 @@ const Category = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 3,
+    slidesToScroll: 5,
   };
   return (
     <div className="my-5">
