@@ -6,10 +6,10 @@
   background: transparent;
   z-index: 1080;
   color: #ffffff;
-  position: fixed;
+  /* position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  right: 0; */
   padding: 0;
 }
 

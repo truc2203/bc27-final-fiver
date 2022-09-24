@@ -47,3 +47,9 @@
     background: $color-w;
     @include trans
 }
+.sub-type{
+    @include txtStyle($color-t,$fs-2,$fw-0);
+}
+.sub-title:hover{
+    @include txtHover($bg-1)
+}
