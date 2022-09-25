@@ -49,6 +49,7 @@
 }
 .sub-type{
     @include txtStyle($color-t,$fs-2,$fw-0);
+    overflow: hidden;
 }
 .sub-title:hover{
     @include txtHover($bg-1)

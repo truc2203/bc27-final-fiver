@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import useRequest from "../../hook/useRequest";
 import jobAPI from "../../apis/jobAPI";
-import axios from "axios";
 const Header = () => {
   // const [fix, setFix] = useState(false);
   // const setFixed = () => {
@@ -15,13 +15,21 @@ const Header = () => {
   // };
   // window.addEventListener("scroll", setFixed);
 
-  const {
-    data: job,
-    isLoading,
-    error,
-  } = useRequest(() => jobAPI.searchJob("web"));
+  const [value,setValue] = useState('')
 
-  console.log(job);
+  const navigate = useNavigate()
+
+  const handleSearchJob = (value) => {
+    if(!value){
+      return
+    }
+    navigate(`categories/${value}`)
+  }
+
+  const {
+    data : typeJob
+  } = useRequest(() => jobAPI.getTypeJob())
+
 
   return (
     <div className="nav-fixed">
@@ -52,8 +60,9 @@ const Header = () => {
                 type="text"
                 className="form-control"
                 placeholder="What service are you looking for today ?"
+                onChange={(e) => setValue(e.target.value)}
               />
-              <button type="submit" className="hd-sr-btn">
+              <button onClick={() => handleSearchJob(value)} type="submit" className="hd-sr-btn">
                 <BiSearch color="white" size="16px" />
               </button>
             </form>
@@ -80,15 +89,14 @@ const Header = () => {
           style={{ display: "flex" }}
           className="m-auto justify-content-between sub-type border-top border-bottom"
         >
-          {/* <li className="sub-title">Graphics & Design</li>
-          <li className="sub-title">Digital Marketing</li>
-          <li className="sub-title">Writing & Tranlation</li>
-          <li className="sub-title">Video & Animation</li>
-          <li className="sub-title">Music & Audio</li>
-          <li className="sub-title">Programming & Tech</li>
-          <li className="sub-title">Business</li>
-          <li className="sub-title">Lifestyle</li>
-          <li className="sub-title">Trending</li> */}
+          
+          {typeJob?.map((type) => {
+            return(
+              <li className="sub-title" key={type._id} >
+                <button>{type.name}</button>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </div>

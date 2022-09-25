@@ -1,6 +1,21 @@
 import React from 'react'
 import { BiSearch } from 'react-icons/bi'
+import { useState } from 'react'
+import { useNavigate } from 'react-router'
 const SliderSearch = () => {
+
+  const [value,setValue] = useState('')
+
+  const navigate = useNavigate()
+
+  const handleSearchJob = (value) => {
+    if(!value){
+      return
+    }
+    navigate(`categories/${value}`)
+  }
+
+
   return (
     <div className='m-container'>
         <div className='d-flex'>
@@ -11,8 +26,9 @@ const SliderSearch = () => {
                 type="text"
                 className="form-control"
                 placeholder="Try 'Buiding modile app' "
+                onChange={(e) => setValue(e.target.value)}
               />
-              <button type="submit" className="s-btn">
+              <button onClick={() => handleSearchJob(value)} type="submit" className="s-btn">
                     Search
               </button>
             </form>
