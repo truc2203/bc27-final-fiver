@@ -92,7 +92,7 @@ const Header = () => {
           
           {typeJob?.map((type) => {
             return(
-              <li className="sub-title" key={type._id} >
+              <li className="sub-title px-3" key={type._id} >
                 <button>{type.name}</button>
               </li>
             )

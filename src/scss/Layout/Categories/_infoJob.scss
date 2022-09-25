@@ -1,0 +1,13 @@
+.if-main{
+    @include txtStyle($color-t,$fs-2,$fw-0);
+    &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+.if-hd{
+    @include txtStyle($color-b,$fs-3,$fw-1)
+}
+.if-sw{
+    @include txtStyle($color-t,$fs-2,$fw-0)
+}
