@@ -7,6 +7,9 @@ const jobAPI = {
 
   getTypeJob : () => {
     return axiosClient.get('type-jobs')
+  },
+  getJobDetail : (id) => {
+    return axiosClient.get(`jobs/${id}`)
   }
 };
 

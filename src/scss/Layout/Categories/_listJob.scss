@@ -15,7 +15,8 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   display: -webkit-box;
-  padding-top: 4px
+  text-align: start;
+  line-height: 20px
 }
 .lj-rate {
   @include txtStyle($color-2, $fs-1, $fw-0);

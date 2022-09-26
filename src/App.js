@@ -5,6 +5,7 @@ import Home from './modules/Home/pages/Home';
 import Categories from './modules/Categories/pages/Categories';
 import './overwrite.css'
 import './main.scss'
+import JobDetail from './modules/JobDetail/pages/JobDetail';
 function App() {
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
@@ -12,6 +13,7 @@ function App() {
         <Route path='/' element={<MainLayout/>}>
             <Route index element={<Home/>}/>
             <Route path='categories/:job' element={<Categories/>}/>
+            <Route path='detail/:id/:name' element={<JobDetail/>} />
         </Route>
       </Routes>
     </Suspense>

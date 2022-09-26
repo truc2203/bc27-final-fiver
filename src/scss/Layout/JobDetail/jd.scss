@@ -1,0 +1,18 @@
+.jd-page{
+    padding-right: 10%;
+}
+.jd-title{
+    @include txtStyle($color-b,$fs-7,$fw-1)
+}
+.jd-img{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.gig{
+    @include txtStyle($color-t,$fs-2,$fw-0);
+    line-height: 24px;
+}
+.gig ul li{
+    list-style-type:square ;
+}
