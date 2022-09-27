@@ -4,3 +4,8 @@
     padding: $pd1 $pd2;
     color: $color;
 }
+@mixin btnHover($bg,$color) {
+    background: $bg ;
+    color: $color;
+
+}

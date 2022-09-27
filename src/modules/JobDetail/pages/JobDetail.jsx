@@ -1,6 +1,5 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import Gig from '../component/Gig/Gig'
 import JD from '../component/JD'
 const JobDetail = () => {
 
@@ -12,7 +11,6 @@ const JobDetail = () => {
       <div className="d-flex align-items-center">
         <div className="col-8 jd-page">
             <JD id={id}/>
-            <Gig/>
         </div>
         <div className="col-4">
 

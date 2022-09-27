@@ -1,18 +1,36 @@
-.jd-page{
-    padding-right: 10%;
+.jd-page {
+  padding-right: 10%;
 }
-.jd-title{
-    @include txtStyle($color-b,$fs-7,$fw-1)
+.jd-title {
+  @include txtStyle($color-b, $fs-7, $fw-1);
 }
-.jd-img{
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+.jd-img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-.gig{
-    @include txtStyle($color-t,$fs-2,$fw-0);
-    line-height: 24px;
+.gig {
+  @include txtStyle($color-t, $fs-2, $fw-0);
+  line-height: 24px;
 }
-.gig ul li{
-    list-style-type:square ;
+.gig ul li {
+  list-style-type: square;
 }
+
+.jd-btn {
+  @include btnStyle($bg-0, $pd-1, $pd-1, $color-t);
+  border-radius: 4px;
+  &:hover {
+    @include btnHover($color-t, $color-w);
+    @include trans;
+  }
+}
+
+.profile-hd {
+  @include txtStyle( $color-ft,$fs-5,$fw-3);
+  line-height: 24px;
+  padding-bottom: 6px
+}
+.profile-content {
+    @include txtStyle( $color-t,$fs-5,$fw-1);
+  }
