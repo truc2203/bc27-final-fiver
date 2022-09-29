@@ -1,0 +1,51 @@
+.sidebar-hd {
+  background: #fafafa;
+  justify-content: space-between;
+}
+.sidebar-btn {
+  position: relative;
+  padding: 20px;
+  &::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background: $bg-1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 4px;
+    @include trans;
+  }
+  &:hover::after {
+    width: 100%;
+    transform: translate();
+    @include trans;
+  }
+}
+.sidebar-content{
+    height: 430px;
+}
+.side-price{
+    @include txtStyle($color-b,$fs-8,$fw-2)
+}
+.side-discount{
+    @include txtStyle($color-t,$fs-2,$fw-1)
+}
+.side-feature{
+    @include txtStyle($color-0,$fs-2,$fw-0)
+}
+.side-btn{
+    width: 100%;
+    border-radius: 4px;
+    @include trans;
+    @include btnStyle($bg-1,12px,10px,$color-w);
+    &:hover{
+        opacity: 0.8;
+        @include trans
+    }
+}
+.side-btn-sub{
+    width: 100%;
+    border-radius: 4px;
+    @include btnStyle('transparent',10px,10px,$bg-1)
+}
