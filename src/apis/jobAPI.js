@@ -10,6 +10,9 @@ const jobAPI = {
   },
   getJobDetail : (id) => {
     return axiosClient.get(`jobs/${id}`)
+  },
+  getComments : (id) => {
+    return axiosClient.get(`comments/by-job/${id}`)
   }
 };
 

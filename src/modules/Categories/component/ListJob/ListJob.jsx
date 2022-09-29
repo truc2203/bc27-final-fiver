@@ -6,7 +6,6 @@ import { BsHeartFill, BsStarFill } from "react-icons/bs";
 const ListJob = ({ data }) => {
   const { job } = data;
   const { data: jobType } = useRequest(() => jobAPI.searchJob(job));
-  // console.log(jobType);
   const navigate = useNavigate();
   const handleJobDetail = (name, id) => {
     navigate(`../detail/${id}/${name}`);
@@ -31,13 +30,11 @@ const ListJob = ({ data }) => {
                 </div>
               </div>
               <div className="mb-2">
-                <button
-                  onClick={() => handleJobDetail(type.name, type._id)}
-                >
+                <button onClick={() => handleJobDetail(type.name, type._id)}>
                   <p className="lj-name mb-3">{type.name}</p>
                 </button>
                 <p className="lj-rate d-flex align-items-center">
-                  <BsStarFill className="me-1"/>
+                  <BsStarFill className="me-1" />
                   {type.rating}
                 </p>
               </div>
@@ -45,9 +42,7 @@ const ListJob = ({ data }) => {
                 <p className="lj-heard">
                   <BsHeartFill />
                 </p>
-                <button
-                  onClick={() => handleJobDetail(type.name, type.userCreated)}
-                >
+                <button onClick={() => handleJobDetail(type.name, type._id)}>
                   <p className="lj-price">
                     STARTING AT <span className="lj-prices">${type.price}</span>
                   </p>

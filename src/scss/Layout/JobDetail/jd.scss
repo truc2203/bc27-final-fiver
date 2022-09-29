@@ -27,10 +27,53 @@
 }
 
 .profile-hd {
-  @include txtStyle( $color-ft,$fs-5,$fw-3);
+  @include txtStyle($color-ft, $fs-5, $fw-3);
   line-height: 24px;
-  padding-bottom: 6px
+  padding-bottom: 6px;
 }
 .profile-content {
-    @include txtStyle( $color-t,$fs-5,$fw-1);
+  @include txtStyle($color-t, $fs-5, $fw-1);
+}
+.faq-content {
+  height: 0px;
+  @include trans;
+}
+.faq-btn {
+  @include trans;
+}
+.faq-title {
+  overflow: hidden;
+  @include trans;
+  &:hover .faq-content {
+    height: 80px;
+    @include trans;
   }
+  &:hover .faq-btn {
+    transform: rotate(180deg);
+    @include trans;
+  }
+}
+
+.vote-text{
+  @include btnStyle($color-w,0,0,$color-3);
+  @include txtStyle($color-3,$fs-2,$fw-0);
+}
+.vote-bar{
+  width: 68%;
+  height: 8px;
+  background: $color-2;
+  border-radius: 4px;
+  margin: 0 12px;
+}
+.vote-bar2{
+  width: 68%;
+  height: 8px;
+  background: $color-ft;
+  border-radius: 4px;
+  margin: 0 12px;
+
+}
+
+.rating-title{
+  @include txtStyle($color-ft,$fs-2,$fw-0)
+}

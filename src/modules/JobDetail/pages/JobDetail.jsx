@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router'
+import Comments from '../component/Comments'
 import JD from '../component/JD'
 const JobDetail = () => {
 
@@ -11,6 +12,7 @@ const JobDetail = () => {
       <div className="d-flex align-items-center">
         <div className="col-8 jd-page">
             <JD id={id}/>
+            <Comments id={id}/>
         </div>
         <div className="col-4">
 
