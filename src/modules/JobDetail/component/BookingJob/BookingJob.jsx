@@ -4,7 +4,7 @@ import {BsFillClockFill} from 'react-icons/bs'
 import {BiRevision} from 'react-icons/bi'
 import {FcCheckmark,FcDebian} from 'react-icons/fc'
 const BookingJob = () => {
-  const [side1, setSide1] = useState("none");
+  const [side1, setSide1] = useState("block");
   const [side2, setSide2] = useState("none");
   const [side3, setSide3] = useState("none");
 

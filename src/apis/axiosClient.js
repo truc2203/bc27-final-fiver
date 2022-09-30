@@ -3,9 +3,9 @@ import store from '../store'
 
 //Config axios 
 const axiosClient = axios.create({
-    baseURL: 'https://fiverr.cybersoft.edu.vn/api/',
+    baseURL: 'https://fiverrnew.cybersoft.edu.vn/api/',
     headers:{
-        tokenByClass : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAyNyIsIkhldEhhblN0cmluZyI6IjI4LzAxLzIwMjMiLCJIZXRIYW5UaW1lIjoiMTY3NDg2NDAwMDAwMCIsIm5iZiI6MTY0NjE1NDAwMCwiZXhwIjoxNjc1MDExNjAwfQ._U4oXWaQKsEr5gGhCmvsV2ebHiN3qSaGVPi71jwnjFU'
+      TokenCybersoft : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAyNyIsIkhldEhhblN0cmluZyI6IjI4LzAxLzIwMjMiLCJIZXRIYW5UaW1lIjoiMTY3NDg2NDAwMDAwMCIsIm5iZiI6MTY0NjE1NDAwMCwiZXhwIjoxNjc1MDExNjAwfQ._U4oXWaQKsEr5gGhCmvsV2ebHiN3qSaGVPi71jwnjFU'
     }
 
 })
@@ -26,12 +26,12 @@ axiosClient.interceptors.request.use((config) => {
     // thành công
     (response) => {
 
-      return response.data;
+      return response.data.content;
     },
     // thất bại
     (error) => {
     
-      return Promise.reject(error.response?.data);
+      return Promise.reject(error.response?.data.content);
     }
   );
   

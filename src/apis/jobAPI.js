@@ -2,17 +2,17 @@ import axiosClient from "./axiosClient";
 
 const jobAPI = {
   searchJob: (value) => {
-    return axiosClient.get(`jobs/by-name?name=${value}`);
+    return axiosClient.get(`cong-viec/lay-danh-sach-cong-viec-theo-ten/${value}`);
   },
 
   getTypeJob : () => {
-    return axiosClient.get('type-jobs')
+    return axiosClient.get('loai-cong-viec')
   },
   getJobDetail : (id) => {
-    return axiosClient.get(`jobs/${id}`)
+    return axiosClient.get(`cong-viec/lay-cong-viec-chi-tiet/${id}`)
   },
   getComments : (id) => {
-    return axiosClient.get(`comments/by-job/${id}`)
+    return axiosClient.get(`binh-luan/lay-binh-luan-theo-cong-viec/${id}`)
   }
 };
 

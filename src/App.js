@@ -6,6 +6,9 @@ import Categories from './modules/Categories/pages/Categories';
 import './overwrite.css'
 import './main.scss'
 import JobDetail from './modules/JobDetail/pages/JobDetail';
+import Auth from './components/Auth/Auth';
+import Login from './modules/Authentication/pages/Login';
+import Register from './modules/Authentication/pages/Register';
 function App() {
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
@@ -15,6 +18,10 @@ function App() {
             <Route path='categories/:job' element={<Categories/>}/>
             <Route path='detail/:id/:name' element={<JobDetail/>} />
         </Route>
+        <Route path='/' element={<Auth/>}>
+            <Route path='login' element={<Login/>}/>
+            <Route path='register' element={<Register/>}/>
+         </Route>
       </Routes>
     </Suspense>
   );

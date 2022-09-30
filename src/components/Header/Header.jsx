@@ -26,10 +26,13 @@ const Header = () => {
     navigate(`categories/${value}`)
   }
 
+  const movePath = (path) => {
+    navigate(`/${path}`)
+  }
+
   const {
     data : typeJob
   } = useRequest(() => jobAPI.getTypeJob())
-
 
   return (
     <div className="nav-fixed">
@@ -38,7 +41,7 @@ const Header = () => {
           className="d-flex justify-content-between align-items-center"
           style={{ height: "80px" }}
         >
-          <a className="me-4" href>
+          <a className="me-4" href='/'>
             <svg
               width="89"
               height="27"
@@ -75,12 +78,12 @@ const Header = () => {
                 </a>{" "}
               </li>
               <li>
-                <a className="fs-config px-3" href>
+                <button onClick={() => movePath('login')} className="fs-config px-3" href>
                   Sign in
-                </a>
+                </button>
               </li>
               <li>
-                <button className="nav-btn-fix">Join</button>
+                <button onClick={() => movePath('register')} className="nav-btn-fix">Join</button>
               </li>
             </ul>
           </nav>
@@ -93,7 +96,7 @@ const Header = () => {
           {typeJob?.map((type) => {
             return(
               <li className="sub-title px-3" key={type._id} >
-                <button>{type.name}</button>
+                <button>{type.tenLoaiCongViec}</button>
               </li>
             )
           })}

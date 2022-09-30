@@ -6,6 +6,7 @@ import { BsHeartFill, BsStarFill } from "react-icons/bs";
 const ListJob = ({ data }) => {
   const { job } = data;
   const { data: jobType } = useRequest(() => jobAPI.searchJob(job));
+  console.log(jobType);
   const navigate = useNavigate();
   const handleJobDetail = (name, id) => {
     navigate(`../detail/${id}/${name}`);
@@ -14,8 +15,8 @@ const ListJob = ({ data }) => {
     <div className="d-flex flex-wrap">
       {jobType?.map((type) => {
         return (
-          <div className="col-3 p-3" key={type._id}>
-            <img className="w-100" src={type.image} alt="" />
+          <div className="col-3 p-3" key={type.id}>
+            <img className="w-100" src={type.congViec.hinhAnh} alt="" />
             <div className="p-3 border lj-main">
               <div className="d-flex align-items-center mb-3">
                 <img
@@ -25,26 +26,28 @@ const ListJob = ({ data }) => {
                   alt=""
                 />
                 <div>
-                  <p className="lj-hd">{type.userCreated}</p>
+                  <p className="lj-hd">{type.congViec.nguoiTao}</p>
                   <p className="lj-subhd">Lv1 Seller</p>
                 </div>
               </div>
               <div className="mb-2">
-                <button onClick={() => handleJobDetail(type.name, type._id)}>
-                  <p className="lj-name mb-3">{type.name}</p>
+                <button onClick={() => handleJobDetail(type.congViec.tenCongViec, type.id)}>
+                  <p className="lj-name mb-3">{type.congViec.tenCongViec}</p>
                 </button>
                 <p className="lj-rate d-flex align-items-center">
                   <BsStarFill className="me-1" />
-                  {type.rating}
+                  {type.congViec.saoCongViec}
+                <span className="lj-hd ps-2">({type.congViec.danhGia})</span>
+
                 </p>
               </div>
               <div className="d-flex justify-content-between border-top pt-3">
                 <p className="lj-heard">
                   <BsHeartFill />
                 </p>
-                <button onClick={() => handleJobDetail(type.name, type._id)}>
+                <button onClick={() => handleJobDetail(type.congViec.tenCongViec, type.id)}>
                   <p className="lj-price">
-                    STARTING AT <span className="lj-prices">${type.price}</span>
+                    STARTING AT <span className="lj-prices">${type.congViec.giaTien}</span>
                   </p>
                 </button>
               </div>

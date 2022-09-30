@@ -10,6 +10,7 @@ import {
 import { useState } from "react";
 const Comments = ({ id }) => {
   const { data: comment } = useRequest(() => jobAPI.getComments(id));
+  console.log(comment);
   const [helful, setHelful] = useState(null);
   if (!comment) {
     return;
