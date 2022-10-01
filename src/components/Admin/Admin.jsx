@@ -1,9 +1,14 @@
-import React from 'react'
-
+import React from "react";
+import { Outlet } from "react-router-dom";
+import { Layout } from "antd";
 const Admin = () => {
   return (
-    <div>Admin</div>
-  )
-}
+    <Layout>
+      <Layout.Content>
+        <Outlet  />
+      </Layout.Content>
+    </Layout>
+  );
+};
 
-export default Admin
+export default Admin;
