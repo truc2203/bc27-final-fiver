@@ -5,12 +5,10 @@ import { useForm, Controller } from "react-hook-form";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../slices/authSlice";
+import "./style.css";
 
 const Login = () => {
-  const {
-    handleSubmit,
-    control,
-  } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       taiKhoan: "",
       matKhau: "",
@@ -39,7 +37,8 @@ const Login = () => {
 
   return (
     <div className="log">
-      <Form className="form-log rounded-2"
+      <Form
+        className="form-log rounded-2"
         onFinish={handleSubmit(onSubmit)}
         labelCol={{ span: 3 }}
         wrapperCol={{ span: 8 }}
@@ -90,8 +89,9 @@ const Login = () => {
             htmlType="submit"
             disabled={isLoading}
             loading={isLoading}
+            color="black"
           >
-           Đăng nhập
+           <span className="spanDN"> Đăng nhập</span>
           </Button>
         </Form.Item>
       </Form>
