@@ -55,6 +55,15 @@
     top: 30%;
     left: 37%;
   }
+  .form-reg {
+    background-color: white;
+    padding: 32px;
+    width: 50vw;
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+  }
   
   .logOut:hover{
     color: #d10b0b;
@@ -106,4 +115,10 @@
   .form-register{
     background: #e6e6e6;
     border-radius: 16px;
+  }
+
+  .form-selected{
+    padding: 6px 12px;
+    width: 100%;
+    border: 1px solid #ced4da;
   }

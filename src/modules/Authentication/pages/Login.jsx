@@ -9,8 +9,8 @@ import { login } from "../slices/authSlice";
 const Login = () => {
   const { handleSubmit, control } = useForm({
     defaultValues: {
-      taiKhoan: "",
-      matKhau: "",
+      email: "",
+      password: "",
     },
     mode: "onTouched",
   });
@@ -45,7 +45,7 @@ const Login = () => {
       <p className="pb-5 login-hd text-center">Member Login</p>
 
         <Controller
-          name="taiKhoan"
+          name="email"
           control={control}
           rules={{
             required: {
@@ -55,7 +55,7 @@ const Login = () => {
           }}
           render={({ field, fieldState: { error } }) => (
             <Form.Item
-              label="Tài khoản :"
+              label="Email :"
               validateStatus={error ? "error" : ""}
               help={error?.message}
             >
@@ -65,7 +65,7 @@ const Login = () => {
         />
 
         <Controller
-          name="matKhau"
+          name="password"
           control={control}
           rules={{
             required: {
