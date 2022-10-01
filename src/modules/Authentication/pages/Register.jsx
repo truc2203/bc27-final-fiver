@@ -11,11 +11,15 @@ const Register = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      taiKhoan: "",
-      matKhau: "",
+      name: "",
       email: "",
-      hoTen: "",
-      soDt: "",
+      password: "",
+      phone: "",
+      birthday: "",
+      gender:'',
+      role:'',
+      skill:[],
+      certification:[]
     },
     mode: "onTouched",
   });
@@ -52,12 +56,14 @@ const Register = () => {
         className="form-log rounded-2"
         onSubmit={handleSubmit(onSubmit, onError)}
       >
+      <p className="pb-5 login-hd text-center">Register</p>
+
         <div>
           <input
-            className="form-control mb-3"
+            className="form-control form-register mb-3"
             type="text"
-            placeholder="Tài Khoản"
-            {...register("taiKhoan", {
+            placeholder="Name"
+            {...register("name", {
               required: {
                 value: true,
                 message: "Tài khoản không được để trống",
@@ -77,10 +83,10 @@ const Register = () => {
 
         <div>
           <input
-            className="form-control mb-3"
+            className="form-control form-register mb-3"
             type="text"
-            placeholder="Mật Khẩu"
-            {...register("matKhau", {
+            placeholder="Password"
+            {...register("password", {
               required: {
                 value: true,
                 message: "Mật khẩu không được để trống",
@@ -92,7 +98,7 @@ const Register = () => {
 
         <div>
           <input
-            className="form-control mb-3"
+            className="form-control form-register mb-3"
             type="text"
             placeholder="Email"
             {...register("email", {
@@ -109,13 +115,13 @@ const Register = () => {
 
         <div>
           <input
-            className="form-control "
+            className="form-control form-register "
             type="text"
-            placeholder="Họ Tên"
-            {...register("hoTen", {
+            placeholder="Birthday"
+            {...register("birthday", {
               required: {
                 value: true,
-                message: "Họ tên không được để trống",
+                message: "Ngay sinh không được để trống",
               },
             })}
           />
@@ -124,10 +130,38 @@ const Register = () => {
         <br />
         <div>
           <input
-            className="form-control mb-3"
+            className="form-control form-register mb-3"
             type="text"
-            placeholder="Số Điện Thoại"
-            {...register("soDt", {
+            placeholder="Phone"
+            {...register("phone", {
+              required: {
+                value: true,
+                message: "Số Điện Thoại không được để trống",
+              },
+            })}
+          />
+          {errors.soDt && <p>{errors.soDt.message}</p>}
+        </div>
+        <div>
+          <input
+            className="form-control form-register mb-3"
+            type="text"
+            placeholder="Gender"
+            {...register("gender", {
+              required: {
+                value: true,
+                message: "Gioo tinh không được để trống",
+              },
+            })}
+          />
+          {errors.soDt && <p>{errors.soDt.message}</p>}
+        </div>
+        <div>
+          <input
+            className="form-control form-register mb-3"
+            type="text"
+            placeholder="Role"
+            {...register("role", {
               required: {
                 value: true,
                 message: "Số Điện Thoại không được để trống",
@@ -138,7 +172,7 @@ const Register = () => {
         </div>
         <br />
         
-        <button className="btn btn-info">Đăng Ký</button>
+        <button className="ant-btn-primary">Đăng Ký</button>
       </form>
      
     </div>

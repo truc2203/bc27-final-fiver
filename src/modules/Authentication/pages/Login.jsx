@@ -5,7 +5,6 @@ import { useForm, Controller } from "react-hook-form";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../slices/authSlice";
-
 const Login = () => {
   const {
     handleSubmit,
@@ -41,9 +40,11 @@ const Login = () => {
     <div className="log">
       <Form className="form-log rounded-2"
         onFinish={handleSubmit(onSubmit)}
-        labelCol={{ span: 3 }}
+        labelCol={{ span: 8 }}
         wrapperCol={{ span: 8 }}
       >
+      <p className="pb-5 login-hd text-center">Member Login</p>
+
         <Controller
           name="taiKhoan"
           control={control}
@@ -55,7 +56,7 @@ const Login = () => {
           }}
           render={({ field, fieldState: { error } }) => (
             <Form.Item
-              label="Tài khoản"
+              label="Tài khoản :"
               validateStatus={error ? "error" : ""}
               help={error?.message}
             >
@@ -75,11 +76,11 @@ const Login = () => {
           }}
           render={({ field, fieldState: { error } }) => (
             <Form.Item
-              label="Mật khẩu"
+              label="Mật khẩu :"
               validateStatus={error ? "error" : ""}
               help={error?.message}
             >
-              <Input type="password" {...field} />
+              <Input  type="password" {...field} />
             </Form.Item>
           )}
         />
