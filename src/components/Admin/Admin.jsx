@@ -5,7 +5,7 @@ const Admin = () => {
   return (
     <Layout>
       <Layout.Content>
-        <Outlet  />
+        <Outlet />
       </Layout.Content>
     </Layout>
   );
