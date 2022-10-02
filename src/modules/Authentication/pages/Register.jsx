@@ -11,11 +11,15 @@ const Register = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      taiKhoan: "",
-      matKhau: "",
+      name: "",
       email: "",
-      hoTen: "",
-      soDt: "",
+      password: "",
+      phone: "",
+      birthday: "",
+      gender: null,
+      role: "USER",
+      skill: ["HTML"],
+      certification: ["TOEIC"],
     },
     mode: "onTouched",
   });
@@ -30,9 +34,8 @@ const Register = () => {
     try {
       await handleRegister(values);
       navigate("/login");
-      notification.error({
+      notification.success({
         message: "Đăng ký thành công",
-   
       });
     } catch (error) {
       notification.error({
@@ -49,98 +52,144 @@ const Register = () => {
   return (
     <div className="log">
       <form
-        className="form-log rounded-2"
+        className="form-reg rounded-2"
         onSubmit={handleSubmit(onSubmit, onError)}
       >
-        <div>
-          <input
-            className="form-control mb-3"
-            type="text"
-            placeholder="Tài Khoản"
-            {...register("taiKhoan", {
-              required: {
-                value: true,
-                message: "Tài khoản không được để trống",
-              },
-              minLength: {
-                value: 5,
-                message: "Tài khoản phải từ 5 đến 20 ký tự",
-              },
-              maxLength: {
-                value: 20,
-                message: "Tài khoản phải từ 5 đến 20 ký tự",
-              },
-            })}
-          />
-          {errors.taiKhoan && <p>{errors.taiKhoan.message}</p>}
-        </div>
+        <p className="pb-5 login-hd text-center">Register</p>
 
-        <div>
-          <input
-            className="form-control mb-3"
-            type="text"
-            placeholder="Mật Khẩu"
-            {...register("matKhau", {
-              required: {
-                value: true,
-                message: "Mật khẩu không được để trống",
-              },
-            })}
-          />
-          {errors.matKhau && <p>{errors.matKhau.message}</p>}
-        </div>
+        <div className="d-flex">
+          <div className="col-6 p-3">
+            <div>
+              <input
+                className="form-control form-register mb-3"
+                type="text"
+                placeholder="Name"
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "Tài khoản không được để trống",
+                  },
+                  minLength: {
+                    value: 5,
+                    message: "Tài khoản phải từ 5 đến 20 ký tự",
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "Tài khoản phải từ 5 đến 20 ký tự",
+                  },
+                })}
+              />
+              {errors.name && (
+                <p className="pb-3" style={{ color: "red" }}>
+                  {errors.name.message}
+                </p>
+              )}
+            </div>
 
-        <div>
-          <input
-            className="form-control mb-3"
-            type="text"
-            placeholder="Email"
-            {...register("email", {
-              required: { value: true, message: "Email không được để trống" },
-              pattern: {
-                value:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: "Email không đúng định dạng",
-              },
-            })}
-          />
-          {errors.email && <p>{errors.email.message}</p>}
-        </div>
+            <div>
+              <input
+                className="form-control form-register mb-3"
+                type="text"
+                placeholder="Password"
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "Mật khẩu không được để trống",
+                  },
+                })}
+              />
+              {errors.password && (
+                <p className="pb-3" style={{ color: "red" }}>
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
 
-        <div>
-          <input
-            className="form-control "
-            type="text"
-            placeholder="Họ Tên"
-            {...register("hoTen", {
-              required: {
-                value: true,
-                message: "Họ tên không được để trống",
-              },
-            })}
-          />
-          {errors.hoTen && <p>{errors.hoTen.message}</p>}
+            <div>
+              <input
+                className="form-control form-register mb-3"
+                type="text"
+                placeholder="Email"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Email không được để trống",
+                  },
+                  pattern: {
+                    value:
+                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: "Email không đúng định dạng",
+                  },
+                })}
+              />
+              {errors.email && (
+                <p className="pb-3" style={{ color: "red" }}>
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="col-6 p-3">
+            <div>
+              <input
+                className="form-control form-register mb-3"
+                type="text"
+                placeholder="Birthday"
+                {...register("birthday", {
+                  required: {
+                    value: true,
+                    message: "Ngày sinh không được để trống",
+                  },
+                })}
+              />
+              {errors.birthday && (
+                <p className="pb-3" style={{ color: "red" }}>
+                  {errors.birthday.message}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <input
+                className="form-control form-register mb-3"
+                type="text"
+                placeholder="Phone"
+                {...register("phone", {
+                  required: {
+                    value: true,
+                    message: "Số điện thoại không được để trống",
+                  },
+                })}
+              />
+              {errors.phone && (
+                <p className="pb-3" style={{ color: "red" }}>
+                  {errors.phone.message}
+                </p>
+              )}
+            </div>
+            <div>
+             
+              <select className="form-selected form-register mb-3" {...register("gender", {
+                  required: {
+                    value: true,
+                    message: "Vui lòng chọn giới tính",
+                  },
+                })} >
+                <option selected value='null'>Select Gender</option>
+                <option value="true" >Male</option>
+                <option value="false" >Female</option>
+              </select>
+              {errors.gender && (
+                <p className="pb-3" style={{ color: "red" }}>
+                  {errors.gender.message}
+                </p>
+              )}
+            </div>
+          </div>
         </div>
-        <br />
-        <div>
-          <input
-            className="form-control mb-3"
-            type="text"
-            placeholder="Số Điện Thoại"
-            {...register("soDt", {
-              required: {
-                value: true,
-                message: "Số Điện Thoại không được để trống",
-              },
-            })}
-          />
-          {errors.soDt && <p>{errors.soDt.message}</p>}
-        </div>
-        <br />
-        
-        <button className="btn btn-info">Đăng Ký</button>
+        <button className="ant-btn-primary">Đăng Ký</button>
       </form>
-     
     </div>
   );
 };
