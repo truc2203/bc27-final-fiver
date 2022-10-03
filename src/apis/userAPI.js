@@ -21,8 +21,8 @@ const userAPI = {
   addUser: (user) => {
     return axiosClient.post("users", user);
   },
-  findUser: (e) => {
-    return axiosClient.get("users/search/{TenNguoiDung}", {
+  findUser: (e, value) => {
+    return axiosClient.get(`users/search/${value}`, {
       params: {
         hoTen: e,
       },
