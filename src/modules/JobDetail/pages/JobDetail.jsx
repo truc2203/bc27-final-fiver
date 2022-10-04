@@ -6,8 +6,7 @@ import JD from '../component/JD'
 
 const JobDetail = () => {
 
-  const data = useParams()
-  const {id} = data  
+  const {id} = useParams()
   return (
     <div className='m-container'>
       <div className="p-4">
@@ -17,7 +16,7 @@ const JobDetail = () => {
             <Comments id={id}/>
         </div>
         <div className="col-4">
-            <BookingJob/>
+            <BookingJob jobId={id}/>
         </div>
       </div>
     </div>

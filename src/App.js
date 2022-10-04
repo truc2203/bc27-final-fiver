@@ -10,6 +10,7 @@ import Auth from "./components/Auth/Auth";
 import Login from "./modules/Authentication/pages/Login";
 import Register from "./modules/Authentication/pages/Register";
 import Admin from "./components/Admin/Admin";
+import TypeJob from "./modules/TypeJob/pages/TypeJob";
 // const UserLayout = lazy(() => import("./modules/AdminUser/UserLayout"));
 // import UserLayout from "./modules/AdminUser/UserLayout";
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="categories/:job" element={<Categories />} />
           <Route path="detail/:id/:name" element={<JobDetail />} />
+          <Route path="typejob" element={<TypeJob/>}/>
         </Route>
         <Route path="/admin" element={<Admin />}>
           {/* <Route path="users" element={<UserLayout />} /> */}
