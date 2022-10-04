@@ -5,12 +5,10 @@ import {BiRevision} from 'react-icons/bi'
 import {FcCheckmark,FcDebian} from 'react-icons/fc'
 import jobAPI from "../../../../apis/jobAPI";
 import { notification } from "antd";
-import { useNavigate } from "react-router";
 const BookingJob = ({jobId}) => {
 
-  const {user} = JSON.parse(localStorage.getItem("user"));  
-  
-  const navigate = useNavigate()
+  const user = JSON.parse(localStorage.getItem("user")) || {};  
+
 
   //get current date
   const current = new Date();
@@ -38,25 +36,33 @@ const BookingJob = ({jobId}) => {
   const value = {
     id : 1,
     maCongViec : Number(jobId),
-    maNguoiThue : user.id,
+    maNguoiThue : user.user?.id || '',
     ngayThue : date,
     hoanThanh : false
   }
 
   const handleBooking = async (value) => {
+      if(user.user?.id === undefined)
+      {
+        notification.warning({
+          message : 'Bạn cần đăng nhập để đặt công việc này !'
+        })
+      }
       try {
         await jobAPI.bookingJob(value)
         notification.success({
-          message:'Booking Success !'
+          message:'Đặt công việc thành công, vui lòng đợi người tạo xác nhận !'
         })
       } catch (error) {
         notification.error({
-          message : 'Booking Failed !',
+          message : 'Đặt công việc thất bại !',
           description:error
         })
       }
   }
-
+  if(!user) {
+    return
+  }
   return (
     <div>
       <div className="d-flex sidebar-hd">
