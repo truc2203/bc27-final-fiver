@@ -3,7 +3,16 @@ import { useState } from "react";
 import {BsFillClockFill} from 'react-icons/bs'
 import {BiRevision} from 'react-icons/bi'
 import {FcCheckmark,FcDebian} from 'react-icons/fc'
-const BookingJob = () => {
+import jobAPI from "../../../../apis/jobAPI";
+import { notification } from "antd";
+const BookingJob = ({jobId}) => {
+
+  const user = JSON.parse(localStorage.getItem("user")) || {};  
+
+
+  //get current date
+  const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
   const [side1, setSide1] = useState("block");
   const [side2, setSide2] = useState("none");
   const [side3, setSide3] = useState("none");
@@ -24,6 +33,36 @@ const BookingJob = () => {
     }
   };
 
+  const value = {
+    id : 1,
+    maCongViec : Number(jobId),
+    maNguoiThue : user.user?.id || '',
+    ngayThue : date,
+    hoanThanh : false
+  }
+
+  const handleBooking = async (value) => {
+      if(user.user?.id === undefined)
+      {
+        notification.warning({
+          message : 'Bạn cần đăng nhập để đặt công việc này !'
+        })
+      }
+      try {
+        await jobAPI.bookingJob(value)
+        notification.success({
+          message:'Đặt công việc thành công, vui lòng đợi người tạo xác nhận !'
+        })
+      } catch (error) {
+        notification.error({
+          message : 'Đặt công việc thất bại !',
+          description:error
+        })
+      }
+  }
+  if(!user) {
+    return
+  }
   return (
     <div>
       <div className="d-flex sidebar-hd">
@@ -92,7 +131,7 @@ const BookingJob = () => {
                         <p>Source code</p>
                     </li>
                 </ul>
-                <button className="side-btn">Continue</button>
+                <button onClick={() => handleBooking(value)} className="side-btn">Continue</button>
                 <button className="side-btn-sub">Compare Packages</button>
         </div>
         <div
@@ -140,7 +179,7 @@ const BookingJob = () => {
                         <p>Source code</p>
                     </li>
                 </ul>
-                <button className="side-btn">Continue</button>
+                <button onClick={() => handleBooking(value)} className="side-btn">Continue</button>
                 <button className="side-btn-sub">Compare Packages</button>
         </div>
         <div
@@ -188,7 +227,7 @@ const BookingJob = () => {
                         <p>Source code</p>
                     </li>
                 </ul>
-                <button className="side-btn">Continue</button>
+                <button onClick={() => handleBooking(value)} className="side-btn">Continue</button>
                 <button className="side-btn-sub">Compare Packages</button>
         </div>
       </div>

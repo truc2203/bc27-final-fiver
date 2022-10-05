@@ -176,7 +176,7 @@ const Register = () => {
                     message: "Vui lòng chọn giới tính",
                   },
                 })} >
-                <option selected value='null'>Select Gender</option>
+                <option selected >Select Gender</option>
                 <option value="true" >Male</option>
                 <option value="false" >Female</option>
               </select>

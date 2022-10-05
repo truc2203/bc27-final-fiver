@@ -6,6 +6,7 @@ import { IoIosArrowUp } from "react-icons/io";
 import { BiSearch } from "react-icons/bi";
 const JD = ({ id }) => {
   const { data: jd } = useRequest(() => jobAPI.getJobDetail(id));
+  console.log(jd);
   if (!jd) {
     return;
   }

@@ -13,6 +13,10 @@ const jobAPI = {
   },
   getComments : (id) => {
     return axiosClient.get(`binh-luan/lay-binh-luan-theo-cong-viec/${id}`)
+  },
+  bookingJob : (value) => {
+    return axiosClient.post(`thue-cong-viec`,value
+    )
   }
 };
 

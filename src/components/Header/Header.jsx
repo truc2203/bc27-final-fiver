@@ -78,12 +78,12 @@ const Header = () => {
                 </a>{" "}
               </li>
               <li>
-                <button onClick={() => movePath('login')} className="fs-config px-3" href>
+                <button onClick={() => movePath('register')} className="fs-config px-3" href>
                   Sign in
                 </button>
               </li>
               <li>
-                <button onClick={() => movePath('register')} className="nav-btn-fix">Join</button>
+                <button onClick={() => movePath('login')} className="nav-btn-fix">Join</button>
               </li>
             </ul>
           </nav>
