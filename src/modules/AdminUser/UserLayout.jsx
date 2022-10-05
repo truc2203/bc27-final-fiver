@@ -60,7 +60,7 @@ const UserLayout = () => {
           theme="dark"
           defaultSelectedKeys={["1"]}
           mode="inline"
-          items={items}
+        
         />
       </Sider>
       <Layout className="site-layout">
