@@ -6,7 +6,7 @@ const jobAPI = {
   },
 
   getTypeJob : () => {
-    return axiosClient.get('loai-cong-viec')
+    return axiosClient.get('cong-viec/lay-menu-loai-cong-viec')
   },
   getJobDetail : (id) => {
     return axiosClient.get(`cong-viec/lay-cong-viec-chi-tiet/${id}`)
@@ -17,6 +17,9 @@ const jobAPI = {
   bookingJob : (value) => {
     return axiosClient.post(`thue-cong-viec`,value
     )
+  },
+  getSubTypeJob : (id) => {
+    return axiosClient.get(`cong-viec/lay-chi-tiet-loai-cong-viec/${id}`)
   }
 };
 

@@ -15,24 +15,22 @@ const Header = () => {
   // };
   // window.addEventListener("scroll", setFixed);
 
-  const [value,setValue] = useState('')
+  const [value, setValue] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSearchJob = (value) => {
-    if(!value){
-      return
+    if (!value) {
+      return;
     }
-    navigate(`categories/${value}`)
-  }
+    navigate(`categories/${value}`);
+  };
 
   const movePath = (path) => {
-    navigate(`/${path}`)
-  }
+    navigate(`/${path}`);
+  };
 
-  const {
-    data : typeJob
-  } = useRequest(() => jobAPI.getTypeJob())
+  const { data: typeJob } = useRequest(() => jobAPI.getTypeJob());
 
   return (
     <div className="nav-fixed">
@@ -41,7 +39,7 @@ const Header = () => {
           className="d-flex justify-content-between align-items-center"
           style={{ height: "80px" }}
         >
-          <a className="me-4" href='/'>
+          <a className="me-4" href="/">
             <svg
               width="89"
               height="27"
@@ -65,25 +63,38 @@ const Header = () => {
                 placeholder="What service are you looking for today ?"
                 onChange={(e) => setValue(e.target.value)}
               />
-              <button onClick={() => handleSearchJob(value)} type="submit" className="hd-sr-btn">
+              <button
+                onClick={() => handleSearchJob(value)}
+                type="submit"
+                className="hd-sr-btn"
+              >
                 <BiSearch color="white" size="16px" />
               </button>
             </form>
           </div>
           <nav className="header-nav flex-grow-1">
-            <ul className="d-flex justify-content-end">
+            <ul className="d-flex justify-content-end align-items-center">
               <li>
                 <a className="fs-config px-3" href>
                   Become a Seller
                 </a>{" "}
               </li>
               <li>
-                <button onClick={() => movePath('register')} className="fs-config px-3" href>
+                <button
+                  onClick={() => movePath("register")}
+                  className="fs-config px-3"
+                  href
+                >
                   Sign in
                 </button>
               </li>
               <li>
-                <button onClick={() => movePath('login')} className="nav-btn-fix">Join</button>
+                <button
+                  onClick={() => movePath("login")}
+                  className="nav-btn-fix"
+                >
+                  Join
+                </button>
               </li>
             </ul>
           </nav>
@@ -92,13 +103,34 @@ const Header = () => {
           style={{ display: "flex" }}
           className="m-auto justify-content-between sub-type border-top border-bottom"
         >
-          
           {typeJob?.map((type) => {
-            return(
-              <li className="sub-title px-3" key={type._id} >
-                <button>{type.tenLoaiCongViec}</button>
+            return (
+              <li className="sub-title p-3" key={type.id}>
+                <button onClick={() =>  movePath(`typejob/${type.id}`)}>{type.tenLoaiCongViec}</button>
+                <div className="subtypeJob position-absolute p-4 pb-0">
+                  {type.dsNhomChiTietLoai.map((subtypeJob) => (
+                    <div
+                      className="d-flex flex-column subtypeJob-title "
+                      key={subtypeJob.tenNhom}
+                    >
+                      <p className=" pb-3">{subtypeJob?.tenNhom}</p>
+                      <div className="d-flex flex-column subtypeJob-sub pb-4">
+                        {subtypeJob.dsChiTietLoai.map((listSubtypeJob) => (
+                          <button
+                            onClick={() =>
+                              handleSearchJob(listSubtypeJob.tenChiTiet)
+                            }
+                            className="pb-2 text-start"
+                          >
+                            {listSubtypeJob.tenChiTiet}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </li>
-            )
+            );
           })}
         </ul>
       </div>

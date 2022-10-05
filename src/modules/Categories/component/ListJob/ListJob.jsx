@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import jobAPI from "../../../../apis/jobAPI";
 import useRequest from "../../../../hook/useRequest";
 import { useNavigate } from "react-router";
 import { BsHeartFill, BsStarFill } from "react-icons/bs";
 const ListJob = ({ data }) => {
   const { job } = data;
-  const { data: jobType } = useRequest(() => jobAPI.searchJob(job));
-  console.log(jobType);
+
+  const [value,setValue] = useState('')
+
+  if(job !== value)
+  {
+    setValue(job)
+  }
+
+  const { data: jobType } = useRequest(() => jobAPI.searchJob(value),{deps:[value]});
   const navigate = useNavigate();
   const handleJobDetail = (name, id) => {
     navigate(`../detail/${id}/${name}`);

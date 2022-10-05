@@ -3,6 +3,7 @@
 }
 .ant-layout-header {
   height: 100%;
+  line-height: 24px;
   background: transparent;
   /* z-index: 1080; */
   color: #ffffff;

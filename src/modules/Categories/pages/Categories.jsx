@@ -5,7 +5,6 @@ import InfoJob from '../component/InfoJob/InfoJob';
 const Categories = () => {
 
   const data = useParams()
-
   return (
     <div className='m-container'>
       <InfoJob data={data}/>

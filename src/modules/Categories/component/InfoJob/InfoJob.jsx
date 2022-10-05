@@ -14,7 +14,7 @@ const InfoJob = ({ data }) => {
         </Breadcrumb>
       </div>
       <div>
-        <p className="if-hd">Result for "{job}"</p>
+        <p className="if-hd">{job}</p>
       </div>
       <div className="if-sw">
         <Form className="d-flex justify-content-end">

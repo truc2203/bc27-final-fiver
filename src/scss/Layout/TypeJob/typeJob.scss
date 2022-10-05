@@ -1,0 +1,17 @@
+.typeJob-hd{
+    @include txtStyle($color-b,$fs-3,$fw-0);
+    text-align: center;
+}
+.typeJob-subhd{
+    @include txtStyle($color-b,$fs-5,$fw-0);
+    text-align: center;
+}
+.typeJob-btn{
+    @include txtStyle($color-b,$fs-4,$fw-2);
+}
+.typeJob-sub-2{
+    @include txtStyle($color-t,$fs-5,$fw-0);
+    &:hover{
+        @include txtHover($bg-1);
+    }
+}
