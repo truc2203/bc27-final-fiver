@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { notification } from "antd";
 import authAPI from "../../../apis/authAPI";
 import useRequest from "../../../hook/useRequest";
+import Avatar from 'react-avatar';
 
 const Register = () => {
   const {

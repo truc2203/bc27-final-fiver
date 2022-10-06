@@ -9,10 +9,9 @@ import JobDetail from "./modules/JobDetail/pages/JobDetail";
 import Auth from "./components/Auth/Auth";
 import Login from "./modules/Authentication/pages/Login";
 import Register from "./modules/Authentication/pages/Register";
-import Admin from "./components/Admin/Admin";
 import TypeJob from "./modules/TypeJob/pages/TypeJob";
+import Profile from "./modules/Profile/pages/Profile";
 // const UserLayout = lazy(() => import("./modules/AdminUser/UserLayout"));
-import UserLayout from "./modules/AdminUser/UserLayout";
 function App() {
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
@@ -22,10 +21,9 @@ function App() {
           <Route path="categories/:job" element={<Categories />} />
           <Route path="detail/:id/:name" element={<JobDetail />} />
           <Route path="typejob/:job" element={<TypeJob/>}/>
+          <Route path="profile" element={<Profile/>} />
         </Route>
-        <Route path="/admin" element={<Admin />}>
-          <Route path="users" element={<UserLayout />} />
-        </Route>
+        
 
         <Route path="/" element={<Auth />}>
           <Route path="login" element={<Login />} />

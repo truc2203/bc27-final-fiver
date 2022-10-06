@@ -21,7 +21,7 @@ const TypeJobListLeft = ({ id }) => {
   });
 
   return (
-    <div className="d-flex">
+    <div className="row gx-4">
       {typeJob?.map((sub) => (
         <>
           {sub.dsNhomChiTietLoai.map((sub2) => (
