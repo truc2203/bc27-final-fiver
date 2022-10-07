@@ -30,31 +30,33 @@ const Information = () => {
   }
 
 
-  const handleDeleteSkill = (value) => {
+  const handleDeleteSkill = async (value) => {
     const newSkillArr = user.skill.filter(skill => skill !== value)
     const newValue = {...defaultValue,skill:newSkillArr}
-    userAPI.editUser(newValue,user.id)
+    await userAPI.editUser(newValue,user.id)
     setValueSkill(!valueSkill)
+
   }
-  const handleDeleteCer = (value) => {
+  const handleDeleteCer = async (value) => {
     const newCerArr = user.certification.filter(cer => cer !== value)
     const newValue = {...defaultValue,certification:newCerArr}
-    userAPI.editUser(newValue,user.id)
+    await userAPI.editUser(newValue,user.id)
+    setValueCer(!valueCer)
+
+  }
+
+  const handleAddSkill = async (value) => {
+    user.skill.push(value)
+    const newValue = {...defaultValue,skill:user.skill}
+    await userAPI.editUser(newValue,user.id)
     setValueCer(!valueCer)
   }
 
-  const handleAddSkill = (value) => {
-    user.skill.push(value)
-    console.log(user.skill);
-    const newValue = {...defaultValue,skill:user.skill}
-    userAPI.editUser(newValue,user.id)
-  }
-
-  const handleAddCer = (value) => {
+  const handleAddCer = async (value) => {
     user.certification.push(value)
-    console.log(user.skill);
     const newValue = {...defaultValue,certification:user.certification}
-    userAPI.editUser(newValue,user.id)
+    await userAPI.editUser(newValue,user.id)
+    setValueSkill(!valueSkill)
   }
 
 

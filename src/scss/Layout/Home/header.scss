@@ -17,6 +17,45 @@
   }
   @include trans;
 }
+
+.hd-ava {
+  width: 32px;
+  height: 32px;
+}
+.hd-submenu {
+  z-index: 999;
+  background: #fafafa;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;  right: 0;
+  top: 40px;
+  width: 200px;
+  display: none;
+  
+  
+}
+.hd-submenu-item{
+  @include txtStyle($color-t,$fs-2,$fw-0);
+  &:hover{
+    @include txtHover($bg-1)
+  }
+}
+.hd-show-submenu::after {
+  content: "";
+  position: absolute;
+  display: none;
+  width: 20px;
+  height: 4px;
+  top: 20px;
+  border-top: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 16px solid #f7f5f5;
+  border-left: 16px solid transparent;
+}
+// .hd-show-submenu:hover::after {
+//   display: block;
+// }
+// .hd-show-submenu:hover .hd-submenu {
+//   display: block;
+// }
 .nav-btn {
   border: 1px solid $bg-0;
   padding: 6px 16px;
@@ -51,13 +90,13 @@
   @include txtStyle($color-t, $fs-2, $fw-0);
   overflow: hidden;
 }
-.sub-title::before{
-    content: '';
-    width: 120px;
-    height: 12px;
-    background: transparent;
-    position: absolute;
-    top: 130px;
+.sub-title::before {
+  content: "";
+  width: 120px;
+  height: 12px;
+  background: transparent;
+  position: absolute;
+  top: 130px;
 }
 .sub-title:hover {
   @include txtHover($bg-1);
@@ -70,8 +109,9 @@
   top: 140px;
   background: $color-w;
   border-radius: 4px;
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
-  &:hover{
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  &:hover {
     cursor: default;
   }
 }
@@ -80,7 +120,7 @@
 }
 .subtypeJob-sub {
   @include txtStyle($color-ft, $fs-2, $fw-0);
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 }

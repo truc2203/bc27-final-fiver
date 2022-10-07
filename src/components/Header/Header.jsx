@@ -2,22 +2,27 @@ import React, { useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 import useRequest from "../../hook/useRequest";
+import { NavLink } from "react-router-dom";
+import { logout } from "../../modules/Authentication/slices/authSlice";
 import jobAPI from "../../apis/jobAPI";
+import {
+  MdOutlineNotifications,
+  MdMailOutline,
+  MdOutlineFormatListBulleted,
+} from "react-icons/md";
 const Header = () => {
-  // const [fix, setFix] = useState(false);
-  // const setFixed = () => {
-  //   if (window.scrollY >= 10) {
-  //     setFix(true);
-  //   } else {
-  //     setFix(false);
-  //   }
-  // };
-  // window.addEventListener("scroll", setFixed);
-
+  const user = JSON.parse(localStorage.getItem("user")) || "";
+  const dispatch = useDispatch()
   const [value, setValue] = useState("");
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLogout, setisLogout] = useState(false)
   const navigate = useNavigate();
+
+  const showMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   const handleSearchJob = (value) => {
     if (!value) {
@@ -31,6 +36,12 @@ const Header = () => {
   };
 
   const { data: typeJob } = useRequest(() => jobAPI.getTypeJob());
+
+
+  const handleLogout = () => {
+    setisLogout(!isLogout)
+    dispatch(logout())
+  }
 
   return (
     <div className="nav-fixed">
@@ -73,7 +84,10 @@ const Header = () => {
             </form>
           </div>
           <nav className="header-nav flex-grow-1">
-            <ul className="d-flex justify-content-end align-items-center">
+            <ul
+              style={{ display: user === "" ? "flex" : "none" }}
+              className="justify-content-end align-items-center"
+            >
               <li>
                 <a className="fs-config px-3" href>
                   Become a Seller
@@ -97,6 +111,59 @@ const Header = () => {
                 </button>
               </li>
             </ul>
+            <ul
+              style={{ display: user === "" ? "none" : "flex" }}
+              className="justify-content-end align-items-center"
+            >
+              <li className="pe-3">
+                <NavLink to="/">
+                  <MdOutlineNotifications fontSize="20px" />
+                </NavLink>
+              </li>
+              <li className="pe-3">
+                <NavLink to="/">
+                  <MdMailOutline fontSize="20px" />
+                </NavLink>
+              </li>
+              <li className="pe-3">
+                <NavLink to="/">
+                  <MdOutlineFormatListBulleted fontSize="20px" />
+                </NavLink>
+              </li>
+              <li className="d-flex position-relative hd-show-submenu">
+                <button onClick={() => showMenu()}>
+                  {" "}
+                  <img
+                    className="hd-ava rounded-circle"
+                    src="https://fiverr-res.cloudinary.com/t_mobile_web_2,q_auto,f_auto/gigs/142887567/original/850ee22c684fd9c1f572ef5f1cc8248013080eeb.png"
+                    alt=""
+                  />
+                </button>
+                <div
+                  className="position-absolute hd-submenu p-3 rounded-2"
+                  style={{ display: isOpen ? "block" : "none" }}
+                >
+                  <ul className="py-1 border-bottom">
+                    <li className="pb-2 hd-submenu-item">Profile</li>
+                    <li className="pb-2 hd-submenu-item">Manage Request</li>
+                    <li className="pb-2 hd-submenu-item">Post a Request</li>
+                  </ul>
+                  <ul className="py-1 border-bottom">
+                    <li className="py-2 hd-submenu-item">Become a seller</li>
+                    <li className="pb-2 hd-submenu-item">Setting</li>
+                    <li className="pb-2 hd-submenu-item">Billing</li>
+                  </ul>
+                  <ul className="py-1 border-bottom">
+                    <li className="py-3 hd-submenu-item">English</li>
+                    <li className="pb-2 hd-submenu-item ">USD</li>
+                    <li className="pb-2 hd-submenu-item">Help & suport</li>
+                  </ul>
+                  <ul className="pb-1">
+                    <li onClick={() => handleLogout()} className="pt-2 hd-submenu-item">Logout</li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
           </nav>
         </div>
         <ul
@@ -106,7 +173,9 @@ const Header = () => {
           {typeJob?.map((type) => {
             return (
               <li className="sub-title p-3" key={type.id}>
-                <button onClick={() =>  movePath(`typejob/${type.id}`)}>{type.tenLoaiCongViec}</button>
+                <button onClick={() => movePath(`typejob/${type.id}`)}>
+                  {type.tenLoaiCongViec}
+                </button>
                 <div className="subtypeJob position-absolute p-4 pb-0">
                   {type.dsNhomChiTietLoai.map((subtypeJob) => (
                     <div
