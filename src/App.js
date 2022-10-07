@@ -11,7 +11,7 @@ import Login from "./modules/Authentication/pages/Login";
 import Register from "./modules/Authentication/pages/Register";
 import TypeJob from "./modules/TypeJob/pages/TypeJob";
 import Profile from "./modules/Profile/pages/Profile";
-// const UserLayout = lazy(() => import("./modules/AdminUser/UserLayout"));
+
 function App() {
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
