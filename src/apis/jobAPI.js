@@ -20,7 +20,7 @@ const jobAPI = {
   },
   getSubTypeJob : (id) => {
     return axiosClient.get(`cong-viec/lay-chi-tiet-loai-cong-viec/${id}`)
-  }
+  },
 };
 
 export default jobAPI;

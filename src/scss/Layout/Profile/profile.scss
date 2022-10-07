@@ -1,10 +1,12 @@
 .profile-user-info{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .profile-user-pic{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     background: #e4e5e7;
     font-size: 35px;
@@ -12,4 +14,32 @@
     text-align: center;
     line-height: 150px;
     margin: 20px 0;
+}
+
+.profile-user-label{
+    @include txtStyle($color-b,$fs-5,$fw-0);
+}
+
+.profile-user-location{
+    @include txtStyle($color-t,$fs-2,$fw-1)
+}
+
+.profile-user-text{
+    @include txtStyle($color-ft,$fs-2,$fw-0);
+}
+
+.profile-add-skill{
+    @include txtStyle($bg-1,$fs-5,$fw-0);
+    &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+.profile-skill-edit:hover{
+    color: $bg-1;
+    @include trans
+}
+.profile-skill-del:hover{
+    color: #9f2414;
+    @include trans
 }
