@@ -6,7 +6,6 @@ import { IoIosArrowUp } from "react-icons/io";
 import { BiSearch } from "react-icons/bi";
 const JD = ({ id }) => {
   const { data: jd } = useRequest(() => jobAPI.getJobDetail(id));
-  console.log(jd);
   if (!jd) {
     return;
   }
@@ -20,11 +19,11 @@ const JD = ({ id }) => {
               <img
                 className="rounded-circle me-3"
                 style={{ width: "30px", height: "30px" }}
-                src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/461c94959a48ebe45f55673a681eaf1e-1633139902605/7e45b689-f024-4045-8a00-42868263714c.jpg"
+                src={detail.avatar}
                 alt=""
               />
               <p className="lj-hd">
-                {detail.congViec.nguoiTao}{" "}
+                {detail.tenNguoiTao}{" "}
                 <span className="ps-2 lj-subhd">Level1 Seller</span>
               </p>
               <p className="px-2">|</p>
@@ -48,51 +47,11 @@ const JD = ({ id }) => {
               <div className="border-bottom">
                 <p className="jd-title pb-4">About this Gig</p>
                 <p className="pb-3">
-                  Hello there! Do you want to build a funnel that channels
-                  website visitor (traffics) into prospective and returning
-                  buyers or members? looking for a sales funnel expert in
-                  website builder & CMS category in gohighlevel, a quality
-                  Shopify sales funnel service provider. Then I must say your
-                  search on fiverr ends here with me. As I will create your
-                  funnel on clickfunnel salesfunnel, gohighlevel, kartra sales
-                  funnel, ClickBank affiliate marketing, landing page sales
-                  funnel, groove funnel sales funnel, Shopify sales funnel
-                  connected with your automation provider(mail chimp,
-                  getresponse, aweber, mail jet)and many more. I will build your
-                  webinar funnel into your community membership. If you really
-                  want to make funnels that commands high sales, then reach me
-                  for my services which includes
+                  {detail.congViec.moTa}
                 </p>
-                <ul className="pb-3 ps-5">
-                  <li>clickfunnels</li>
-                  <li>clickfunnel landing page</li>
-                  <li>clickfunnels</li>
-                  <li>clickfunnels</li>
-                </ul>
-                <ul className="pb-3 ps-5">
-                  <li>kajabi landing page</li>
-                  <li>kajabi online course</li>
-                  <li>kajabi website</li>
-                  <li> kajabi website design</li>
-                </ul>
-                <ul className="pb-3 ps-5">
-                  <li>Gohigh level salesfunnel</li>
-                  <li>Ebook Salesfunnel</li>
-                  <li>
-                    Webinar registration and webinar funnel(live or evergreen)
-                  </li>
-                  <li>Credit repair</li>
-                </ul>
               </div>
               <div className="d-flex py-3">
-                <div className="pe-5">
-                  <p>Website type</p>
-                  <p>E-Commerce, Blog, Other</p>
-                </div>
-                <div>
-                  <p>Website type</p>
-                  <p>E-Commerce, Blog, Other</p>
-                </div>
+                <p>{detail.congViec.moTaNgan}</p>
               </div>
             </div>
             <div className="d-flex flex-column pb-5">
@@ -101,18 +60,18 @@ const JD = ({ id }) => {
                 <img
                   className="rounded-circle me-3"
                   style={{ width: "110px", height: "110px" }}
-                  src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/profile/photos/2348027/original/IMG-20160628-WA0004.jpg"
+                  src={detail.avatar}
                   alt=""
                 />
                 <div>
-                  <p className="lj-hd pb-2">{detail.congViec.nguoiTao}</p>
+                  <p className="lj-hd pb-2">{detail.tenNguoiTao}</p>
                   <p className="pb-2">Your App Idea ready for lauch</p>
                   <div
                     style={{ fontSize: "16px" }}
                     className="d-flex align-items-start lj-rate pb-3"
                   >
                     <AiFillStar />
-                    {jd.rating}
+                    {detail.congViec.saoCongViec}
                   </div>
                   <button className="jd-btn border">Contact Me</button>
                 </div>

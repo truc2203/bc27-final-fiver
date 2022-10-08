@@ -21,7 +21,7 @@ function App() {
           <Route path="categories/:job" element={<Categories />} />
           <Route path="detail/:id/:name" element={<JobDetail />} />
           <Route path="typejob/:job" element={<TypeJob/>}/>
-          <Route path="profile" element={<Profile/>} />
+          <Route path="profile/:id" element={<Profile/>} />
         </Route>
         
 

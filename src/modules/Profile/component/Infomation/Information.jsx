@@ -4,17 +4,24 @@ import userAPI from "../../../../apis/userAPI";
 import { HiUser } from "react-icons/hi";
 import { MdLocationOn } from "react-icons/md";
 import { BsFacebook, BsGoogle, BsTwitter, BsGithub } from "react-icons/bs";
-import {BiEditAlt,BiTrash} from 'react-icons/bi'
+import { BiEditAlt, BiTrash } from "react-icons/bi";
 import { useState } from "react";
-const Information = () => {
+const Information = ({userId}) => {
+  const [valueSkill, setValueSkill] = useState(false);
 
-  const [valueSkill,setValueSkill] = useState(false)
+  const [valueCer, setValueCer] = useState(false);
 
-  const [valueCer,setValueCer] = useState(false)
+  const [isOpenSkill, setIsOpenSkill] = useState(false)
 
-  const {data : user} = useRequest(() => userAPI.getUser(47),{deps:[valueSkill,valueCer]})
+  const [isOpenCer, setIsOpenCer] = useState(false)
 
+  const [skill,setSkill] = useState('')
 
+  const [cer, setCer] = useState('')
+
+  const { data: user } = useRequest(() => userAPI.getUser(userId), {
+    deps: [valueSkill, valueCer],
+  });
 
   const defaultValue = {
     name: user?.name,
@@ -26,39 +33,37 @@ const Information = () => {
     role: user?.role,
     skill: user?.skill,
     certification: user?.certification,
-    avatar : user?.avatar
-  }
-
+    avatar: user?.avatar,
+  };
 
   const handleDeleteSkill = async (value) => {
-    const newSkillArr = user.skill.filter(skill => skill !== value)
-    const newValue = {...defaultValue,skill:newSkillArr}
-    await userAPI.editUser(newValue,user.id)
-    setValueSkill(!valueSkill)
-
-  }
+    const newSkillArr = user.skill.filter((skill) => skill !== value);
+    const newValue = { ...defaultValue, skill: newSkillArr };
+    await userAPI.editUser(newValue, user.id);
+    setValueSkill(!valueSkill);
+  };
   const handleDeleteCer = async (value) => {
-    const newCerArr = user.certification.filter(cer => cer !== value)
-    const newValue = {...defaultValue,certification:newCerArr}
-    await userAPI.editUser(newValue,user.id)
-    setValueCer(!valueCer)
-
-  }
+    const newCerArr = user.certification.filter((cer) => cer !== value);
+    const newValue = { ...defaultValue, certification: newCerArr };
+    await userAPI.editUser(newValue, user.id);
+    setValueCer(!valueCer);
+  };
 
   const handleAddSkill = async (value) => {
-    user.skill.push(value)
-    const newValue = {...defaultValue,skill:user.skill}
-    await userAPI.editUser(newValue,user.id)
-    setValueCer(!valueCer)
-  }
+    user.skill.push(value);
+    const newValue = { ...defaultValue, skill: user.skill };
+    await userAPI.editUser(newValue, user.id);
+    setValueCer(!valueCer);
+    setSkill('')
+  };
 
   const handleAddCer = async (value) => {
-    user.certification.push(value)
-    const newValue = {...defaultValue,certification:user.certification}
-    await userAPI.editUser(newValue,user.id)
-    setValueSkill(!valueSkill)
-  }
-
+    user.certification.push(value);
+    const newValue = { ...defaultValue, certification: user.certification };
+    await userAPI.editUser(newValue, user.id);
+    setValueSkill(!valueSkill);
+    setCer('')
+  };
 
   return (
     <div>
@@ -68,7 +73,7 @@ const Information = () => {
       >
         <div className="profile-user-info pb-4">
           <div className="profile-user-img">
-            <img className="profile-user-pic" src={user?.avatar} alt="" />
+            <img className="profile-user-pic" src='http://sc04.alicdn.com/kf/Hc3e61591078043e09dba7808a6be5d21n.jpg' alt="" />
           </div>
           <div className="profile-user-label">
             <p>{user?.name}</p>
@@ -130,34 +135,74 @@ const Information = () => {
         <div className="profile-user-linked d-flex flex-column pb-5">
           <div className="profile-user-label d-flex justify-content-between">
             <p className="pb-3">Skills</p>
-            <p onClick={() => handleAddSkill('ADD')} className="profile-add-skill">Add New</p>
+            <p
+              onClick={() =>setIsOpenSkill(true)}
+              className="profile-add-skill"
+              style={{display:isOpenSkill === 'skillOpen' ? "none" : "block"}}
+            >
+              Add New
+            </p>
+          </div>
+          <div style={{display:isOpenSkill ? "flex" : 'none'}} className="input-group flex-nowrap flex-column">
+          <input onChange={(e) => setSkill(e.target.value)} type="text" class="form-control w-100" placeholder="Add Skill" />
+          <div className="d-flex py-3 justify-content-between">
+            <button onClick={() => setIsOpenSkill(false)} className="nav-btn-fix w-50 py-2 me-3">Cancel</button>
+            <button  onClick={() => handleAddSkill(skill)} className="nav-btn-fix w-50 py-2 ms-3">Add</button>
+          </div>
           </div>
           <div className="profile-user-text">
             {user?.skill.map((skill) => (
               <div className="d-flex justify-content-between pb-4">
                 <p>{skill}</p>
                 <div className="d-flex">
-                    <button  className="profile-skill-edit"><BiEditAlt/></button>
-                    <button onClick={() => handleDeleteSkill(skill)} className="profile-skill-del ps-2"><BiTrash/></button>
+                  <button className="profile-skill-edit">
+                    <BiEditAlt />
+                  </button>
+                  <button
+                    onClick={() => handleDeleteSkill(skill)}
+                    className="profile-skill-del ps-2"
+                  >
+                    <BiTrash />
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
         <div className="profile-user-linked d-flex flex-column ">
-          <div className="profile-user-label d-flex justify-content-between">
+          <div className="profile-user-label d-flex justify-content-between ">
             <p className="pb-3">Certifications</p>
-            <p onClick={() => handleAddCer("Cer")} className="profile-add-skill">Add New</p>
+            <p
+              onClick={() => setIsOpenCer(true)}
+              className="profile-add-skill"
+              style={{display:isOpenCer ? "none" : "block"}}
+            >
+              Add New
+            </p>
+          </div>
+          <div style={{display:isOpenCer ? "flex" : 'none'}} className="input-group flex-nowrap flex-column">
+          <input onChange={(e) => setCer(e.target.value)} type="text" class="form-control w-100" placeholder="Add Certification" />
+          <div className="d-flex py-3 justify-content-between">
+            <button onClick={() => setIsOpenCer(false)} className="nav-btn-fix w-50 py-2 me-3">Cancel</button>
+            <button  onClick={() => handleAddCer(cer)} className="nav-btn-fix w-50 py-2 ms-3">Add</button>
+          </div>
           </div>
           <div className="profile-user-text">
             {user?.certification.map((certification) => (
               <div className="d-flex justify-content-between pb-4">
-              <p>{certification}</p>
-              <div className="d-flex">
-                  <button className="profile-skill-edit"><BiEditAlt/></button>
-                  <button onClick={() => handleDeleteCer(certification)} className="profile-skill-del ps-2"><BiTrash/></button>
+                <p>{certification}</p>
+                <div className="d-flex">
+                  <button className="profile-skill-edit">
+                    <BiEditAlt />
+                  </button>
+                  <button
+                    onClick={() => handleDeleteCer(certification)}
+                    className="profile-skill-del ps-2"
+                  >
+                    <BiTrash />
+                  </button>
+                </div>
               </div>
-            </div>
             ))}
           </div>
         </div>

@@ -29,11 +29,11 @@ const ListJob = ({ data }) => {
                 <img
                   className="rounded-circle me-2"
                   style={{ width: "24px", height: "24px" }}
-                  src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/da7d5a0e1cba3499c52d6ec20f7e82fe-1648494284312/593c252a-9f69-4e99-8672-989cba7d080d.jpg"
+                  src={type.avatar}
                   alt=""
                 />
                 <div>
-                  <p className="lj-hd">{type.congViec.nguoiTao}</p>
+                  <p className="lj-hd">{type.tenNguoiTao}</p>
                   <p className="lj-subhd">Lv1 Seller</p>
                 </div>
               </div>

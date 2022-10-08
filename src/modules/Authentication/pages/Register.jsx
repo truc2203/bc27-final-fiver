@@ -19,8 +19,8 @@ const Register = () => {
       birthday: "",
       gender: null,
       role: "USER",
-      skill: ["HTML","ReactJS","SCSS","MSSQL","Redux"],
-      certification: ["TOEIC","IELTS","N3 JAPANSESE"],
+      skill: [],
+      certification: [],
     },
     mode: "onTouched",
   });

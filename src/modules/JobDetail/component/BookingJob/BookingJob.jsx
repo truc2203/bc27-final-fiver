@@ -36,7 +36,7 @@ const BookingJob = ({jobId}) => {
   const value = {
     id : 1,
     maCongViec : Number(jobId),
-    maNguoiThue : user.user?.id || '',
+    maNguoiThue : user.user.id || '',
     ngayThue : date,
     hoanThanh : false
   }

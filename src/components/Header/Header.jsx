@@ -144,7 +144,9 @@ const Header = () => {
                   style={{ display: isOpen ? "block" : "none" }}
                 >
                   <ul className="py-1 border-bottom">
-                    <li className="pb-2 hd-submenu-item">Profile</li>
+                    <li className="pb-2 hd-submenu-item"><NavLink to={`profile/${user.user.id}`}>
+                      Profile
+                      </NavLink></li>
                     <li className="pb-2 hd-submenu-item">Manage Request</li>
                     <li className="pb-2 hd-submenu-item">Post a Request</li>
                   </ul>
