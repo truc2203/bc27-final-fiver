@@ -23,7 +23,7 @@
   height: 32px;
 }
 .hd-submenu {
-  z-index: 999;
+  z-index: 1001;
   background: #fafafa;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;  right: 0;
   top: 40px;
@@ -89,6 +89,9 @@
 .sub-type {
   @include txtStyle($color-t, $fs-2, $fw-0);
   overflow: hidden;
+}
+.sub-title{
+  z-index: 1000;
 }
 .sub-title::before {
   content: "";

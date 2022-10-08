@@ -8,10 +8,10 @@ const Profile = () => {
   return (
     <div className='p-5'>
         <div className='d-flex m-container'>
-            <div className="col-4">
+            <div className="col-4 pe-5">
                 <Information userId={id}/>
             </div>
-            <div className='col-8'>
+            <div className='col-8 ps-5'>
                 <BookedJob userId={id}/>
             </div>
         </div>

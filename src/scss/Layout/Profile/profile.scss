@@ -1,45 +1,106 @@
-.profile-user-info{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.profile-user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.profile-user-pic{
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: #e4e5e7;
-    font-size: 35px;
-    color: #fff;
-    text-align: center;
-    line-height: 150px;
-    margin: 20px 0;
-}
-
-.profile-user-label{
-    @include txtStyle($color-b,$fs-5,$fw-0);
+.profile-user-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #e4e5e7;
+  font-size: 35px;
+  color: #fff;
+  text-align: center;
+  line-height: 150px;
+  margin: 20px 0;
 }
 
-.profile-user-location{
-    @include txtStyle($color-t,$fs-2,$fw-1)
+.profile-user-label {
+  @include txtStyle($color-b, $fs-5, $fw-0);
 }
 
-.profile-user-text{
-    @include txtStyle($color-ft,$fs-2,$fw-0);
+.profile-user-location {
+  @include txtStyle($color-t, $fs-2, $fw-1);
 }
 
-.profile-add-skill{
-    @include txtStyle($bg-1,$fs-5,$fw-0);
-    &:hover{
-        text-decoration: underline;
-        cursor: pointer;
-    }
+.profile-user-text {
+  @include txtStyle($color-ft, $fs-2, $fw-0);
 }
-.profile-skill-edit:hover{
-    color: $bg-1;
-    @include trans
+
+.profile-add-skill {
+  @include txtStyle($bg-1, $fs-5, $fw-0);
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
-.profile-skill-del:hover{
-    color: #9f2414;
-    @include trans
+.profile-skill-edit:hover {
+  color: $bg-1;
+  @include trans;
+}
+.profile-skill-del:hover {
+  color: #9f2414;
+  @include trans;
+}
+
+// Job Booked By User
+
+.bookedJob-text {
+  @include txtStyle($color-t, $fs-2, $fw-0);
+  line-height: 24px;
+}
+.bookedJob-hd {
+  @include txtStyle($color-b, $fs-4, $fw-2);
+  padding-bottom: 16px;
+}
+
+.bookedJob-item:hover {
+    @include txtHover($bg-1);
+}
+
+.bookedJob-item-detail {
+  width: 90px;
+  left: 0;
+  padding: 4px;
+  background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+  display: none;
+  color: #fff;
+  border-radius: 8px;
+  
+}
+.bookedJob-item-edit {
+  width: 90px;
+  left: 0;
+  padding: 4px;
+  background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+  display: none;
+  color: #fff;
+  border-radius: 8px;
+  
+}
+.bookedJob-item-delete {
+  width: 90px;
+  left: 0;
+  padding: 4px;
+  background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+  display: none;
+  color: #fff;
+  border-radius: 8px;
+  
+}
+.bookedJob-item:hover .bookedJob-item-detail
+ {
+  display: block;
+  @include trans;
+}
+.bookedJob-item:hover .bookedJob-item-delete
+ {
+  display: block;
+  @include trans;
+}
+.bookedJob-item:hover .bookedJob-item-edit
+ {
+  display: block;
+  @include trans;
 }
