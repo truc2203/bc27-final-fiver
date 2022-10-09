@@ -2,15 +2,11 @@
   background: #ffffff;
 }
 .ant-layout-header {
-  height: 100%;
+  height: 138px;
   line-height: 24px;
   background: transparent;
-  /* z-index: 1080; */
   color: #ffffff;
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  right: 0; */
+ 
   padding: 0;
 }
 
@@ -28,7 +24,11 @@
 }
 
 /* React slick */
+/* .slick-prev:before,.slick-next{
+  display: none !important;
+} */
 .slick-prev:before,.slick-next:before{
   color: #faad14 !important;
   font-size: 24px !important;
 }
+

@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -18,6 +17,19 @@ const Header = () => {
   const [value, setValue] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [isLogout, setisLogout] = useState(false)
+  // const [fix, setFix] = useState(false)
+
+  // const setFixed = () => {
+  //   if(window.scrollY >= 100)
+  //   {
+  //     setFix(true)
+  //   } else {
+  //     setFix(false)
+  //   }
+  // }
+
+  // window.addEventListener('scroll',setFixed())
+
   const navigate = useNavigate();
 
   const showMenu = () => {
@@ -41,6 +53,7 @@ const Header = () => {
   const handleLogout = () => {
     setisLogout(!isLogout)
     dispatch(logout())
+    navigate('../')
   }
 
   return (
@@ -89,7 +102,7 @@ const Header = () => {
               className="justify-content-end align-items-center"
             >
               <li>
-                <a className="fs-config px-3" href>
+                <a className="fs-config px-3" href="true">
                   Become a Seller
                 </a>{" "}
               </li>
@@ -97,7 +110,7 @@ const Header = () => {
                 <button
                   onClick={() => movePath("register")}
                   className="fs-config px-3"
-                  href
+                  href="true"
                 >
                   Sign in
                 </button>
@@ -144,7 +157,7 @@ const Header = () => {
                   style={{ display: isOpen ? "block" : "none" }}
                 >
                   <ul className="py-1 border-bottom">
-                    <li className="pb-2 hd-submenu-item"><NavLink to={`profile/${user.user.id}`}>
+                    <li className="pb-2 hd-submenu-item"><NavLink to={`profile/${user.user?.id}`}>
                       Profile
                       </NavLink></li>
                     <li className="pb-2 hd-submenu-item">Manage Request</li>
@@ -169,7 +182,7 @@ const Header = () => {
           </nav>
         </div>
         <ul
-          style={{ display: "flex" }}
+          style={{ display:"flex" }}
           className="m-auto justify-content-between sub-type border-top border-bottom"
         >
           {typeJob?.map((type) => {

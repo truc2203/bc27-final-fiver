@@ -84,6 +84,11 @@
 .nav-fixed {
   color: $color-t;
   background: $color-w;
+    position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; 
+  z-index: 1000;
   @include trans;
 }
 .sub-type {
