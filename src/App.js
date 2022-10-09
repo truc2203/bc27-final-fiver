@@ -11,7 +11,8 @@ import Login from "./modules/Authentication/pages/Login";
 import Register from "./modules/Authentication/pages/Register";
 import TypeJob from "./modules/TypeJob/pages/TypeJob";
 import Profile from "./modules/Profile/pages/Profile";
-
+import Admin from "./components/Admin/Admin";
+import User from "./modules/UserAdmin/User";
 function App() {
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
@@ -20,11 +21,12 @@ function App() {
           <Route index element={<Home />} />
           <Route path="categories/:job" element={<Categories />} />
           <Route path="detail/:id/:name" element={<JobDetail />} />
-          <Route path="typejob/:job" element={<TypeJob/>}/>
-          <Route path="profile/:id" element={<Profile/>} />
+          <Route path="typejob/:job" element={<TypeJob />} />
+          <Route path="profile/:id" element={<Profile />} />
         </Route>
-        
-
+        <Route path="/" element={<Admin />}>
+          <Route path="user" element={<User />} />
+        </Route>
         <Route path="/" element={<Auth />}>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
