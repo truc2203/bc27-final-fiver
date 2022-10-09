@@ -6,10 +6,14 @@
   line-height: 24px;
   background: transparent;
   color: #ffffff;
- 
   padding: 0;
 }
-
+.ant-layout-footer{
+  padding: 32px 32px;
+    color: rgba(0,0,0,.85);
+    font-size: 14px;
+    background: #f0f2f5;
+}
 /* React bootstrap */
 .carousel-control-next,
 .carousel-control-prev,
@@ -24,11 +28,12 @@
 }
 
 /* React slick */
-/* .slick-prev:before,.slick-next{
+.slick-prev:before,.slick-next{
   display: none !important;
-} */
+}
 .slick-prev:before,.slick-next:before{
   color: #faad14 !important;
   font-size: 24px !important;
 }
+
 

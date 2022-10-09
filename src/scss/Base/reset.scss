@@ -350,6 +350,12 @@
 
   /* Config */
 .m-container{
-  max-width: 1370px;
+  max-width: 1400px;
   margin: auto;
+}
+
+@media screen and (max-width:1400px) {
+  .m-container{
+    padding: 0 32px;
+  }
 }

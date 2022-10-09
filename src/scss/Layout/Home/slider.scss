@@ -1,7 +1,7 @@
 .sd-sr {
   position: absolute;
   z-index: 999;
-  top: 300px;
+  top: 40%;
 }
 .s-btn{
   @include btnStyle($bg-1,$pd-1,$pd-2,$color-w);
@@ -28,3 +28,17 @@
   }
   @include trans
 }
+
+.sd-sr-sub{
+  width: 100%;
+  height: 45vw;
+  background-color: #023a15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sd-sr-hd{
+  padding: 0px 160px;
+}
+

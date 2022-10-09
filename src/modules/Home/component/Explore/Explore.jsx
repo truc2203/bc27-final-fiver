@@ -2,8 +2,8 @@ import React from 'react'
 import {FcEngineering,FcBearish,FcDocument,FcVideoCall,FcMusic,FcMindMap,FcDebt,FcSportsMode,FcDatabase} from 'react-icons/fc'
 const Explore = () => {
   return (
-    <div className='py-5'>
-        <div className="m-container my-5">
+    <div className='pt-5'>
+        <div className="m-container my-xl-5 my-0">
             <p className='ca-hd mb-5 pb-4'>Explore the marketplace</p>
             <ul className='d-flex flex-wrap'>
                 <li className='ex-w'>

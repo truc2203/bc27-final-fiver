@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 const Slider = () => {
 
   return (
+    <div className='d-block slider-m'>
     <Carousel fade>
       <Carousel.Item>
         <img
@@ -40,6 +41,8 @@ const Slider = () => {
         />
       </Carousel.Item>
     </Carousel>
+    </div>
+    
   )
 }
 
