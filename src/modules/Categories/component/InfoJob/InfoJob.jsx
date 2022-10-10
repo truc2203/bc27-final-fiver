@@ -6,7 +6,7 @@ const InfoJob = ({ data }) => {
   const { job } = data;
 
   return (
-    <div className="py-4">
+    <div className="pt-md-4 pt-5 pb-3">
       <div className="if-main">
         <Breadcrumb>
           <Breadcrumb.Item href="#">Fiverr</Breadcrumb.Item>
@@ -17,15 +17,15 @@ const InfoJob = ({ data }) => {
         <p className="if-hd">{job}</p>
       </div>
       <div className="if-sw">
-        <Form className="d-flex justify-content-end">
+        <Form className="d-flex justify-content-end pt-3 pt-sm-0 if-item">
           <Form.Check
-            className="pe-4"
+            className="pe-4 pb-2 pb-sm-0"
             type="switch"
             id="proservices"
             label="Pro Services"
           />
           <Form.Check
-            className="pe-4"
+            className="pe-4 pb-2 pb-sm-0"
             type="switch"
             id="localseller"
             label="Local Seller"

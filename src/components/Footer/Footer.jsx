@@ -19,7 +19,7 @@ const Footer = () => {
                 <p className='pb-4'>Lifestyle</p>
                 <p className='pb-4'>Sitemap</p>
               </li>
-              <li className='ft-title'>
+              <li className='ft-title text-end text-sm-start'>
                 <h4 className='ft-hd pb-4'>About</h4>
                 <p className='pb-4'>Careers</p>
                 <p className='pb-4'>Press & News</p>
@@ -36,7 +36,7 @@ const Footer = () => {
                 <p className='pb-4'>Selling on Fiverr</p>
                 <p className='pb-4'>Buying on Fiverr</p>
               </li>
-              <li className='ft-title pt-3 pt-lg-0'>
+              <li className='ft-title pt-3 pt-lg-0  text-end text-sm-start'>
                 <h4 className='ft-hd pb-4'>Comunity</h4>
                 <p className='pb-4'>Events</p>
                 <p className='pb-4'>Blog</p>

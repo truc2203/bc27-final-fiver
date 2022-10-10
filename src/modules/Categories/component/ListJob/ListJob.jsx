@@ -22,7 +22,7 @@ const ListJob = ({ data }) => {
     <div className="d-flex flex-wrap">
       {jobType?.map((type) => {
         return (
-          <div className="col-3 p-3" key={type.id}>
+          <div className="col-12 col-xl-3 col-lg-4 col-md-6 p-md-3 py-4 pt-md-3" key={type.id}>
             <img className="w-100" src={type.congViec.hinhAnh} alt="" />
             <div className="p-3 border lj-main">
               <div className="d-flex align-items-center mb-3">

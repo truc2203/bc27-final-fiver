@@ -39,6 +39,9 @@
         font-size: 24px;
         line-height: 30px;
     }
+    .sub-title:hover .subtypeJob{
+        display: none;
+    }
 }
 
 @media screen and (max-width:992px) {
@@ -100,5 +103,9 @@
     }
     .ft-social li{
         width: 20%;
+    }
+    .if-item{
+        flex-direction: column;
+
     }
 }
