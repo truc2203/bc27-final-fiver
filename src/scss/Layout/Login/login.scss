@@ -1,127 +1,145 @@
-.log{
-    width: 100%;
-    min-height: 100vh;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    background: #9053c7;
-    background: -webkit-linear-gradient(-135deg,#c850c0,#4158d0);
-    background: -o-linear-gradient(-135deg,#c850c0,#4158d0);
-    background: -moz-linear-gradient(-135deg,#c850c0,#4158d0);
-    background: linear-gradient(-135deg,#c850c0,#4158d0);
+body {
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: normal;
+  background: #fbd1b7;
+  color: gray;
+}
+.login-box {
+  position: relative;
+  background: #000232;
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-shadow: 0px 10px 34px -15px rgba(15, 15, 15, 0.24);
+}
+.login-box h3 {
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.login-img {
+  background-image: url("https://fiverr-res.cloudinary.com/q_auto,f_auto,w_450,dpr_2.0/v1/attachments/generic_asset/asset/d532c0ad4feed007b3899cebad595286-1599611560155/guide-create-a-logo-552-x2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.login-col {
+  width: 400px;
+}
+.login-box .login-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.login-wrapper {
+  padding: 40px 40px;
+}
+.login-container {
+  max-width: 1200px;
+  margin: auto;
 }
 
-/* Register */
 
+
+
+
+// .login-heading {
+//   @include txtStyle($color-b, $fs-3, $fw-1);
+// }
+
+// Overwrite library
 .ant-row {
-    display: block;
-  }
-  .ant-col-8 {
-    max-width: 100%;
-  }
-  .ant-col-14 {
-    display: none;
-  }
-  
-  #components-layout-demo-side .logo {
-    height: 32px;
-    margin: 16px;
-    background: rgba(255, 255, 255, 0.3);
-  }
-  
-  .site-layout .site-layout-background {
-    background: #fff;
-  }
-  /* Login */
-  .log {
-    height: 900px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-  }
-  .form-log {
-    background-color: white;
-    padding: 32px;
-    width: 26vw;
-    margin: auto;
-    position: absolute;
-    top: 30%;
-    left: 37%;
-  }
-  .form-reg {
-    background-color: white;
-    padding: 32px;
-    width: 50vw;
-    margin: auto;
-    position: absolute;
-    top: 30%;
-    left: 25%;
-  }
-  
-  .logOut:hover{
-    color: #d10b0b;
-    transition: all 0.5;
-  }
-  
-  .login-hd{
-    @include txtStyle($color-b,$fs-8,$fw-2)
-  }
+  display: block;
+}
+.ant-col-8 {
+  max-width: 100%;
+}
+.ant-col-14 {
+  display: none;
+}
 
-  .ant-form-item-label > label{
-    @include txtStyle($color-t,$fs-2,$fw-1)
-  }
+#components-layout-demo-side .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
 
-  .ant-btn-primary{
-    margin: auto;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.5;
-    color: #fff;
-    text-transform: uppercase;
-    height: 50px;
-    border-radius: 25px;
-    background: #57b846;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 25px;
-    -webkit-transition: all .4s;
-    -o-transition: all .4s;
-    -moz-transition: all .4s;
-    transition: all .4s;
-  }
+.site-layout .site-layout-background {
+  background: #fff;
+}
 
-  .ant-form-item-control{
-    margin: 0;
-  }
-
-  .ant-input{
-    border-radius: 16px;
-    padding: 6px 12px;
-    background: #e6e6e6;
-  }
-
-  .form-register{
-    background: #e6e6e6;
-    border-radius: 16px;
-  }
-
-  .form-selected{
-    padding: 6px 12px;
-    width: 100%;
-    border: 1px solid #ced4da;
-  }
-  .ant-form-item-label{
-    text-align: start;
-  }
+.ant-form-item-label > label {
+  @include txtStyle($color-w, $fs-2, $fw-1);
+}
+.ant-btn-primary {
+  width: 100%;
+  margin: auto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fff;
+  height: 48px;
+  border: 1px solid #b689b0;
+  border-radius: 8px;
+  background: #b689b0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  letter-spacing: 2px;
+}
+.ant-form-item-control {
+  margin: 0;
+}
+.ant-input {
+  height: 36px;
+  background: rgba(0, 0, 0, 0.05);
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 14px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px solid #b689b0;
+  padding-left: 4px;
+  padding-right: 0;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.ant-input:hover {
+  border-color: #d3d3d3;
+  box-shadow: transparent;
+}
+.ant-input:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #d3d3d3;
+}
+.form-selected {
+  padding: 6px 12px;
+  width: 100%;
+  border: 1px solid #ced4da;
+}
+.ant-form-item-label {
+  text-align: start;
+}
+.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input {
+  background: transparent;
+}
+.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
+.ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover {
+  background: transparent;
+}

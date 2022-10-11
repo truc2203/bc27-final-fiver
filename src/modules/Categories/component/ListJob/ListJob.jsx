@@ -24,7 +24,7 @@ const ListJob = ({ data }) => {
         return (
           <div className="col-12 col-xl-3 col-lg-4 col-md-6 p-md-3 py-4 pt-md-3" key={type.id}>
             <img className="w-100" src={type.congViec.hinhAnh} alt="" />
-            <div className="p-3 border lj-main">
+            <div className="p-3 border listJob-main">
               <div className="d-flex align-items-center mb-3">
                 <img
                   className="rounded-circle me-2"
@@ -33,28 +33,28 @@ const ListJob = ({ data }) => {
                   alt=""
                 />
                 <div>
-                  <p className="lj-hd">{type.tenNguoiTao}</p>
-                  <p className="lj-subhd">Lv1 Seller</p>
+                  <p className="listJob-heading">{type.tenNguoiTao}</p>
+                  <p className="listJob-subHeading">Lv1 Seller</p>
                 </div>
               </div>
               <div className="mb-2">
                 <button onClick={() => handleJobDetail(type.congViec.tenCongViec, type.id)}>
-                  <p className="lj-name mb-3">{type.congViec.tenCongViec}</p>
+                  <p className="listJob-jobName mb-3">{type.congViec.tenCongViec}</p>
                 </button>
-                <p className="lj-rate d-flex align-items-center">
+                <p className="listJob-rate d-flex align-items-center">
                   <BsStarFill className="me-1" />
                   {type.congViec.saoCongViec}
-                <span className="lj-hd ps-2">({type.congViec.danhGia})</span>
+                <span className="listJob-heading ps-2">({type.congViec.danhGia})</span>
 
                 </p>
               </div>
               <div className="d-flex justify-content-between border-top pt-3">
-                <p className="lj-heard">
+                <p className="listJob-heard">
                   <BsHeartFill />
                 </p>
                 <button onClick={() => handleJobDetail(type.congViec.tenCongViec, type.id)}>
-                  <p className="lj-price">
-                    STARTING AT <span className="lj-prices">${type.congViec.giaTien}</span>
+                  <p className="listJob-price">
+                    STARTING AT <span className="listJob-prices">${type.congViec.giaTien}</span>
                   </p>
                 </button>
               </div>

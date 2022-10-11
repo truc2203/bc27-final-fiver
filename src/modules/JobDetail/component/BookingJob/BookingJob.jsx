@@ -18,15 +18,15 @@ const BookingJob = ({jobId}) => {
   const [side3, setSide3] = useState("none");
 
   const handleSide = (value) => {
-    if (value === "side-basic") {
+    if (value === "booking-basic") {
       setSide1("block");
       setSide2("none");
       setSide3("none");
-    } else if (value === "side-standard") {
+    } else if (value === "booking-standard") {
       setSide2("block");
       setSide1("none");
       setSide3("none");
-    } else if (value === "side-premium") {
+    } else if (value === "booking-premium") {
       setSide3("block");
       setSide2("none");
       setSide1("none");
@@ -65,49 +65,49 @@ const BookingJob = ({jobId}) => {
   }
   return (
     <div className="w-100">
-      <div className="d-flex sidebar-hd">
+      <div className="d-flex bookingJob-heading">
         <button
-          onClick={() => handleSide("side-basic")}
-          className="sidebar-btn col-4 border"
+          onClick={() => handleSide("booking-basic")}
+          className="bookingJob-btn col-4 border"
         >
           Basic
         </button>
         <button
-          onClick={() => handleSide("side-standard")}
-          className="sidebar-btn col-4 border"
+          onClick={() => handleSide("booking-standard")}
+          className="bookingJob-btn col-4 border"
         >
           Standard
         </button>
         <button
-          onClick={() => handleSide("side-premium")}
-          className="sidebar-btn col-4 border"
+          onClick={() => handleSide("booking-premium")}
+          className="bookingJob-btn col-4 border"
         >
           Premium
         </button>
       </div>
-      <div className="sidebar-content position-relative ">
+      <div className="bookingJob-content position-relative ">
         <div
           style={{ display: `${side1}` }}
-          className="side-item p-4 position-absolute border"
+          className="bookingJob-content-item p-4 position-absolute border"
         >
             <div className="d-flex flex-column pb-4">
-                <p className="side-price">$100</p>
-                <p className="side-discount">Save up to 15% with Subscribe to Save</p>
+                <p className="bookingJob-content-price">$100</p>
+                <p className="bookingJob-content-discount">Save up to 15% with Subscribe to Save</p>
             </div>
-            <div className="side-discount pb-5">
+            <div className="bookingJob-content-discount pb-5">
             BASIC Basic Static Native Android and iPhone mobile app development for 4 - 5 screens
             </div>
             <div className="d-flex pb-3">
-                <div className="d-flex align-items-center side-discount pe-3">
+                <div className="d-flex align-items-center bookingJob-content-discount pe-3">
                     <p className="pe-2"><BsFillClockFill/></p>
                     <p>5 Days Delivery</p>
                 </div>
-                <div className="d-flex align-items-center side-discount">
+                <div className="d-flex align-items-center bookingJob-content-discount">
                     <p className="pe-2"><BiRevision/></p>
                     <p>3 Revisions</p>
                 </div>
             </div>
-            <ul className="d-flex flex-column side-feature pb-3">
+            <ul className="d-flex flex-column bookingJob-content-feature pb-3">
                     <li className="d-flex pb-2">
                         <p className='pe-2'><FcCheckmark/></p>
                         <p>Functional app</p>
@@ -131,31 +131,31 @@ const BookingJob = ({jobId}) => {
                         <p>Source code</p>
                     </li>
                 </ul>
-                <button onClick={() => handleBooking(value)} className="side-btn">Continue</button>
-                <button className="side-btn-sub">Compare Packages</button>
+                <button onClick={() => handleBooking(value)} style={{borderRadius:'4px'}} className="sliderSearch-btn w-100">Continue</button>
+                <button className="bookingJob-btn-sub">Compare Packages</button>
         </div>
         <div
           style={{ display: `${side2}` }}
-          className="side-item p-4 position-absolute border"
+          className="bookingJob-content-item p-4 position-absolute border"
         >
              <div className="d-flex flex-column pb-4">
-                <p className="side-price">$500</p>
-                <p className="side-discount">Save up to 15% with Subscribe to Save</p>
+                <p className="bookingJob-content-price">$500</p>
+                <p className="bookingJob-content-discount">Save up to 15% with Subscribe to Save</p>
             </div>
-            <div className="side-discount pb-5">
+            <div className="bookingJob-content-discount pb-5">
             STANDARD Average level a server based android and iPhone app with 4-5 screens with your given UI
             </div>
             <div className="d-flex pb-3">
-                <div className="d-flex align-items-center side-discount pe-3">
+                <div className="d-flex align-items-center bookingJob-content-discount pe-3">
                     <p className="pe-2"><BsFillClockFill/></p>
                     <p>10 Days Delivery</p>
                 </div>
-                <div className="d-flex align-items-center side-discount">
+                <div className="d-flex align-items-center bookingJob-content-discount">
                     <p className="pe-2"><BiRevision/></p>
                     <p>5 Revisions</p>
                 </div>
             </div>
-            <ul className="d-flex flex-column side-feature pb-3">
+            <ul className="d-flex flex-column bookingJob-content-feature pb-3">
             <li className="d-flex pb-2">
                         <p className='pe-2'><FcCheckmark/></p>
                         <p>Functional app</p>
@@ -179,31 +179,31 @@ const BookingJob = ({jobId}) => {
                         <p>Source code</p>
                     </li>
                 </ul>
-                <button onClick={() => handleBooking(value)} className="side-btn">Continue</button>
-                <button className="side-btn-sub">Compare Packages</button>
+                <button onClick={() => handleBooking(value)} style={{borderRadius:'4px'}} className="sliderSearch-btn w-100">Continue</button>
+                <button className="bookingJob-btn-sub">Compare Packages</button>
         </div>
         <div
           style={{ display: `${side3}` }}
-          className="side-item p-4 position-absolute border"
+          className="bookingJob-content-item p-4 position-absolute border"
         >
              <div className="d-flex flex-column pb-4">
-                <p className="side-price">$900</p>
-                <p className="side-discount">Save up to 15% with Subscribe to Save</p>
+                <p className="bookingJob-content-price">$900</p>
+                <p className="bookingJob-content-discount">Save up to 15% with Subscribe to Save</p>
             </div>
-            <div className="side-discount pb-5">
+            <div className="bookingJob-content-discount pb-5">
             PREMIUM A complete product developed as per requirements using Database, Payment SDKs
             </div>
             <div className="d-flex pb-3">
-                <div className="d-flex align-items-center side-discount pe-3">
+                <div className="d-flex align-items-center bookingJob-content-discount pe-3">
                     <p className="pe-2"><BsFillClockFill/></p>
                     <p>21 Days Delivery</p>
                 </div>
-                <div className="d-flex align-items-center side-discount">
+                <div className="d-flex align-items-center bookingJob-content-discount">
                     <p className="pe-2"><BiRevision/></p>
                     <p>Unlimited Revisions</p>
                 </div>
             </div>
-            <ul className="d-flex flex-column side-feature pb-3">
+            <ul className="d-flex flex-column bookingJob-content-feature pb-3">
             <li className="d-flex pb-2">
                         <p className='pe-2'><FcCheckmark/></p>
                         <p>Functional app</p>
@@ -227,8 +227,8 @@ const BookingJob = ({jobId}) => {
                         <p>Source code</p>
                     </li>
                 </ul>
-                <button onClick={() => handleBooking(value)} className="side-btn">Continue</button>
-                <button className="side-btn-sub">Compare Packages</button>
+                <button onClick={() => handleBooking(value)} style={{borderRadius:'4px'}} className="sliderSearch-btn w-100">Continue</button>
+                <button className="bookingJob-btn-sub">Compare Packages</button>
         </div>
       </div>
     </div>

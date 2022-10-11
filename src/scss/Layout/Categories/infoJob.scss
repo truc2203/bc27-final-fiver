@@ -1,13 +1,13 @@
-.if-main{
+.infoJon-main{
     @include txtStyle($color-t,$fs-2,$fw-0);
     &:hover{
         text-decoration: underline;
         cursor: pointer;
     }
 }
-.if-hd{
+.infoJob-heading{
     @include txtStyle($color-b,$fs-3,$fw-1)
 }
-.if-sw{
+.infoJob-switch{
     @include txtStyle($color-t,$fs-2,$fw-0)
 }

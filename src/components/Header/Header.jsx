@@ -183,11 +183,11 @@ const Header = () => {
         </div>
         <ul
           style={{ display:"flex" }}
-          className="m-auto justify-content-between sub-type border-top border-bottom"
+          className="m-auto justify-content-between header-submenu-scroll border-top border-bottom"
         >
           {typeJob?.map((type) => {
             return (
-              <li className="sub-title p-3" key={type.id}>
+              <li className="subtypeJob-sub-title p-3" key={type.id}>
                 <button onClick={() => movePath(`typejob/${type.id}`)}>
                   {type.tenLoaiCongViec}
                 </button>

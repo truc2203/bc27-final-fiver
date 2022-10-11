@@ -1,23 +1,23 @@
-.jd-page {
+.jobDetail-page {
   padding-right: 8%;
 }
-.jd-title {
+.jobDetail-title {
   @include txtStyle($color-b, $fs-7, $fw-1);
 }
-.jd-img {
+.jobDetail-img {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-.gig {
+.jobDetail-gig {
   @include txtStyle($color-t, $fs-2, $fw-0);
   line-height: 24px;
 }
-.gig ul li {
+.jobDetail-gig ul li {
   list-style-type: square;
 }
 
-.jd-btn {
+.jobDetail-btn {
   @include btnStyle($bg-0, $pd-1, $pd-1, $color-t);
   border-radius: 4px;
   &:hover {
@@ -26,47 +26,47 @@
   }
 }
 
-.profile-hd {
+.jobDetail-profile-heading {
   @include txtStyle($color-ft, $fs-5, $fw-3);
   line-height: 24px;
   padding-bottom: 6px;
 }
-.profile-content {
+.jobDetail-profile-content {
   @include txtStyle($color-t, $fs-5, $fw-1);
 }
-.faq-content {
+.jobDetail-faq-content {
   height: 0px;
   @include trans;
   overflow: scroll
 }
-.faq-btn {
+.jobDetail-faq-btn {
   @include trans;
 }
-.faq-title {
+.jobDetail-faq-title {
   overflow: hidden;
   @include trans;
-  &:hover .faq-content {
+  &:hover .jobDetail-faq-content {
     height: 80px;
     @include trans;
   }
-  &:hover .faq-btn {
+  &:hover .jobDetail-faq-btn {
     transform: rotate(180deg);
     @include trans;
   }
 }
 
-.vote-text{
+.jobDetail-vote-text{
   @include btnStyle($color-w,0,0,$color-3);
   @include txtStyle($color-3,$fs-2,$fw-0);
 }
-.vote-bar{
+.jobDetail-vote-bar{
   width: 68%;
   height: 8px;
   background: $color-2;
   border-radius: 4px;
   margin: 0 12px;
 }
-.vote-bar2{
+.jobDetail-vote-bar2{
   width: 68%;
   height: 8px;
   background: $color-ft;
@@ -75,6 +75,6 @@
 
 }
 
-.rating-title{
+.jobDetail-rating-title{
   @include txtStyle($color-ft,$fs-2,$fw-0)
 }

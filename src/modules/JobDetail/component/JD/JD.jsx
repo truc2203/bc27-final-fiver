@@ -15,7 +15,7 @@ const JD = ({ id }) => {
       {jd.map((detail) => {
         return (
           <>
-            <p key={detail.id} className="jd-title pb-4 pt-4 pt-sm-0">{detail.congViec.tenCongViec}</p>
+            <p key={detail.id} className="jobDetail-title pb-4 pt-4 pt-sm-0">{detail.congViec.tenCongViec}</p>
             <div className="d-flex pb-4">
               <img
                 className="rounded-circle me-3"
@@ -23,23 +23,23 @@ const JD = ({ id }) => {
                 src={detail.avatar}
                 alt=""
               />
-              <p className="lj-hd">
+              <p className="listJob-heading">
                 {detail.tenNguoiTao}{" "}
-                <span className="ps-2 lj-subhd">Level1 Seller</span>
+                <span className="ps-2 listJob-subHeading">Level1 Seller</span>
               </p>
               <p className="px-2">|</p>
               <div
                 style={{ fontSize: "20px" }}
-                className="d-flex align-items-start lj-rate"
+                className="d-flex align-items-start listJob-rate"
               >
                 <AiFillStar />
                 {detail.congViec.saoCongViec}
               </div>
-              <span className="lj-subhd px-2">3 Order in Queue</span>
+              <span className="listJob-subHeading px-2">3 Order in Queue</span>
             </div>
             <div>
               <img
-                className="w-100 jd-img"
+                className="w-100 jobDetail-img"
                 src={detail.congViec.hinhAnh}
                 alt=""
               />
@@ -47,9 +47,9 @@ const JD = ({ id }) => {
             <div className="d-none bookingJob-breakpoint">
               <BookingJob jobId={id}/>
             </div>
-            <div className="gig pt-5 pb-3 pb-lg-5">
+            <div className="jobDetail-gig pt-5 pb-4 pb-lg-5">
               <div className="border-bottom">
-                <p className="jd-title pb-4">About this Gig</p>
+                <p className="jobDetail-title pb-4">About this Gig</p>
                 <p className="pb-3">
                   {detail.congViec.moTa}
                 </p>
@@ -58,8 +58,8 @@ const JD = ({ id }) => {
                 <p>{detail.congViec.moTaNgan}</p>
               </div>
             </div>
-            <div className="d-flex flex-column pb-3 pb-lg-5">
-              <p className="jd-title pb-4">About the Seller</p>
+            <div className="d-flex flex-column pb-4 pb-lg-5">
+              <p className="jobDetail-title pb-4">About the Seller</p>
               <div className="d-flex align-items-center mb-4">
                 <img
                   className="rounded-circle me-3"
@@ -68,41 +68,41 @@ const JD = ({ id }) => {
                   alt=""
                 />
                 <div>
-                  <p className="lj-hd pb-2">{detail.tenNguoiTao}</p>
+                  <p className="listJob-heading pb-2">{detail.tenNguoiTao}</p>
                   <p className="pb-2">Your App Idea ready for lauch</p>
                   <div
                     style={{ fontSize: "16px" }}
-                    className="d-flex align-items-start lj-rate pb-3"
+                    className="d-flex align-items-start listJob-rate pb-3"
                   >
                     <AiFillStar />
                     {detail.congViec.saoCongViec}
                   </div>
-                  <button className="jd-btn border">Contact Me</button>
+                  <button className="jobDetail-btn border">Contact Me</button>
                 </div>
               </div>
               <div className="d-flex border p-4 flex-column rounded-3">
                 <div className="col-12 d-flex ">
                   <div className="d-flex flex-wrap col-12 border-bottom">
                     <div className="col-6 pb-3">
-                      <p className="profile-hd">From</p>
-                      <p className="profile-content">India</p>
+                      <p className="jobDetail-profile-heading">From</p>
+                      <p className="jobDetail-profile-content">India</p>
                     </div>
                     <div className="col-6 pb-3">
-                      <p className="profile-hd">Member since</p>
-                      <p className="profile-content">Nov 2013</p>
+                      <p className="obDetail-profile-heading">Member since</p>
+                      <p className="jobDetail-profile-content">Nov 2013</p>
                     </div>
                     <div className="col-6 pb-3">
-                      <p className="profile-hd">Avg. Respone time</p>
-                      <p className="profile-content">3 Hour</p>
+                      <p className="obDetail-profile-heading">Avg. Respone time</p>
+                      <p className="jobDetail-profile-content">3 Hour</p>
                     </div>
                     <div className="col-6 pb-3">
-                      <p className="profile-hd">Last delivery</p>
-                      <p className="profile-content">6 days</p>
+                      <p className="obDetail-profile-heading">Last delivery</p>
+                      <p className="jobDetail-profile-content">6 days</p>
                     </div>
                   </div>
                 </div>
                 <div className="col-12 pt-3">
-                  <p className="profile-hd">
+                  <p className="jobDetail-profile-heading">
                     I’m Dhairya Ganatra (FlaSh), a Designer and Developer with a
                     real zeal for building websites/apps that generate results.
                     I work with a team of freelancers, together we do all kind
@@ -111,17 +111,17 @@ const JD = ({ id }) => {
                 </div>
               </div>
             </div>
-            <div className="pb-3 pb-lg-5">
-              <p className="jd-title">FAQ</p>
+            <div className="pb-4 pb-lg-5">
+              <p className="jobDetail-title">FAQ</p>
               <div>
-                <div className="faq-title gig border-bottom">
+                <div className="jobDetail-faq-title jobDetail-gig border-bottom">
                   <div className="d-flex py-3 justify-content-between">
                     <p>Do you provide hosting and domain</p>
-                    <button className="faq-btn">
+                    <button className="jobDetail-faq-btn">
                       <IoIosArrowUp />
                     </button>
                   </div>
-                  <div className="faq-content">
+                  <div className="jobDetail-faq-content">
                     <p>
                       No I will not provide any hosting and domain if you want
                       then contact me I will tell you which hosting is best for
@@ -129,14 +129,14 @@ const JD = ({ id }) => {
                     </p>
                   </div>
                 </div>
-                <div className="faq-title gig border-bottom">
+                <div className="jobDetail-faq-title jobDetail-gig border-bottom">
                   <div className="d-flex py-3 justify-content-between">
                     <p>Support period once the order will be completed?</p>
-                    <button className="faq-btn">
+                    <button className="jobDetail-faq-btn">
                       <IoIosArrowUp />
                     </button>
                   </div>
-                  <div className="faq-content">
+                  <div className="jobDetail-faq-content">
                     <p>
                       I respect everyone that's why I will give you free
                       assistance of what I do for 14 DAYS once the order will be
@@ -145,16 +145,16 @@ const JD = ({ id }) => {
                     </p>
                   </div>
                 </div>
-                <div className="faq-title gig border-bottom">
+                <div className="jobDetail-faq-title jobDetail-gig border-bottom">
                   <div className="d-flex py-3 justify-content-between">
                     <p>
                       Can I change the text and image at my website later on ?
                     </p>
-                    <button className="faq-btn">
+                    <button className="jobDetail-faq-btn">
                       <IoIosArrowUp />
                     </button>
                   </div>
-                  <div className="faq-content">
+                  <div className="jobDetail-faq-content">
                     <p>
                       Yes you can change it yourself if you want to do then I
                       will provide you the video to change text and images at
@@ -162,14 +162,14 @@ const JD = ({ id }) => {
                     </p>
                   </div>
                 </div>
-                <div className="faq-title gig border-bottom">
+                <div className="jobDetail-faq-title jobDetail-gig border-bottom">
                   <div className="d-flex py-3 justify-content-between">
                     <p>Do you provide logo or content ?</p>
-                    <button className="faq-btn">
+                    <button className="jobDetail-faq-btn">
                       <IoIosArrowUp />
                     </button>
                   </div>
-                  <div className="faq-content">
+                  <div className="jobDetail-faq-content">
                     <p>
                       No I will not provide any logo or content you have to
                       provide me all these things. But if you want I will place
@@ -182,60 +182,60 @@ const JD = ({ id }) => {
                 </div>
               </div>
             </div>
-            <div className="pb-3 pb-lg-5">
+            <div className="pb-4 pb-lg-5">
               <div className="d-flex justify-content-between align-items-baseline">
-                <p className="jd-title pb-4">99 Review</p>
-                <p className="profile-content">Sort by Most recent</p>
+                <p className="jobDetail-title pb-4">99 Review</p>
+                <p className="jobDetail-profile-content">Sort by Most recent</p>
               </div>
               <div>
                 <div className="d-flex flex-column flex-lg-row">
                   <div className="col-lg-6 col-12 d-flex flex-column">
                     <div className="d-flex w-100 align-items-baseline pb-3">
-                      <button className="vote-text">5 Start</button>
-                      <div className="vote-bar"></div>
-                      <p className="vote-text">(99)</p>
+                      <button className="jobDetail-vote-text">5 Start</button>
+                      <div className="jobDetail-vote-bar"></div>
+                      <p className="jobDetail-vote-text">(99)</p>
                     </div>
                     <div className="d-flex w-100 align-items-baseline pb-3">
-                      <button className="vote-text">4 Start</button>
-                      <div className="vote-bar2"></div>
-                      <p className="vote-text">(0)</p>
+                      <button className="jobDetail-vote-text">4 Start</button>
+                      <div className="jobDetail-vote-bar2"></div>
+                      <p className="jobDetail-vote-text">(0)</p>
                     </div>
                     <div className="d-flex w-100 align-items-baseline pb-3">
-                      <button className="vote-text">3 Start</button>
-                      <div className="vote-bar2"></div>
-                      <p className="vote-text">(0)</p>
+                      <button className="jobDetail-vote-text">3 Start</button>
+                      <div className="jobDetail-vote-bar2"></div>
+                      <p className="jobDetail-vote-text">(0)</p>
                     </div>
                     <div className="d-flex w-100 align-items-baseline pb-3">
-                      <button className="vote-text">2 Start</button>
-                      <div className="vote-bar2"></div>
-                      <p className="vote-text">(0)</p>
+                      <button className="jobDetail-vote-text">2 Start</button>
+                      <div className="jobDetail-vote-bar2"></div>
+                      <p className="jobDetail-vote-text">(0)</p>
                     </div>
                     <div className="d-flex w-100 align-items-baseline pb-3">
-                      <button className="vote-text">1 Start</button>
-                      <div className="vote-bar2"></div>
-                      <p className="vote-text">(0)</p>
+                      <button className="jobDetail-vote-text">1 Start</button>
+                      <div className="jobDetail-vote-bar2"></div>
+                      <p className="jobDetail-vote-text">(0)</p>
                     </div>
                   </div>
                   <div className="col-lg-6 col-12 d-flex flex-column rating ps-lg-3 ps-0">
-                    <p className="pb-4 gig">Rating Breakdown</p>
+                    <p className="pb-4 jobDetail-gig">Rating Breakdown</p>
                     <div className="d-flex flex-column">
                       <div className="d-flex justify-content-between pb-3">
-                        <p className="rating-title">
+                        <p className="jobDetail-rating-title">
                           Seller communication level
                         </p>
-                        <p className="lj-rate">
+                        <p className="listJob-rate">
                           <AiFillStar />5
                         </p>
                       </div>
                       <div className="d-flex justify-content-between pb-3">
                         <p className="rating-title">Recommend to a friend</p>
-                        <p className="lj-rate">
+                        <p className="listJob-rate">
                           <AiFillStar />5
                         </p>
                       </div>
                       <div className="d-flex justify-content-between pb-3">
                         <p className="rating-title">Service as described</p>
-                        <p className="lj-rate">
+                        <p className="listJob-rate">
                           <AiFillStar />5
                         </p>
                       </div>
@@ -245,7 +245,7 @@ const JD = ({ id }) => {
               </div>
             </div>
             <div>
-              <p className="jd-title pb-4">Filter</p>
+              <p className="jobDetail-title pb-4">Filter</p>
               <div className="header-search" style={{ display: "block" }}>
                 <form className="d-flex pb-3">
                   <input
@@ -253,7 +253,7 @@ const JD = ({ id }) => {
                     className="form-control w-50"
                     placeholder="Search Reviews"
                   />
-                  <button type="submit" className="hd-sr-btn">
+                  <button type="submit" className="header-search-btn">
                     <BiSearch color="white" size="16px" />
                   </button>
                 </form>
@@ -265,7 +265,7 @@ const JD = ({ id }) => {
                     id="flexCheckDefault"
                   />
                   <label
-                    class="form-check-label gig ps-2"
+                    class="form-check-label jobDetail-gig ps-2"
                     for="flexCheckDefault"
                   >
                     Delivery images (369)

@@ -4,7 +4,7 @@ const Explore = () => {
   return (
     <div className='pt-5'>
         <div className="m-container my-xl-5 my-0">
-            <p className='ca-hd mb-5 pb-4'>Explore the marketplace</p>
+            <p className='category-heading mb-5 pb-4'>Explore the marketplace</p>
             <ul className='d-flex flex-wrap'>
                 <li className='explore-box'>
                     <a className='explore-box-item pb-5 mb-4' href>

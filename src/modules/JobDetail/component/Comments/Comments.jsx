@@ -30,7 +30,7 @@ const Comments = ({ id }) => {
             </div>
             <div className="d-flex w-100">
               <div>
-                <p className="gig pb-3">
+                <p className="jobDetail-gig pb-3">
                   {cmt.user ? cmt.user.email : "Guest"} <AiOutlineComment />{" "}
                   <span>99 Reviews</span>
                 </p>
@@ -41,7 +41,7 @@ const Comments = ({ id }) => {
                     src="https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1f0-1f1f7.png"
                     alt=""
                   />
-                  <div className="cmt-country">South Korea</div>
+                  <div className="comment-country">South Korea</div>
                 </div>
                 <div className="d-flex pb-3">
                   <span style={{ color: "#ffb33e" }}>
@@ -54,8 +54,8 @@ const Comments = ({ id }) => {
                   <span className="px-2">|</span>
                   <span>5 days ago</span>
                 </div>
-                <div className="pb-3 cmt-content">{cmt.content}</div>
-                <div className="d-flex gig">
+                <div className="pb-3 comment-content">{cmt.content}</div>
+                <div className="d-flex jobDetail-gig">
                   <span className="pe-3">Helful?</span>
                   <button
                     onClick={() => setHelful(true)}

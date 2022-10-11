@@ -1,14 +1,14 @@
-.lj-hd {
+.listJob-heading {
   @include txtStyle($color-b, $fs-1, $fw-0);
   &:hover{
     text-decoration: underline;
     cursor: pointer;
   }
 }
-.lj-subhd {
+.listJob-subHeading {
   @include txtStyle($color-t, $fs-2, $fw-3);
 }
-.lj-name {
+.listJob-jobName {
   @include txtStyle($color-t, $fs-2, $fw-0);
   height: 44px;
   -webkit-line-clamp: 2;
@@ -18,21 +18,21 @@
   text-align: start;
   line-height: 20px
 }
-.lj-rate {
+.listJob-rate {
   @include txtStyle($color-2, $fs-1, $fw-0);
 }
-.lj-heard {
+.listJob-heard {
   @include txtStyle($color-ft, $fs-1, $fw-0);
 }
-.lj-price {
+.listJob-price {
   @include txtStyle($color-t, $fs-6, $fw-2);
   &:hover{
     cursor: pointer;
   }
 }
-.lj-prices {
+.listJob-prices {
   @include txtStyle($color-t, $fs-5, $fw-3);
 }
-.lj-main:hover .lj-name {
+.listJob-main:hover .listJob-jobName {
   @include txtHover($bg-1);
 }

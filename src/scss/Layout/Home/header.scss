@@ -91,14 +91,15 @@
   z-index: 1000;
   @include trans;
 }
-.sub-type {
+// .sub-type {
+//   overflow: hidden;
+// }
+.subtypeJob-sub-title{
   @include txtStyle($color-t, $fs-2, $fw-0);
-  overflow: hidden;
-}
-.sub-title{
+
   z-index: 1000;
 }
-.sub-title::before {
+.subtypeJob-sub-title::before {
   content: "";
   width: 120px;
   height: 12px;
@@ -106,10 +107,10 @@
   position: absolute;
   top: 130px;
 }
-.sub-title:hover {
+.subtypeJob-sub-title:hover {
   @include txtHover($bg-1);
 }
-.sub-title:hover .subtypeJob {
+.subtypeJob-sub-title:hover .subtypeJob {
   display: block;
 }
 .subtypeJob {

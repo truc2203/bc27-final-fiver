@@ -10,8 +10,8 @@ const JobDetail = () => {
   return (
     <div className='m-container'>
       <div className="py-4">
-      <div className="d-flex jd-main">
-        <div className="col-lg-8 col-12 jd-page">
+      <div className="d-flex jobDetail-main">
+        <div className="col-lg-8 col-12 jobDetail-page">
             <JD id={id}/>
             <Comments id={id}/>
         </div>
