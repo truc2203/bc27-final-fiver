@@ -1,11 +1,11 @@
-.pr-title{
+.proposition-right-title{
     @include txtStyle($color-t,$fs-4,$fw-2)
 }
-.pr-content{
+.proposition-right-content{
     @include txtStyle($color-t,$fs-5,$fw-3);
     line-height: 30px;
 }
-.pr-right{
+.proposition-right{
     padding-right: 150px;
 }
 

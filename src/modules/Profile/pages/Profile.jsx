@@ -6,12 +6,12 @@ import Information from '../component/Infomation/Information'
 const Profile = () => {
   const {id} = useParams()
   return (
-    <div className='p-5'>
-        <div className='d-flex m-container'>
-            <div className="col-4 pe-5">
+    <div className='py-5 m-container'>
+        <div className='d-flex flex-xl-row flex-column'>
+            <div className="col-xl-4 col-12 pe-0 pe-xl-5 pb-4 pb-xl-0">
                 <Information userId={id}/>
             </div>
-            <div className='col-8 ps-5'>
+            <div className='col-xl-8 col-12 ps-0 pe-xl-0'>
                 <BookedJob userId={id}/>
             </div>
         </div>

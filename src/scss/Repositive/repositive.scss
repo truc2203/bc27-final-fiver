@@ -1,41 +1,41 @@
 @media screen and (max-width:1400px) {
-    .sd-title{
+    .sliderSearch-title{
         font-size: 40px;
     }
-    .sd-popular{
+    .sliderSearch-popular{
         display: none !important;
     }
 }
 
 
 @media screen and (max-width:1200px) {
-    .sd-title{
+    .sliderSearch-title{
         font-size: 32px;
     }
-    .header-search{
+    .header-nav-input{
         display: none !important;
     }
     .proposition{
         flex-direction: row;
         flex-wrap: wrap;
     }
-    .pro-img{
+    .proposition-img{
         width: 100%;
     }
-    .pr-right{
+    .proposition-right{
         padding: 0;
     }
     .voted{
         flex-direction: row;
         flex-wrap: wrap;
     }
-    .vote-ct{
+    .vote-box{
         padding: 0;
     }
-    .vote-hd{
+    .vote-box-heading{
         font-size: 16px;
     }
-    .vote-quote{
+    .vote-box-quote{
         font-size: 24px;
         line-height: 30px;
     }
@@ -45,13 +45,13 @@
 }
 
 @media screen and (max-width:992px) {
-    .sd-sr-sub{
+    .sliderSearch-sub{
         display:flex !important;
     }
-    .slider-m,.sd-sr{
+    .slider-main,.sliderSearch{
         display: none !important;
     }
-    .sd-title{
+    .sliderSearch-title{
         font-size: 4vw;
     }
     .s-btn,.form-control{
@@ -60,52 +60,69 @@
     .modal-video::after{
         display: none;
     }
-    .ex-w,.ft-title{
+    .explore-box,.footer-box{
         width: 33.33%;
     }
-    .ft-copyright{
+    .footer-copyright{
         flex-direction: column;
       }
-
+    .bookingJob-breakpoint{
+        display: block !important;
+        padding: 24px 0 84px 0;
+    }
+    .jd-page{
+        padding: 0;
+    }
 }
 
 @media screen and (max-width:768px) {
-    .sd-sr-sub{
+    .sliderSearch-sub{
         height: 55vw;
     }
-    .sd-sr-hd{
+    .sliderSearch-sub-heading{
         padding: 0px 100px;
+      }
+      .sub-type{
+        overflow: scroll;
+      }
+      .header-nav-seller{
+        display: none;
       }
 
 }
 
 @media screen and (max-width:576px) {
-    .sd-sr-sub{
+    .sliderSearch-sub{
         height: 65vw;
     }
-    .sd-title{
+    .sliderSearch-title{
         font-size: 5vw;
     }
-    .sd-sr-hd{
+    .sliderSearch-sub-heading{
         padding: 0px 16px;
       }
     .trusted{
         display: none;
     }
-    .ex-w,.ft-title{
+    .explore-box,.footer-box{
         width: 50%;
     }
-    .ft-copy{
+    .footer-copy{
         flex-direction: column;
     }
-    .ft-social{
+    .footer-social{
         justify-content: space-evenly;
     }
-    .ft-social li{
+    .footer-social li{
         width: 20%;
     }
     .if-item{
         flex-direction: column;
 
+    }
+    @media screen and(max-width:400px) {
+        .bookingJob-breakpoint{
+            padding-bottom: 124px;
+        }
     }
 }

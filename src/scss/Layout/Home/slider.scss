@@ -1,9 +1,9 @@
-.sd-sr {
+.sliderSearch {
   position: absolute;
   z-index: 999;
   top: 40%;
 }
-.s-btn{
+.sliderSearch-btn{
   @include btnStyle($bg-1,$pd-1,$pd-2,$color-w);
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -12,11 +12,11 @@
   }
   @include trans
 }
-.sd-title {
+.sliderSearch-title {
   @include txtStyle($color-w, $fs-0, $fw-1);
 }
 
-.sd-kw {
+.sliderSearch-keyword {
   font-weight: $fw-0;
   border: 1px solid $color-w;
   border-radius: 18px;
@@ -29,7 +29,7 @@
   @include trans
 }
 
-.sd-sr-sub{
+.sliderSearch-sub{
   width: 100%;
   height: 45vw;
   background-color: #023a15;
@@ -38,7 +38,7 @@
   justify-content: center;
 }
 
-.sd-sr-hd{
+.sliderSearch-sub-heading{
   padding: 0px 160px;
 }
 

@@ -1,5 +1,5 @@
 .jd-page {
-  padding-right: 10%;
+  padding-right: 8%;
 }
 .jd-title {
   @include txtStyle($color-b, $fs-7, $fw-1);
@@ -37,6 +37,7 @@
 .faq-content {
   height: 0px;
   @include trans;
+  overflow: scroll
 }
 .faq-btn {
   @include trans;

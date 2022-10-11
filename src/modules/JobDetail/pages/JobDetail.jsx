@@ -9,13 +9,13 @@ const JobDetail = () => {
   const {id} = useParams()
   return (
     <div className='m-container'>
-      <div className="p-4">
-      <div className="d-flex ">
-        <div className="col-8 jd-page">
+      <div className="py-4">
+      <div className="d-flex jd-main">
+        <div className="col-lg-8 col-12 jd-page">
             <JD id={id}/>
             <Comments id={id}/>
         </div>
-        <div className="col-4">
+        <div className="col-lg-4 col-12 d-lg-flex d-none">
             <BookingJob jobId={id}/>
         </div>
       </div>

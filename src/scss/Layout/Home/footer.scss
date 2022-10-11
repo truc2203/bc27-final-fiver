@@ -1,7 +1,7 @@
-.ft-hd{
+.footer-box-heading{
     @include txtStyle($color-t,$fs-5,$fw-1)
 }
-.ft-title{
+.footer-box{
     @include txtStyle($color-ft,$fs-2,$fw-0);
     width: 20%;
     & p:hover{
@@ -9,22 +9,22 @@
         text-decoration: underline;
     }
 }
-.ft-sub{
+.footer-box-sub{
     @include txtStyle($color-0,$fs-1,$fw-0);
     padding-top: 6px;
 }
-.ft-copy{
+.footer-copy{
     @include txtStyle($color-0,$fs-2,$fw-3);
 }
-.ft-social li{
+.footer-social li{
     padding: 0 16px;
     &:hover{
         @include txtHover($color-t)
     }
 }
-.ft-social{
+.footer-social{
     @include txtStyle($color-ft,$fs-2,$fw-3);
 }
-.ft-social-sub{
+.footer-social-sub{
     @include txtStyle($color-ft,$fs-1,$fw-0);
 }

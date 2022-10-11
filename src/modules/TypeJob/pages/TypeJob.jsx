@@ -15,14 +15,14 @@ const TypeJob = () => {
         </div>
       </div>
       {/* Guild */}
-      <div className="typeJob-guild py-5 m-container">
+      <div className="typeJob-guild py-lg-5 py-3 m-container">
         <h1 style={{ fontSize: "24px", fontWeight: "700", color: "#000000" }}>
           Related Guildes
         </h1>
         <div className="row gx-4 py-4">
-          <div className="col-4">
+          <div className="col-md-4 col-12 pb-4 pb-md-0">
             <img
-              className="guild-img rounded-2 pb-3"
+              className="guild-img w-100 rounded-2 pb-3"
               src="https://fiverr-res.cloudinary.com/image/upload/w_600/q_auto,f_auto/v1/attachments/generic_asset/asset/aaeee9bfb2a9ef57cff84fbcb8affba9-1593435384621/copywriting%20what%20is%20it.jpg"
               alt=""
             />
@@ -33,9 +33,9 @@ const TypeJob = () => {
               What is copywriting and what does a copywriter do?
             </button>
           </div>
-          <div className="col-4">
+          <div className="col-md-4 col-12 pb-4 pb-md-0">
             <img
-              className="guild-img rounded-2 pb-3"
+              className="guild-img w-100 rounded-2 pb-3"
               src="https://fiverr-res.cloudinary.com/image/upload/w_600/q_auto,f_auto/v1/attachments/generic_asset/asset/3fec19aafaa1922cbbd6ec5b6d85cae2-1593441714238/proofreading-fiverr.jpg"
               alt=""
             />
@@ -46,9 +46,9 @@ const TypeJob = () => {
               What is proofreading?
             </button>
           </div>
-          <div className="col-4">
+          <div className="col-md-4 col-12 pb-4 pb-md-0">
             <img
-              className="guild-img rounded-2 pb-3"
+              className="guild-img w-100 rounded-2 pb-3"
               src="https://fiverr-res.cloudinary.com/image/upload/w_600/f_auto,q_auto/v1/attachments/generic_asset/asset/577bf2daa353b8da6ca1c0b1f76f2ad8-1610904279079/brand%20storytelling-min.jpg"
               alt=""
             />
@@ -62,7 +62,7 @@ const TypeJob = () => {
         </div>
       </div>
       {/* FAQs */}
-      <div style={{ background: "#fafafa" }} className="typeJob-faq py-5">
+      <div style={{ background: "#fafafa" }} className="typeJob-faq py-3 py-lg-5">
         <div className="d-flex flex-column m-container">
           <h1
             className="text-center"
@@ -70,7 +70,7 @@ const TypeJob = () => {
           >
             FAQs
           </h1>
-          <div className="py-5">
+          <div className="py-4 py-3 py-lg-5">
             <div>
               <div className="faq-title gig border-bottom">
                 <div className="d-flex py-3 justify-content-between">
@@ -158,12 +158,12 @@ const TypeJob = () => {
         </div>
       </div>
       {/* Services */}
-      <div className="py-5 m-container">
+      <div className="py-lg-5 py-3 m-container">
         <div className="d-flex flex-column">
         <h1 className="text-center" style={{ fontSize: "24px", fontWeight: "700", color: "#000000" }}>
       Services Related
         </h1>
-        <div className="d-flex flex-wrap justify-content-center p-5">
+        <div className="d-flex flex-wrap justify-content-center p-lg-5 p-3">
           <button className="m-2 typeJob-services">English to japanese translations
 </button>
           <button className="m-2 typeJob-services">Ghostwriting</button>

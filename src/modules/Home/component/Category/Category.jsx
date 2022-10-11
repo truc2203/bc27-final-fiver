@@ -50,12 +50,12 @@ const Category = () => {
   return (
     <div className="my-xl-5 my-0">
       <div className="m-container py-5">
-        <p className="ca-hd pb-4">Popular Professional Services</p>
-        <div className="ca-sd">
+        <p className="category-heading pb-4">Popular Professional Services</p>
+        <div className="category-slider">
           <Slider {...settings}>
-                <div className="ca-item">
+                <div className="category-slider-item">
                     <a href>
-                    <div className="position-absolute text-light ca-title" style={{top:'0',zIndex:'999'}}>
+                    <div className="position-absolute text-light category-slider-title" style={{top:'0',zIndex:'999'}}>
                         <small style={{fontSize:'14px',fontWeight:'500'}}>Build your brand</small>
                         <p style={{fontSize:'24px',fontWeight:'700'}}>Logo Design</p>
                     </div>
@@ -65,9 +65,9 @@ const Category = () => {
                     </a>
                     
                 </div>
-                <div className="ca-item">
+                <div className="category-slider-item">
                     <a href>
-                    <div className="position-absolute text-light ca-title" style={{top:'0',zIndex:'999'}}>
+                    <div className="position-absolute text-light category-slider-title" style={{top:'0',zIndex:'999'}}>
                         <small style={{fontSize:'14px',fontWeight:'500'}}>Custommize your site</small>
                         <p style={{fontSize:'24px',fontWeight:'700'}}>WordPress</p>
                     </div>
@@ -77,9 +77,9 @@ const Category = () => {
                     </a>
                     
                 </div>
-                <div className="ca-item">
+                <div className="category-slider-item">
                     <a href>
-                    <div className="position-absolute text-light ca-title" style={{top:'0',zIndex:'999'}}>
+                    <div className="position-absolute text-light category-slider-title" style={{top:'0',zIndex:'999'}}>
                         <small style={{fontSize:'14px',fontWeight:'500'}}>Share your message</small>
                         <p style={{fontSize:'24px',fontWeight:'700'}}>Voice Over</p>
                     </div>
@@ -89,9 +89,9 @@ const Category = () => {
                     </a>
                     
                 </div>
-                <div className="ca-item">
+                <div className="category-slider-item">
                     <a href>
-                    <div className="position-absolute text-light ca-title" style={{top:'0',zIndex:'999'}}>
+                    <div className="position-absolute text-light category-slider-title" style={{top:'0',zIndex:'999'}}>
                         <small style={{fontSize:'14px',fontWeight:'500'}}>Engage your audienci</small>
                         <p style={{fontSize:'24px',fontWeight:'700'}}>Video Explainer</p>
                     </div>
@@ -101,9 +101,9 @@ const Category = () => {
                     </a>
                     
                 </div>
-                <div className="ca-item">
+                <div className="category-slider-item">
                     <a href>
-                    <div className="position-absolute text-light ca-title" style={{top:'0',zIndex:'999'}}>
+                    <div className="position-absolute text-light category-slider-title" style={{top:'0',zIndex:'999'}}>
                         <small style={{fontSize:'14px',fontWeight:'500'}}>Reach more customer</small>
                         <p style={{fontSize:'24px',fontWeight:'700'}}>Social Media</p>
                     </div>
@@ -113,9 +113,9 @@ const Category = () => {
                     </a>
                     
                 </div>
-                <div className="ca-item">
+                <div className="category-slider-item">
                     <a href>
-                    <div className="position-absolute text-light ca-title" style={{top:'0',zIndex:'999'}}>
+                    <div className="position-absolute text-light category-slider-title" style={{top:'0',zIndex:'999'}}>
                         <small style={{fontSize:'14px',fontWeight:'500'}}>Unlock grow online</small>
                         <p style={{fontSize:'24px',fontWeight:'700'}}>SEO</p>
                     </div>
@@ -125,9 +125,9 @@ const Category = () => {
                     </a>
                     
                 </div>
-                <div className="ca-item">
+                <div className="category-slider-item">
                     <a href>
-                    <div className="position-absolute text-light ca-title" style={{top:'0',zIndex:'999'}}>
+                    <div className="position-absolute text-light category-slider-title" style={{top:'0',zIndex:'999'}}>
                         <small style={{fontSize:'14px',fontWeight:'500'}}>Color your dreams</small>
                         <p style={{fontSize:'24px',fontWeight:'700'}}>Illustration</p>
                     </div>
@@ -137,9 +137,9 @@ const Category = () => {
                     </a>
                     
                 </div>
-                <div className="ca-item">
+                <div className="category-slider-item">
                     <a href>
-                    <div className="position-absolute text-light ca-title" style={{top:'0',zIndex:'999'}}>
+                    <div className="position-absolute text-light category-slider-title" style={{top:'0',zIndex:'999'}}>
                         <small style={{fontSize:'14px',fontWeight:'500'}}>Go Global</small>
                         <p style={{fontSize:'24px',fontWeight:'700'}}>Stranlation</p>
                     </div>
@@ -149,9 +149,9 @@ const Category = () => {
                     </a>
                     
                 </div>
-                <div className="ca-item">
+                <div className="category-slider-item">
                     <a href>
-                    <div className="position-absolute text-light ca-title" style={{top:'0',zIndex:'999'}}>
+                    <div className="position-absolute text-light category-slider-title" style={{top:'0',zIndex:'999'}}>
                         <small style={{fontSize:'14px',fontWeight:'500'}}>Learn your bussiness</small>
                         <p style={{fontSize:'24px',fontWeight:'700'}}>Data Entry</p>
                     </div>
@@ -161,9 +161,9 @@ const Category = () => {
                     </a>
                     
                 </div>
-                <div className="ca-item">
+                <div className="category-slider-item">
                     <a href>
-                    <div className="position-absolute text-light ca-title" style={{top:'0',zIndex:'999'}}>
+                    <div className="position-absolute text-light category-slider-title" style={{top:'0',zIndex:'999'}}>
                         <small style={{fontSize:'14px',fontWeight:'500'}}>Showcase your story</small>
                         <p style={{fontSize:'24px',fontWeight:'700'}}>Book Covers</p>
                     </div>

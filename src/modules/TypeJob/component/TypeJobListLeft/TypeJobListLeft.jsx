@@ -25,8 +25,8 @@ const TypeJobListLeft = ({ id }) => {
       {typeJob?.map((sub) => (
         <>
           {sub.dsNhomChiTietLoai.map((sub2) => (
-            <div className="col-3 p-3" key={sub2.id}>
-              <img className="pb-3" src={sub2.hinhAnh} alt="NO IMAGE" />
+            <div className="col-12 col-xl-3 col-lg-4 col-md-6 p-3" key={sub2.id}>
+              <img className="pb-3 w-100" src={sub2.hinhAnh} alt="NO IMAGE" />
               <p className="typeJob-btn ">
                 {sub2.tenNhom}
                 {sub2.dsChiTietLoai.map((sub3) => (

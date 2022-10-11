@@ -17,8 +17,8 @@ const SliderSearch = () => {
   return (
     <div className="m-container">
       <div className="d-flex">
-        <div className="col-6 sd-sr">
-          <p className="sd-title pb-4">
+        <div className="col-6 sliderSearch">
+          <p className="sliderSearch-title pb-4">
             Find the perfect freelandce services for your bussiness
           </p>
           <form className="d-flex pb-4">
@@ -31,35 +31,35 @@ const SliderSearch = () => {
             <button
               onClick={() => handleSearchJob(value)}
               type="submit"
-              className="s-btn"
+              className="sliderSearch-btn"
             >
               Search
             </button>
           </form>
-          <div className="d-flex text-light header-search">
+          <div className="d-flex text-light sliderSearch-popular">
             Polular :{" "}
             <ul className="d-flex">
               <li>
                 {" "}
-                <a className="sd-kw mx-2" href>
+                <a className="sliderSearch-keyword mx-2" href>
                   Website Design
                 </a>{" "}
               </li>
               <li>
                 {" "}
-                <a className="sd-kw mx-2" href>
+                <a className="sliderSearch-keyword mx-2" href>
                   Wordpress
                 </a>{" "}
               </li>
               <li>
                 {" "}
-                <a className="sd-kw mx-2" href>
+                <a className="sliderSearch-keyword mx-2" href>
                   Logo Design
                 </a>{" "}
               </li>
               <li>
                 {" "}
-                <a className="sd-kw mx-2" href>
+                <a className="sliderSearch-keyword mx-2" href>
                   Logo Design
                 </a>{" "}
               </li>
@@ -69,10 +69,10 @@ const SliderSearch = () => {
       </div>
 
       <div>
-        <div className="sd-sr-sub d-none">
+        <div className="sliderSearch-sub d-none">
           <div className="d-flex">
-            <div className="sd-sr-hd">
-              <p className="sd-title pb-4">
+            <div className="sliderSearch-sub-heading">
+              <p className="sliderSearch-title pb-4">
                 Find the perfect freelandce services for your bussiness
               </p>
               <form className="d-flex pb-0 pb-lg-4 flex-column">
@@ -85,35 +85,35 @@ const SliderSearch = () => {
                 <button
                   onClick={() => handleSearchJob(value)}
                   type="submit"
-                  className="s-btn"
+                  className="sliderSearch-btn"
                 >
                   Search
                 </button>
               </form>
-              <div className="d-flex text-light sd-popular">
+              <div className="d-flex text-light sliderSearch-popular">
                 Polular :{" "}
                 <ul className="d-flex">
                   <li>
                     {" "}
-                    <a className="sd-kw mx-2" href>
+                    <a className="sliderSearch-keyword mx-2" href>
                       Website Design
                     </a>{" "}
                   </li>
                   <li>
                     {" "}
-                    <a className="sd-kw mx-2" href>
+                    <a className="sliderSearch-keyword mx-2" href>
                       Wordpress
                     </a>{" "}
                   </li>
                   <li>
                     {" "}
-                    <a className="sd-kw mx-2" href>
+                    <a className="sliderSearch-keyword mx-2" href>
                       Logo Design
                     </a>{" "}
                   </li>
                   <li>
                     {" "}
-                    <a className="sd-kw mx-2" href>
+                    <a className="sliderSearch-keyword mx-2" href>
                       Logo Design
                     </a>{" "}
                   </li>

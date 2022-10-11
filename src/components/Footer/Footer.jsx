@@ -6,8 +6,8 @@ const Footer = () => {
     <div className='pt-0 pt-xl-5'>
         <div className="">
           <ul className="d-flex pb-5 flex-wrap">
-              <li className='ft-title'>
-                <h4 className='ft-hd pb-4'>Categoties</h4>
+              <li className='footer-box'>
+                <h4 className='footer-box-heading pb-4'>Categoties</h4>
                 <p className='pb-4'>Graphics & Design</p>
                 <p className='pb-4'>Digital Marketing</p>
                 <p className='pb-4'>Writing & Translation</p>
@@ -19,8 +19,8 @@ const Footer = () => {
                 <p className='pb-4'>Lifestyle</p>
                 <p className='pb-4'>Sitemap</p>
               </li>
-              <li className='ft-title text-end text-sm-start'>
-                <h4 className='ft-hd pb-4'>About</h4>
+              <li className='footer-box text-end text-sm-start'>
+                <h4 className='footer-box-heading pb-4'>About</h4>
                 <p className='pb-4'>Careers</p>
                 <p className='pb-4'>Press & News</p>
                 <p className='pb-4'>Partnerships</p>
@@ -29,15 +29,15 @@ const Footer = () => {
                 <p className='pb-4'>Intellectual Property Claims</p>
                 <p className='pb-4'>Investor Relations</p>
               </li>
-              <li className='ft-title pt-3 pt-sm-0'>
-                <h4 className='ft-hd pb-4'>Suport</h4>
+              <li className='footer-box pt-3 pt-sm-0'>
+                <h4 className='footer-box-heading pb-4'>Suport</h4>
                 <p className='pb-4'>Help & Support</p>
                 <p className='pb-4'>Trust & Safety</p>
                 <p className='pb-4'>Selling on Fiverr</p>
                 <p className='pb-4'>Buying on Fiverr</p>
               </li>
-              <li className='ft-title pt-3 pt-lg-0  text-end text-sm-start'>
-                <h4 className='ft-hd pb-4'>Comunity</h4>
+              <li className='footer-box pt-3 pt-lg-0  text-end text-sm-start'>
+                <h4 className='footer-box-heading pb-4'>Comunity</h4>
                 <p className='pb-4'>Events</p>
                 <p className='pb-4'>Blog</p>
                 <p className='pb-4'>Forum</p>
@@ -47,8 +47,8 @@ const Footer = () => {
                 <p className='pb-4'>Invite a Friend</p>
                 <p className='pb-4'>Become a Seller</p>
               </li>
-              <li className='ft-title pt-3 pt-lg-0'>
-                <h4 className='ft-hd pb-4'>More From Fiverr</h4>
+              <li className='footer-box pt-3 pt-lg-0'>
+                <h4 className='footer-box-heading pb-4'>More From Fiverr</h4>
                 <p className='pb-4'>Fiverr Business</p>
                 <p className='pb-4'>Fiverr Pro</p>
                 <p className='pb-4'>Fiverr Studios</p>
@@ -57,20 +57,20 @@ const Footer = () => {
                 <p className='pb-4'>Get Inspired</p>
                 <p className='pb-4'>Fiverr Select</p>
                 <p className='pb-4'>Clearvoice
-                    <p className='ft-sub'>Content Marketing</p>
+                    <p className='footer-box-sub'>Content Marketing</p>
                 </p>
                 <p className='pb-4'>Fiverr Workspace 
-                    <p className='ft-sub'>Invoice Software</p>
+                    <p className='footer-box-sub'>Invoice Software</p>
                 </p>
                 <p className='pb-4'>Learn
-                    <p className='ft-sub'>Online Course</p>
+                    <p className='footer-box-sub'>Online Course</p>
                 </p>
                 <p className='pb-4'>Working Not Working</p>
 
               </li>
           </ul>
-          <div className="d-flex justify-content-between border-top pt-4 ft-copyright">
-            <div className="ft-copy d-flex align-items-center">
+          <div className="d-flex justify-content-between border-top pt-4 footer-copyright">
+            <div className="footer-copy d-flex align-items-center">
               <p className='pe-sm-3 pb-3 pb-sm-0'>
               <svg
               className='d-inline'
@@ -91,7 +91,7 @@ const Footer = () => {
               <span>© Fiverr International Ltd. 2022</span>
             </div>
             <div className='pt-3 pt-lg-0 px-4 px-sm-0'>
-              <ul className='d-flex align-items-center ft-social flex-wrap'>
+              <ul className='d-flex align-items-center footer-social flex-wrap'>
                 <li className='pb-3 pb-sm-0 ps-3 ps-sm-0 ps-lg-3'>
                   <a href>
                     <BsTwitter size='24px'/>
@@ -118,12 +118,12 @@ const Footer = () => {
                     <BsInstagram size='24px'/>
                   </a>
                 </li>
-                <li className='ft-social-sub'>
+                <li className='footer-social-sub'>
                   <a href>
                     <AiOutlineGlobal size='16px'/> English
                   </a>
                 </li>
-                <li className='ft-social-sub'>
+                <li className='footer-social-sub'>
                   <a href>
                     <AiOutlineDollarCircle size='16px'/> USD
                   </a>

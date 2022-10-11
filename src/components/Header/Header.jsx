@@ -57,7 +57,7 @@ const Header = () => {
   }
 
   return (
-    <div className="nav-fixed">
+    <div className="header-nav-fixed">
       <div className="m-container">
         <div
           className="d-flex justify-content-between align-items-center"
@@ -79,7 +79,7 @@ const Header = () => {
               </g>
             </svg>
           </a>
-          <div className="header-search col-4" style={{ display: "block" }}>
+          <div className="header-search header-nav-input col-4" style={{ display: "block" }}>
             <form className="d-flex">
               <input
                 type="text"
@@ -90,26 +90,26 @@ const Header = () => {
               <button
                 onClick={() => handleSearchJob(value)}
                 type="submit"
-                className="hd-sr-btn"
+                className="header-search-btn"
               >
                 <BiSearch color="white" size="16px" />
               </button>
             </form>
           </div>
-          <nav className="header-nav flex-grow-1">
+          <nav className="header-nav-auth flex-grow-1">
             <ul
               style={{ display: user === "" ? "flex" : "none" }}
               className="justify-content-end align-items-center"
             >
               <li>
-                <a className="fs-config px-3" href="true">
+                <a className="header-nav-seller header-config-text px-3" href="true">
                   Become a Seller
                 </a>{" "}
               </li>
               <li>
                 <button
                   onClick={() => movePath("register")}
-                  className="fs-config px-3"
+                  className="header-config-text px-3"
                   href="true"
                 >
                   Sign in
@@ -118,7 +118,7 @@ const Header = () => {
               <li>
                 <button
                   onClick={() => movePath("login")}
-                  className="nav-btn-fix"
+                  className="header-nav-btn"
                 >
                   Join
                 </button>
@@ -143,38 +143,38 @@ const Header = () => {
                   <MdOutlineFormatListBulleted fontSize="20px" />
                 </NavLink>
               </li>
-              <li className="d-flex position-relative hd-show-submenu">
+              <li className="d-flex position-relative header-nav-submenu">
                 <button onClick={() => showMenu()}>
                   {" "}
                   <img
-                    className="hd-ava rounded-circle"
+                    className="header-nav-avatar rounded-circle"
                     src="https://fiverr-res.cloudinary.com/t_mobile_web_2,q_auto,f_auto/gigs/142887567/original/850ee22c684fd9c1f572ef5f1cc8248013080eeb.png"
                     alt=""
                   />
                 </button>
                 <div
-                  className="position-absolute hd-submenu p-3 rounded-2"
+                  className="position-absolute header-submenu p-3 rounded-2"
                   style={{ display: isOpen ? "block" : "none" }}
                 >
                   <ul className="py-1 border-bottom">
-                    <li className="pb-2 hd-submenu-item"><NavLink to={`profile/${user.user?.id}`}>
+                    <li className="pb-2 header-submenu-item"><NavLink to={`profile/${user.user?.id}`}>
                       Profile
                       </NavLink></li>
-                    <li className="pb-2 hd-submenu-item">Manage Request</li>
-                    <li className="pb-2 hd-submenu-item">Post a Request</li>
+                    <li className="pb-2 header-submenu-item">Manage Request</li>
+                    <li className="pb-2 header-submenu-item">Post a Request</li>
                   </ul>
                   <ul className="py-1 border-bottom">
-                    <li className="py-2 hd-submenu-item">Become a seller</li>
-                    <li className="pb-2 hd-submenu-item">Setting</li>
-                    <li className="pb-2 hd-submenu-item">Billing</li>
+                    <li className="py-2 header-submenu-item">Become a seller</li>
+                    <li className="pb-2 header-submenu-item">Setting</li>
+                    <li className="pb-2 header-submenu-item">Billing</li>
                   </ul>
                   <ul className="py-1 border-bottom">
-                    <li className="py-3 hd-submenu-item">English</li>
-                    <li className="pb-2 hd-submenu-item ">USD</li>
-                    <li className="pb-2 hd-submenu-item">Help & suport</li>
+                    <li className="py-3 header-submenu-item">English</li>
+                    <li className="pb-2 header-submenu-item ">USD</li>
+                    <li className="pb-2 header-submenu-item">Help & suport</li>
                   </ul>
                   <ul className="pb-1">
-                    <li onClick={() => handleLogout()} className="pt-2 hd-submenu-item">Logout</li>
+                    <li onClick={() => handleLogout()} className="pt-2 header-submenu-item">Logout</li>
                   </ul>
                 </div>
               </li>

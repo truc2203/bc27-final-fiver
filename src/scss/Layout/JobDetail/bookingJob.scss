@@ -49,3 +49,7 @@
     border-radius: 4px;
     @include btnStyle('transparent',10px,10px,$bg-1)
 }
+
+.side-item{
+  width: 100%;
+}

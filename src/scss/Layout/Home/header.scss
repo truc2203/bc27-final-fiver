@@ -1,6 +1,6 @@
 /* Header */
 
-.fs-config {
+.header-config-text {
   @include txtStyle($color-0, $fs-2, $fw-1);
   &:hover {
     color: $bg-1;
@@ -8,7 +8,7 @@
   @include trans;
 }
 
-.hd-sr-btn {
+.header-search-btn {
   @include btnStyle($bg-2, $pd-1, $pd-3, $color-w);
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -18,11 +18,11 @@
   @include trans;
 }
 
-.hd-ava {
+.header-nav-avatar {
   width: 32px;
   height: 32px;
 }
-.hd-submenu {
+.header-submenu {
   z-index: 1001;
   background: #fafafa;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;  right: 0;
@@ -32,13 +32,13 @@
   
   
 }
-.hd-submenu-item{
+.header-submenu-item{
   @include txtStyle($color-t,$fs-2,$fw-0);
   &:hover{
     @include txtHover($bg-1)
   }
 }
-.hd-show-submenu::after {
+.header-nav-submenu::after {
   content: "";
   position: absolute;
   display: none;
@@ -68,7 +68,7 @@
   }
   @include trans;
 }
-.nav-btn-fix {
+.header-nav-btn {
   border: 1px solid $bg-1;
   padding: 6px 16px;
   background: transparent;
@@ -81,7 +81,7 @@
   @include trans;
 }
 
-.nav-fixed {
+.header-nav-fixed {
   color: $color-t;
   background: $color-w;
     position: fixed;
@@ -93,7 +93,7 @@
 }
 .sub-type {
   @include txtStyle($color-t, $fs-2, $fw-0);
-  overflow: scroll;
+  overflow: hidden;
 }
 .sub-title{
   z-index: 1000;

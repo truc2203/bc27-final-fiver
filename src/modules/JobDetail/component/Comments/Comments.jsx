@@ -16,7 +16,7 @@ const Comments = ({ id }) => {
     return;
   }
   return (
-    <div className="pb-5">
+    <div className="pb-3 pb-lg-5">
       {comment?.map((cmt) => {
         return (
           <div key={cmt._id} className="d-flex py-5 border-bottom">

@@ -64,7 +64,7 @@ const BookingJob = ({jobId}) => {
     return
   }
   return (
-    <div>
+    <div className="w-100">
       <div className="d-flex sidebar-hd">
         <button
           onClick={() => handleSide("side-basic")}

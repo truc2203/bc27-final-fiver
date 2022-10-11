@@ -4,6 +4,7 @@ import jobAPI from "../../../../apis/jobAPI";
 import { AiFillStar } from "react-icons/ai";
 import { IoIosArrowUp } from "react-icons/io";
 import { BiSearch } from "react-icons/bi";
+import BookingJob from "../BookingJob/BookingJob";
 const JD = ({ id }) => {
   const { data: jd } = useRequest(() => jobAPI.getJobDetail(id));
   if (!jd) {
@@ -14,7 +15,7 @@ const JD = ({ id }) => {
       {jd.map((detail) => {
         return (
           <>
-            <p key={detail.id} className="jd-title pb-4">{detail.congViec.tenCongViec}</p>
+            <p key={detail.id} className="jd-title pb-4 pt-4 pt-sm-0">{detail.congViec.tenCongViec}</p>
             <div className="d-flex pb-4">
               <img
                 className="rounded-circle me-3"
@@ -43,7 +44,10 @@ const JD = ({ id }) => {
                 alt=""
               />
             </div>
-            <div className="gig py-5">
+            <div className="d-none bookingJob-breakpoint">
+              <BookingJob jobId={id}/>
+            </div>
+            <div className="gig pt-5 pb-3 pb-lg-5">
               <div className="border-bottom">
                 <p className="jd-title pb-4">About this Gig</p>
                 <p className="pb-3">
@@ -54,7 +58,7 @@ const JD = ({ id }) => {
                 <p>{detail.congViec.moTaNgan}</p>
               </div>
             </div>
-            <div className="d-flex flex-column pb-5">
+            <div className="d-flex flex-column pb-3 pb-lg-5">
               <p className="jd-title pb-4">About the Seller</p>
               <div className="d-flex align-items-center mb-4">
                 <img
@@ -107,7 +111,7 @@ const JD = ({ id }) => {
                 </div>
               </div>
             </div>
-            <div className="pb-5">
+            <div className="pb-3 pb-lg-5">
               <p className="jd-title">FAQ</p>
               <div>
                 <div className="faq-title gig border-bottom">
@@ -178,14 +182,14 @@ const JD = ({ id }) => {
                 </div>
               </div>
             </div>
-            <div className="pb-5">
+            <div className="pb-3 pb-lg-5">
               <div className="d-flex justify-content-between align-items-baseline">
                 <p className="jd-title pb-4">99 Review</p>
                 <p className="profile-content">Sort by Most recent</p>
               </div>
               <div>
-                <div className="d-flex">
-                  <div className="col-6 d-flex flex-column">
+                <div className="d-flex flex-column flex-lg-row">
+                  <div className="col-lg-6 col-12 d-flex flex-column">
                     <div className="d-flex w-100 align-items-baseline pb-3">
                       <button className="vote-text">5 Start</button>
                       <div className="vote-bar"></div>
@@ -212,7 +216,7 @@ const JD = ({ id }) => {
                       <p className="vote-text">(0)</p>
                     </div>
                   </div>
-                  <div className="col-6 d-flex flex-column rating ps-3">
+                  <div className="col-lg-6 col-12 d-flex flex-column rating ps-lg-3 ps-0">
                     <p className="pb-4 gig">Rating Breakdown</p>
                     <div className="d-flex flex-column">
                       <div className="d-flex justify-content-between pb-3">
