@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const editUser = () => {
-  return (
-    <div>editUser</div>
-  )
-}
+  return <div>editUser</div>;
+};
 
-export default editUser
+export default editUser;

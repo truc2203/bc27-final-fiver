@@ -6,6 +6,16 @@ const userAPI = {
   editUser: (value, userId) => {
     return axiosClient.put(`users/${userId}`, value);
   },
+  addUser: (user) => {
+    return axiosClient.post("users", user);
+  },
+  deleteUser: (id) => {
+    return axiosClient.delete("users", {
+      params: {
+        id: id,
+      },
+    });
+  },
   getBooked: () => {
     return axiosClient.get(`thue-cong-viec`);
   },

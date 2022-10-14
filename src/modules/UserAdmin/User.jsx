@@ -32,7 +32,19 @@ const User = () => {
   console.log(users);
   const dispatch = useDispatch();
   const [collapsed, setCollapsed] = useState(false);
-  const handleDeleteUser = () => {};
+  const handleDeleteUser = async (id) => {
+    try {
+      await userAPI.deleteUser(id);
+      notification.success({
+        message: "Xóa User thành công, Vui lòng F5 lại để cập nhật",
+      });
+    } catch (error) {
+      notification.error({
+        message: "Xóa User thất bại",
+        description: error,
+      });
+    }
+  };
   const handleEditUser = (userr) => {};
   return (
     <Layout style={{ minHeight: "100vh" }}>
