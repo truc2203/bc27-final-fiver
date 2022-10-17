@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import authAPI from "../../../apis/authAPI";
-import useRequest from "../../../hook/useRequest";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -21,16 +20,20 @@ function getItem(label, key, icon, children) {
   };
 }
 
-const items = [
-  getItem(<NavLink to="/user">Users Manage</NavLink>, "sub1", <UserOutlined />),
-  getItem(
-    <NavLink to="../jobs">Jobs Manage</NavLink>,
-    "sub2",
-    <VideoCameraOutlined />
-  ),
-];
-
 const AddUser = () => {
+  const items = [
+    getItem(
+      <NavLink to="/user">Users Manage</NavLink>,
+      "sub1",
+      <UserOutlined />
+    ),
+    getItem(
+      <NavLink to="../jobs">Jobs Manage</NavLink>,
+      "sub2",
+      <VideoCameraOutlined />
+    ),
+  ];
+
   const [collapsed, setCollapsed] = useState(false);
 
   const navigate = useNavigate();
