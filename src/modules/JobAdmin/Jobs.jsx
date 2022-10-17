@@ -1,11 +1,8 @@
 import React, { useState,useEffect } from "react";
-import useRequest from "../../hook/useRequest";
-import userAPI from "../../apis/userAPI";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { VideoCameraOutlined, UserOutlined } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, notification } from "antd";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import UserHello from "../UserAdmin/UserHello";
 
 const { Header, Content, Footer, Sider } = Layout;

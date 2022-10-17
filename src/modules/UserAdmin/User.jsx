@@ -5,12 +5,12 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { VideoCameraOutlined, UserOutlined } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, notification } from "antd";
-import { Button, Table } from "antd";
+import {  Table } from "antd";
 import {
   AiOutlineEdit,
   AiOutlineDelete,
 } from "react-icons/ai";
-import { Outlet, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import UserHello from "./UserHello";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -40,10 +40,6 @@ const User = () => {
   const [isDelete, setIsDelete] = useState(false);
 
   const [collapsed, setCollapsed] = useState(false);
-
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-
-  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -104,8 +100,7 @@ const User = () => {
 
   const {
     data: users,
-    isLoading,
-    error,
+
   } = useRequest(() => userAPI.getUser(value ? value : null), {
     deps: [value, isDelete],
   });

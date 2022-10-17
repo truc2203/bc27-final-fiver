@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import userAPI from "../../../apis/userAPI";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { VideoCameraOutlined, UserOutlined } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, notification } from "antd";
 
-import { Outlet, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import UserHello from "../UserHello";
 
 const { Header, Content, Footer, Sider } = Layout;
