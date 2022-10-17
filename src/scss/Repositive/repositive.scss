@@ -70,7 +70,7 @@
   }
   .bookingJob-breakpoint {
     display: block !important;
-    padding: 24px 0 84px 0;
+    padding: 24px 0 164px 0;
   }
   .jobDetail-page {
     padding: 0;
@@ -92,6 +92,13 @@
   }
   .login-wrapper{
     padding: 120px 16px;
+  }
+  .jobDetail-faq-content{
+    overflow: scroll;
+  }
+  .bookingJob-breakpoint {
+    display: block !important;
+    padding: 24px 0 192px 0;
   }
 }
 
@@ -126,7 +133,7 @@
   }
   @media screen and(max-width:400px) {
     .bookingJob-breakpoint {
-      padding-bottom: 124px;
+      padding-bottom: 284px;
     }
   }
 }

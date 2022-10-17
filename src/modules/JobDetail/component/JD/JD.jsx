@@ -16,7 +16,7 @@ const JD = ({ id }) => {
         return (
           <>
             <p key={detail.id} className="jobDetail-title pb-4 pt-4 pt-sm-0">{detail.congViec.tenCongViec}</p>
-            <div className="d-flex pb-4">
+            <div className="d-flex pb-4 align-items-center">
               <img
                 className="rounded-circle me-3"
                 style={{ width: "30px", height: "30px" }}
@@ -30,7 +30,7 @@ const JD = ({ id }) => {
               <p className="px-2">|</p>
               <div
                 style={{ fontSize: "20px" }}
-                className="d-flex align-items-start listJob-rate"
+                className="d-flex align-items-center listJob-rate"
               >
                 <AiFillStar />
                 {detail.congViec.saoCongViec}
@@ -72,7 +72,7 @@ const JD = ({ id }) => {
                   <p className="pb-2">Your App Idea ready for lauch</p>
                   <div
                     style={{ fontSize: "16px" }}
-                    className="d-flex align-items-start listJob-rate pb-3"
+                    className="d-flex align-items-center listJob-rate pb-3"
                   >
                     <AiFillStar />
                     {detail.congViec.saoCongViec}

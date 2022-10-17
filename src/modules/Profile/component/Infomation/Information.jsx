@@ -19,10 +19,11 @@ const Information = ({userId}) => {
 
   const [cer, setCer] = useState('')
 
-  const { data: user } = useRequest(() => userAPI.getUser(userId), {
+  const { data: user } = useRequest(() => userAPI.getUserById(userId), {
     deps: [valueSkill, valueCer],
   });
-
+  console.log(user);
+  console.log(user);
   const defaultValue = {
     name: user?.name,
     email: user?.email,
@@ -146,12 +147,12 @@ const Information = ({userId}) => {
           <div style={{display:isOpenSkill ? "flex" : 'none'}} className="input-group flex-nowrap flex-column">
           <input onChange={(e) => setSkill(e.target.value)} type="text" class="form-control w-100" placeholder="Add Skill" />
           <div className="d-flex py-3 justify-content-between">
-            <button onClick={() => setIsOpenSkill(false)} className="nav-btn-fix w-50 py-2 me-3">Cancel</button>
-            <button  onClick={() => handleAddSkill(skill)} className="nav-btn-fix w-50 py-2 ms-3">Add</button>
+            <button onClick={() => setIsOpenSkill(false)} className="header-nav-btn w-50 py-2 me-3">Cancel</button>
+            <button  onClick={() => handleAddSkill(skill)} className="header-nav-btn w-50 py-2 ms-3">Add</button>
           </div>
           </div>
           <div className="profile-user-text">
-            {user?.skill.map((skill) => (
+            {user?.skill?.map((skill) => (
               <div className="d-flex justify-content-between pb-4">
                 <p>{skill}</p>
                 <div className="d-flex">
@@ -183,8 +184,8 @@ const Information = ({userId}) => {
           <div style={{display:isOpenCer ? "flex" : 'none'}} className="input-group flex-nowrap flex-column">
           <input onChange={(e) => setCer(e.target.value)} type="text" class="form-control w-100" placeholder="Add Certification" />
           <div className="d-flex py-3 justify-content-between">
-            <button onClick={() => setIsOpenCer(false)} className="nav-btn-fix w-50 py-2 me-3">Cancel</button>
-            <button  onClick={() => handleAddCer(cer)} className="nav-btn-fix w-50 py-2 ms-3">Add</button>
+            <button onClick={() => setIsOpenCer(false)} className="header-nav-btn w-50 py-2 me-3">Cancel</button>
+            <button  onClick={() => handleAddCer(cer)} className="header-nav-btn w-50 py-2 ms-3">Add</button>
           </div>
           </div>
           <div className="profile-user-text">

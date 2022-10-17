@@ -4,11 +4,12 @@ import userAPI from "../../../../apis/userAPI";
 import { BiDetail, BiEdit, BiTrash } from "react-icons/bi";
 const BookedJob = ({ userId }) => {
   const { data: booked } = useRequest(() => userAPI.getBookedById());
+  console.log(booked);
   return (
     <div>
       <div className="d-flex p-4 rounded-1 border justify-content-between align-items-center mb-4">
-        <p className="gig">It seems that you don't have any active Gigs</p>
-        <button className="nav-btn-fix">Create a new Gig</button>
+        <p className="jobDetail-gig">It seems that you don't have any active Gigs</p>
+        <button className="header-nav-btn">Create a new Gig</button>
       </div>
       <div className="d-flex p-3 rounded-1 border flex-column">
         {booked?.map((booked) => (

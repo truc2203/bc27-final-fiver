@@ -37,7 +37,7 @@
 .jobDetail-faq-content {
   height: 0px;
   @include trans;
-  overflow: scroll
+  overflow: hidden
 }
 .jobDetail-faq-btn {
   @include trans;

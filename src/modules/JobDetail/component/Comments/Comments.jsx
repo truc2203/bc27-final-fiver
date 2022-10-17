@@ -19,19 +19,19 @@ const Comments = ({ id }) => {
     <div className="pb-3 pb-lg-5">
       {comment?.map((cmt) => {
         return (
-          <div key={cmt._id} className="d-flex py-5 border-bottom">
+          <div key={cmt.id} className="d-flex py-5 border-bottom">
             <div className="pe-3">
               <img
                 className="rounded-circle"
                 style={{ width: "48px", height: "48px" }}
-                src={cmt.user ? cmt.user.avatar : ""}
+                src={cmt.avatar ? cmt.avatar : 'https://cdn5.vectorstock.com/i/1000x1000/73/64/text-user-icon-avatar-icon-vector-15887364.jpg'}
                 alt=""
               />
             </div>
             <div className="d-flex w-100">
               <div>
                 <p className="jobDetail-gig pb-3">
-                  {cmt.user ? cmt.user.email : "Guest"} <AiOutlineComment />{" "}
+                  {cmt.tenNguoiBinhLuan ? cmt.tenNguoiBinhLuan : "Guest"} <AiOutlineComment />{" "}
                   <span>99 Reviews</span>
                 </p>
                 <div className="d-flex align-items-center pb-3">
@@ -43,18 +43,19 @@ const Comments = ({ id }) => {
                   />
                   <div className="comment-country">South Korea</div>
                 </div>
-                <div className="d-flex pb-3">
+                <div className="d-flex pb-3 jobDetail-gig ">
                   <span style={{ color: "#ffb33e" }}>
+                    {cmt.saoBinhLuan}
+                    <AiFillStar />
+                    {/* <AiFillStar />
                     <AiFillStar />
                     <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
+                    <AiFillStar /> */}
                   </span>
                   <span className="px-2">|</span>
-                  <span>5 days ago</span>
+                  <span>{cmt.ngayBinhLuan}</span>
                 </div>
-                <div className="pb-3 comment-content">{cmt.content}</div>
+                <div className="pb-3 comment-content">{cmt.noiDung}</div>
                 <div className="d-flex jobDetail-gig">
                   <span className="pe-3">Helful?</span>
                   <button

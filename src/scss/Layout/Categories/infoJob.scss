@@ -1,8 +1,9 @@
-.infoJon-main{
+.infoJob-main{
     @include txtStyle($color-t,$fs-2,$fw-0);
-    &:hover{
+    &:hover a{
         text-decoration: underline;
         cursor: pointer;
+        color: $bg-1;
     }
 }
 .infoJob-heading{
