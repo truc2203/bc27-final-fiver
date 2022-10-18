@@ -5,13 +5,12 @@ import {
   UserOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, notification } from "antd";
+import { Breadcrumb, Layout, Menu, notification} from "antd";
 import { useNavigate } from "react-router-dom";
-import UserHello from "../UserAdmin/UserHello";
-import { Table } from "antd";
-import jobAPI from "../../apis/jobAPI";
-import useRequest from "../../hook/useRequest";
-import { AiOutlineDelete } from "react-icons/ai";
+import UserHello from "../../UserAdmin/UserHello";
+import jobAPI from "../../../apis/jobAPI";
+import useRequest from "../../../hook/useRequest";
+
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -22,6 +21,8 @@ function getItem(label, key, icon, children) {
     label,
   };
 }
+
+
 
 const items = [
   getItem(<NavLink to="/user">Users Manage</NavLink>, "sub1", <UserOutlined />),
@@ -39,9 +40,8 @@ const items = [
   ),
 ];
 
-const Jobs = () => {
-
-  const [isDelete,setIsDelete] = useState(false) 
+const TypeJobManage = () => {
+  const [isDelete, setIsDelete] = useState(false);
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -51,72 +51,26 @@ const Jobs = () => {
     navigate(path);
   };
 
-  const hanleDeleteJob = async (id) => {
-    try {
-      await jobAPI.deleteJob(id)
-      setIsDelete(!isDelete)
-      notification.success({
-        message: `Delete job ${id} successful !`
-      })
-    } catch (error) {
-      notification.error({
-        message: `Delete job ${id} failed !`,
-        description:error
-      })
-    }
+  // const hanleDeleteJob = async (id) => {
+  //   try {
+  //     await jobAPI.deleteJob(id)
+  //     setIsDelete(!isDelete)
+  //     notification.success({
+  //       message: `Delete job ${id} successful !`
+  //     })
+  //   } catch (error) {
+  //     notification.error({
+  //       message: `Delete job ${id} failed !`,
+  //       description:error
+  //     })
+  //   }
 
-  }
+  // }
 
-  const columns = [
-    {
-      title: "ID",
-      dataIndex: "id",
-    },
-    {
-      title: "User Create",
-      dataIndex: "nguoiTao",
-    },
-    {
-      title: "Title",
-      dataIndex: "tenCongViec",
-    },
-    {
-      title: "Avatar",
-      dataIndex: "",
-      key: "x",
-      render: (record) => (
-        <img
-          style={{ width: "50px", height: "50px" }}
-          src={record.hinhAnh}
-          alt=""
-        />
-      ),
-    },
-    {
-      title: "Price",
-      dataIndex: "giaTien",
-    },
-    {
-      title: "Descrice",
-      dataIndex: "moTaNgan",
-    },
-    {
-      title: "Action",
-      dataIndex: "",
-      key: "x",
-      render: (record) => (
-        <div>
-          <button onClick={() => hanleDeleteJob(record.id)} className="user-action px-2">
-            <AiOutlineDelete />
-          </button>
-          <button className="user-action "></button>
-        </div>
-      ),
-    },
-  ];
-
-  const { data: jobs } = useRequest(() => jobAPI.getJob(),{deps:[isDelete]});
-  console.log(jobs);
+  const { data: typeJobs } = useRequest(() => jobAPI.getTypeJob(), {
+    deps: [isDelete],
+  });
+  console.log(typeJobs);
 
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -159,7 +113,30 @@ const Jobs = () => {
             >
               Jobs Managerment
             </h4>
-           
+            <div className="d-flex ">
+              <button
+                onClick={() => movePath("newtype")}
+                className="col-4 header-nav-btn mb-3 me-4"
+                style={{ width: "250px" }}
+              >
+                Add New Type
+              </button>
+              <form className="col-8">
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    placeholder="Input user name"
+                    style={{
+                      display: "inline-block",
+                      width: "100%",
+                      borderRadius: "4px",
+                    }}
+                    className="form-control"
+                    // onChange={(e) => setValue(e.target.value)}
+                  />
+                </div>
+              </form>
+            </div>
           </Breadcrumb>
           <div
             className="site-layout-background"
@@ -168,7 +145,20 @@ const Jobs = () => {
               minHeight: 360,
             }}
           >
-            <Table columns={columns} dataSource={jobs} />
+            {/* Content */}
+            {typeJobs?.map(type => (
+              <p>{type.tenLoaiCongViec}
+                  {type.dsNhomChiTietLoai?.map(type => (
+                    <p>
+                      {type.tenNhom}
+                      {type.dsChiTietLoai?.map(type => (
+                        <p>{type.tenChiTiet}</p>
+                      ))}
+                    </p>
+                  ))}
+              </p>
+              
+            ))}
           </div>
         </Content>
         <Footer
@@ -181,4 +171,4 @@ const Jobs = () => {
   );
 };
 
-export default Jobs;
+export default TypeJobManage;

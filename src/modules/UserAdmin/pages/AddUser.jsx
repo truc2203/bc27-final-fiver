@@ -253,7 +253,7 @@ const AddUser = () => {
                 </div>
               </div>
 
-              <button className="header-nav-btn">Cập nhật</button>
+              <button className="header-nav-btn">Xác Nhận</button>
             </form>
           </div>
         </Content>

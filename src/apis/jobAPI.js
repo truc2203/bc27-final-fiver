@@ -1,25 +1,31 @@
 import axiosClient from "./axiosClient";
 
 const jobAPI = {
+  getJob: () => {
+    return axiosClient.get("cong-viec");
+  },
   searchJob: (value) => {
-    return axiosClient.get(`cong-viec/lay-danh-sach-cong-viec-theo-ten/${value}`);
+    return axiosClient.get(
+      `cong-viec/lay-danh-sach-cong-viec-theo-ten/${value}`
+    );
   },
-
-  getTypeJob : () => {
-    return axiosClient.get('cong-viec/lay-menu-loai-cong-viec')
+  deleteJob : (id) => {
+    return axiosClient.delete(`cong-viec/${id}`)
+  }, 
+    getTypeJob: () => {
+    return axiosClient.get("cong-viec/lay-menu-loai-cong-viec");
   },
-  getJobDetail : (id) => {
-    return axiosClient.get(`cong-viec/lay-cong-viec-chi-tiet/${id}`)
+  getJobDetail: (id) => {
+    return axiosClient.get(`cong-viec/lay-cong-viec-chi-tiet/${id}`);
   },
-  getComments : (id) => {
-    return axiosClient.get(`binh-luan/lay-binh-luan-theo-cong-viec/${id}`)
+  getComments: (id) => {
+    return axiosClient.get(`binh-luan/lay-binh-luan-theo-cong-viec/${id}`);
   },
-  bookingJob : (value) => {
-    return axiosClient.post(`thue-cong-viec`,value
-    )
+  bookingJob: (value) => {
+    return axiosClient.post(`thue-cong-viec`, value);
   },
-  getSubTypeJob : (id) => {
-    return axiosClient.get(`cong-viec/lay-chi-tiet-loai-cong-viec/${id}`)
+  getSubTypeJob: (id) => {
+    return axiosClient.get(`cong-viec/lay-chi-tiet-loai-cong-viec/${id}`);
   },
 };
 

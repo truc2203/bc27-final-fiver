@@ -27,9 +27,11 @@ function getItem(label, key, icon, children) {
 const items = [
   getItem(<NavLink to="/user">Users Manage</NavLink>, "sub1", <UserOutlined />),
   getItem(
-    <NavLink to="../jobs">Jobs Manage</NavLink>,
+    <NavLink to="/jobs">Jobs Manage</NavLink>,
     "sub2",
-    <VideoCameraOutlined />
+    <VideoCameraOutlined />,[
+      getItem(<NavLink to="/jobs/typejob">Job Type</NavLink>, "sub1", <UserOutlined />),
+    ]
   ),
 ];
 
