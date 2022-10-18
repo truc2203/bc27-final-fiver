@@ -35,7 +35,7 @@ const items = [
   ),
 ];
 
-const User = () => {
+const UserAdmin = () => {
 
   const [value, setValue] = useState(null);
 
@@ -213,4 +213,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default UserAdmin;

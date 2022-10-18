@@ -9,11 +9,17 @@ const jobAPI = {
       `cong-viec/lay-danh-sach-cong-viec-theo-ten/${value}`
     );
   },
-  deleteJob : (id) => {
-    return axiosClient.delete(`cong-viec/${id}`)
-  }, 
-    getTypeJob: () => {
+  deleteJob: (id) => {
+    return axiosClient.delete(`cong-viec/${id}`);
+  },
+  getTypeJob: () => {
     return axiosClient.get("cong-viec/lay-menu-loai-cong-viec");
+  },
+  deleteTypeJob : (id) => {
+    return axiosClient.delete(`/loai-cong-viec/${id}`)
+  },
+  addTypeJob : (value) => {
+    return axiosClient.post(`loai-cong-viec`,value)
   },
   getJobDetail: (id) => {
     return axiosClient.get(`cong-viec/lay-cong-viec-chi-tiet/${id}`);

@@ -39,7 +39,7 @@ const items = [
   ),
 ];
 
-const Jobs = () => {
+const JobsAdmin = () => {
 
   const [isDelete,setIsDelete] = useState(false) 
 
@@ -116,7 +116,6 @@ const Jobs = () => {
   ];
 
   const { data: jobs } = useRequest(() => jobAPI.getJob(),{deps:[isDelete]});
-  console.log(jobs);
 
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -181,4 +180,4 @@ const Jobs = () => {
   );
 };
 
-export default Jobs;
+export default JobsAdmin;

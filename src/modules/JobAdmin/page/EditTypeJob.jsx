@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { Select } from "antd";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
   VideoCameraOutlined,
   UserOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, notification} from "antd";
+import { Breadcrumb, Layout, Menu, notification } from "antd";
 import { useNavigate } from "react-router-dom";
 import UserHello from "../../UserAdmin/UserHello";
+import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
+import { Table } from "antd";
 import jobAPI from "../../../apis/jobAPI";
 import useRequest from "../../../hook/useRequest";
 
@@ -21,8 +25,6 @@ function getItem(label, key, icon, children) {
     label,
   };
 }
-
-
 
 const items = [
   getItem(<NavLink to="/user">Users Manage</NavLink>, "sub1", <UserOutlined />),
@@ -40,38 +42,61 @@ const items = [
   ),
 ];
 
-const TypeJobManage = () => {
-  const [isDelete, setIsDelete] = useState(false);
+const EditTypeJob = () => {
 
   const [collapsed, setCollapsed] = useState(false);
 
+  const [value, setValue] = useState("");
+
+  const { Option } = Select;
+
+  const columns = [
+    {
+      title: "ID",
+      dataIndex: "id",
+    },
+    {
+      title: "Type",
+      dataIndex: "tenNhom",
+    },
+
+    {
+      title: "Action",
+      dataIndex: "",
+      key: "x",
+      render: (record) => (
+        <div>
+          <button
+            // onClick={() => moveEditTypeJob(record)}
+            className="user-action px-2"
+          >
+            <AiOutlineEdit />
+          </button>
+          <button
+            // onClick={() => handleDeletTypeJob(record.id)}
+            className="user-action "
+          >
+            <AiOutlineDelete />
+          </button>
+        </div>
+      ),
+    },
+  ];
+
+  const onChange = (value) => {
+    setValue(value);
+  };
+  const onSearch = (value) => {
+    setValue(value);
+  };
   const navigate = useNavigate();
 
   const movePath = (path) => {
     navigate(path);
   };
 
-  // const hanleDeleteJob = async (id) => {
-  //   try {
-  //     await jobAPI.deleteJob(id)
-  //     setIsDelete(!isDelete)
-  //     notification.success({
-  //       message: `Delete job ${id} successful !`
-  //     })
-  //   } catch (error) {
-  //     notification.error({
-  //       message: `Delete job ${id} failed !`,
-  //       description:error
-  //     })
-  //   }
-
-  // }
-
-  const { data: typeJobs } = useRequest(() => jobAPI.getTypeJob(), {
-    deps: [isDelete],
-  });
-  console.log(typeJobs);
-
+  const { typeJobDedail } = useSelector((state) => state.jobManage);
+  
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
@@ -111,31 +136,10 @@ const TypeJobManage = () => {
               className="text-dark mb-3 col-12"
               style={{ fontSize: "24px", fontWeight: "500" }}
             >
-              Jobs Managerment
+              Jobs Managerment / Edit Type Job
             </h4>
-            <div className="d-flex ">
-              <button
-                onClick={() => movePath("newtype")}
-                className="col-4 header-nav-btn mb-3 me-4"
-                style={{ width: "250px" }}
-              >
-                Add New Type
-              </button>
-              <form className="col-8">
-                <div className="mb-3">
-                  <input
-                    type="text"
-                    placeholder="Input user name"
-                    style={{
-                      display: "inline-block",
-                      width: "100%",
-                      borderRadius: "4px",
-                    }}
-                    className="form-control"
-                    // onChange={(e) => setValue(e.target.value)}
-                  />
-                </div>
-              </form>
+            <div className="d-flex fs-4 text-dark">
+              {typeJobDedail.tenLoaiCongViec}
             </div>
           </Breadcrumb>
           <div
@@ -146,19 +150,24 @@ const TypeJobManage = () => {
             }}
           >
             {/* Content */}
-            {typeJobs?.map(type => (
-              <p>{type.tenLoaiCongViec}
-                  {type.dsNhomChiTietLoai?.map(type => (
-                    <p>
-                      {type.tenNhom}
-                      {type.dsChiTietLoai?.map(type => (
-                        <p>{type.tenChiTiet}</p>
-                      ))}
-                    </p>
-                  ))}
-              </p>
-              
-            ))}
+            <Select
+              className=""
+              showSearch
+              placeholder="Select a person"
+              optionFilterProp="children"
+              onChange={onChange}
+              onSearch={onSearch}
+              filterOption={(input, option) =>
+                option.children.toLowerCase().includes(input.toLowerCase())
+              }
+            >
+              {typeJobDedail.dsNhomChiTietLoai.map((type) => (
+                <option key={type.id} value={type.tenNhom}>
+                  {type.tenNhom}
+                </option>
+              ))}
+            </Select>
+            {/* <Table className="mt-5" columns={columns} dataSource={type} /> */}
           </div>
         </Content>
         <Footer
@@ -171,4 +180,4 @@ const TypeJobManage = () => {
   );
 };
 
-export default TypeJobManage;
+export default EditTypeJob;
