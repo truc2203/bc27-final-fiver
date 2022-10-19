@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Select } from "antd";
-import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
   VideoCameraOutlined,
@@ -9,7 +7,7 @@ import {
   UnorderedListOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, notification } from "antd";
+import { Breadcrumb, Layout, Menu, notification, Button, Modal } from "antd";
 import { useNavigate } from "react-router-dom";
 import UserHello from "../../UserAdmin/UserHello";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
@@ -44,16 +42,85 @@ const items = [
 ];
 
 const EditTypeJob = () => {
+  // Modal Ant
 
-  const {id} = useParams()
+  const [open, setOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [modalText, setModalText] = useState(
+    "Deleting a job type will also delete all the jobs inside"
+  );
+  const showModal = () => {
+    setOpen(true);
+  };
 
-  // const {data:subType} = useRequest(() => jobAPI.getSubTypeJob(id))
+  const handleDeletSubTypeJob = async (id, name) => {
+    try {
+      await jobAPI.deleteSubTypeJob(id);
+      notification.success({
+        message: `Delete ${name} Successful!`,
+      });
+      setIsDelete(!isDelete);
+      setModalText("Deleting a job type will also delete all the jobs inside");
+      setConfirmLoading(true);
+      setTimeout(() => {
+        setOpen(false);
+        setConfirmLoading(false);
+      }, 500);
+    } catch (error) {
+      notification.error({
+        message: "Delete is failed!",
+      });
+    }
+  };
+  const handleCancel = () => {
+    console.log("Clicked cancel button");
+    setOpen(false);
+  };
+  /////
+  const { id } = useParams();
+
+  const navigate = useNavigate();
+
   const [collapsed, setCollapsed] = useState(false);
 
   const [valueSub, setValueSub] = useState("");
 
-  const [isAdd,setIsAdd] = useState(false)
+  const [isAdd, setIsAdd] = useState(false);
 
+  const [isDelete, setIsDelete] = useState(false);
+
+  const { data: subType } = useRequest(
+    async () => await jobAPI.getSubTypeJob(id),
+    { deps: [isAdd, isDelete] }
+  );
+
+  // const raw = async () => {
+  //   let i = 0
+  //   let arr = []
+  //     while(i  <200 )
+  //     {
+  //       try {
+  //         const data = await jobAPI.testAPI(i);
+  //         if(data && data.tenChiTiet !== undefined)
+  //         {
+  //           const value = {...data,id:data.id,tenChiTiet:data.tenChiTiet}
+  //           arr.push(value)
+  //           i++
+  //         }
+  //         else{
+  //           i++
+  //         }
+  //         console.log(arr);
+  //       } catch (error) {
+  //         console.log(error);
+  //         i++
+  //       }
+  //     }
+      
+  // };
+  // raw()
+  // await call API success
+  const newSubType = subType ? subType[0] : {};
 
   const columns = [
     {
@@ -106,36 +173,37 @@ const EditTypeJob = () => {
           >
             <AiOutlineEdit />
           </button>
-          <button
-            // onClick={() => handleDeletTypeJob(record.id)}
-            className="user-action "
-          >
+          <button onClick={() => showModal()} className="user-action ">
             <AiOutlineDelete />
           </button>
+
+          <Modal
+            title="Warning"
+            open={open}
+            onOk={() => handleDeletSubTypeJob(record.id, record.tenNhom)}
+            confirmLoading={confirmLoading}
+            onCancel={handleCancel}
+          >
+            <p>{modalText}</p>
+          </Modal>
         </div>
       ),
     },
   ];
 
-  const navigate = useNavigate();
-
   const movePath = (path) => {
     navigate(path);
   };
 
-  const { typeJobDedail } = useSelector((state) => state.jobManage);
-
   const defaultType = {
-    id:0,
-    tenChiTiet:valueSub,
-    maLoaiCongViec:Number(id),
-    danhSachChiTiet:[
-
-    ]
-  }
+    id: 0,
+    tenChiTiet: valueSub,
+    maLoaiCongViec: Number(id),
+    danhSachChiTiet: [],
+  };
 
   const handleAddSubType = async (value) => {
-    const index = typeJobDedail.dsNhomChiTietLoai.findIndex(
+    const index = newSubType.dsNhomChiTietLoai.findIndex(
       (i) => i.tenNhom === value.tenChiTiet
     );
     if (!value.tenChiTiet) {
@@ -162,7 +230,7 @@ const EditTypeJob = () => {
         });
       }
     }
-  }
+  };
 
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -206,7 +274,7 @@ const EditTypeJob = () => {
               Jobs Managerment / Edit Type Job
             </h4>
             <div className="d-flex fs-4 text-dark col-12 pb-3">
-              {typeJobDedail.tenLoaiCongViec}
+              {newSubType.tenLoaiCongViec}
             </div>
             <div className="d-flex">
               <form className="col-8">
@@ -245,7 +313,7 @@ const EditTypeJob = () => {
             <Table
               className="mt-5"
               columns={columns}
-              dataSource={typeJobDedail.dsNhomChiTietLoai}
+              dataSource={newSubType.dsNhomChiTietLoai}
             />
           </div>
         </Content>

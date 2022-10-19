@@ -44,14 +44,6 @@ body {
   margin: auto;
 }
 
-
-
-
-
-// .login-heading {
-//   @include txtStyle($color-b, $fs-3, $fw-1);
-// }
-
 // Overwrite library
 .ant-row {
   display: block;
@@ -76,7 +68,12 @@ body {
 .ant-form-item-label > label {
   @include txtStyle($color-w, $fs-2, $fw-1);
 }
-.ant-btn-primary {
+
+.ant-btn-primary{
+  color: #000232;
+}
+
+.login-wrapper .ant-btn-primary {
   width: 100%;
   margin: auto;
   font-size: 16px;
@@ -99,6 +96,10 @@ body {
   -moz-transition: all 0.4s;
   transition: all 0.4s;
   letter-spacing: 2px;
+}
+
+.login-wrapper .ant-btn-primary:hover{
+  background-color: #000232;
 }
 .ant-form-item-control {
   margin: 0;

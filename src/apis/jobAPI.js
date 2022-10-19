@@ -36,6 +36,13 @@ const jobAPI = {
   addSubTypeJob : (value) => {
     return axiosClient.post(`chi-tiet-loai-cong-viec/them-nhom-chi-tiet-loai`,value)
   },
+  deleteSubTypeJob : (id) => {
+    return axiosClient.delete(`chi-tiet-loai-cong-viec/${id}`)
+  },
+  //Test data
+  testAPI : (id) => {
+    return axiosClient.get(`chi-tiet-loai-cong-viec/${id}`)
+  }
 };
 
 export default jobAPI;
