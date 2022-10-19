@@ -101,7 +101,7 @@ const Register = () => {
                     <div>
                       <input
                         className="ant-input mb-3"
-                        type="text"
+                        type="password"
                         placeholder="Password"
                         {...register("password", {
                           required: {

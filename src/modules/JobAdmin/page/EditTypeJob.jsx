@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Select } from "antd";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -6,6 +7,7 @@ import {
   VideoCameraOutlined,
   UserOutlined,
   UnorderedListOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, notification } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +16,6 @@ import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { Table } from "antd";
 import jobAPI from "../../../apis/jobAPI";
 import useRequest from "../../../hook/useRequest";
-
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -44,22 +45,55 @@ const items = [
 
 const EditTypeJob = () => {
 
+  const {id} = useParams()
+
+  // const {data:subType} = useRequest(() => jobAPI.getSubTypeJob(id))
   const [collapsed, setCollapsed] = useState(false);
 
-  const [value, setValue] = useState("");
+  const [valueSub, setValueSub] = useState("");
 
-  const { Option } = Select;
+  const [isAdd,setIsAdd] = useState(false)
+
 
   const columns = [
     {
       title: "ID",
       dataIndex: "id",
     },
+
     {
-      title: "Type",
+      title: "Sub Type",
       dataIndex: "tenNhom",
     },
-
+    {
+      title: "Avatar",
+      dataIndex: "",
+      key: "i",
+      render: (record) => (
+        <img
+          style={{ width: "48px", height: "48px" }}
+          src={record.hinhAnh}
+          alt=""
+        />
+      ),
+    },
+    {
+      title: "Jobs",
+      dataIndex: "",
+      key: "y",
+      render: (record) => (
+        <>
+          {record.dsChiTietLoai.map((jobs) => (
+            <p key={jobs.id} className="d-flex align-items-baseline">
+              {jobs.tenChiTiet}{" "}
+              <button className="d-flex align-items-center ps-3 user-action">
+                <CloseOutlined />
+              </button>
+            </p>
+          ))}
+        </>
+      ),
+    },
     {
       title: "Action",
       dataIndex: "",
@@ -83,12 +117,6 @@ const EditTypeJob = () => {
     },
   ];
 
-  const onChange = (value) => {
-    setValue(value);
-  };
-  const onSearch = (value) => {
-    setValue(value);
-  };
   const navigate = useNavigate();
 
   const movePath = (path) => {
@@ -96,7 +124,46 @@ const EditTypeJob = () => {
   };
 
   const { typeJobDedail } = useSelector((state) => state.jobManage);
-  
+
+  const defaultType = {
+    id:0,
+    tenChiTiet:valueSub,
+    maLoaiCongViec:Number(id),
+    danhSachChiTiet:[
+
+    ]
+  }
+
+  const handleAddSubType = async (value) => {
+    const index = typeJobDedail.dsNhomChiTietLoai.findIndex(
+      (i) => i.tenNhom === value.tenChiTiet
+    );
+    if (!value.tenChiTiet) {
+      notification.warning({
+        message: `Type is required !`,
+      });
+    } else {
+      if (index === -1) {
+        try {
+          await jobAPI.addSubTypeJob(value);
+          notification.success({
+            message: `Add Sub Type Successful!`,
+          });
+          setIsAdd(!isAdd);
+        } catch (error) {
+          notification.error({
+            message: "Add Sub Type Failed!",
+            description: error,
+          });
+        }
+      } else {
+        notification.error({
+          message: `Sub Type is already exist !`,
+        });
+      }
+    }
+  }
+
   const user = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
@@ -138,8 +205,32 @@ const EditTypeJob = () => {
             >
               Jobs Managerment / Edit Type Job
             </h4>
-            <div className="d-flex fs-4 text-dark">
+            <div className="d-flex fs-4 text-dark col-12 pb-3">
               {typeJobDedail.tenLoaiCongViec}
+            </div>
+            <div className="d-flex">
+              <form className="col-8">
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    placeholder="Input a new sub type"
+                    style={{
+                      display: "inline-block",
+                      width: "100%",
+                      borderRadius: "4px",
+                    }}
+                    className="form-control"
+                    onChange={(e) => setValueSub(e.target.value)}
+                  />
+                </div>
+              </form>
+              <button
+                onClick={() => handleAddSubType(defaultType)}
+                className="col-4 header-nav-btn mb-3 me-4"
+                style={{ width: "160px" }}
+              >
+                Add New Type
+              </button>
             </div>
           </Breadcrumb>
           <div
@@ -150,24 +241,12 @@ const EditTypeJob = () => {
             }}
           >
             {/* Content */}
-            <Select
-              className=""
-              showSearch
-              placeholder="Select a person"
-              optionFilterProp="children"
-              onChange={onChange}
-              onSearch={onSearch}
-              filterOption={(input, option) =>
-                option.children.toLowerCase().includes(input.toLowerCase())
-              }
-            >
-              {typeJobDedail.dsNhomChiTietLoai.map((type) => (
-                <option key={type.id} value={type.tenNhom}>
-                  {type.tenNhom}
-                </option>
-              ))}
-            </Select>
-            {/* <Table className="mt-5" columns={columns} dataSource={type} /> */}
+
+            <Table
+              className="mt-5"
+              columns={columns}
+              dataSource={typeJobDedail.dsNhomChiTietLoai}
+            />
           </div>
         </Content>
         <Footer
