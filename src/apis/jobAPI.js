@@ -39,6 +39,15 @@ const jobAPI = {
   deleteSubTypeJob : (id) => {
     return axiosClient.delete(`chi-tiet-loai-cong-viec/${id}`)
   },
+  renameTypeJob : (id,value) => {
+    return axiosClient.put(`loai-cong-viec/${id}`,value)
+  },
+  getSubTypeJobById : (id) => {
+    return axiosClient.get(`chi-tiet-loai-cong-viec/${id}`)
+  },
+  editSubTypeJob : (id,form) => {
+    return axiosClient.post(`chi-tiet-loai-cong-viec/upload-hinh-nhom-loai-cong-viec/${id}`,form)
+  },
   //Test data
   testAPI : (id) => {
     return axiosClient.get(`chi-tiet-loai-cong-viec/${id}`)

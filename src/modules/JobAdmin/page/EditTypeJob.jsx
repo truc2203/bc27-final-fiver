@@ -14,6 +14,7 @@ import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { Table } from "antd";
 import jobAPI from "../../../apis/jobAPI";
 import useRequest from "../../../hook/useRequest";
+import axios from "axios";
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -89,6 +90,10 @@ const EditTypeJob = () => {
 
   const [isDelete, setIsDelete] = useState(false);
 
+  const [isOpen,setIsOpen] = useState(false)
+
+  const [valueType,setvalueType] = useState("")
+
   const { data: subType } = useRequest(
     async () => await jobAPI.getSubTypeJob(id),
     { deps: [isAdd, isDelete] }
@@ -97,7 +102,7 @@ const EditTypeJob = () => {
   // const raw = async () => {
   //   let i = 0
   //   let arr = []
-  //     while(i  <200 )
+  //     while(i  < 200)
   //     {
   //       try {
   //         const data = await jobAPI.testAPI(i);
@@ -112,11 +117,10 @@ const EditTypeJob = () => {
   //         }
   //         console.log(arr);
   //       } catch (error) {
-  //         console.log(error);
   //         i++
   //       }
   //     }
-      
+
   // };
   // raw()
   // await call API success
@@ -168,7 +172,7 @@ const EditTypeJob = () => {
       render: (record) => (
         <div>
           <button
-            // onClick={() => moveEditTypeJob(record)}
+            onClick={() => moveEditSubTypeJob(record)}
             className="user-action px-2"
           >
             <AiOutlineEdit />
@@ -202,6 +206,27 @@ const EditTypeJob = () => {
     danhSachChiTiet: [],
   };
 
+  const newTypeName = {
+    id:0,
+    tenLoaiCongViec : valueType
+  }
+
+  const handleRenameType =async (id,newTypeName) => {
+      try {
+          await jobAPI.renameTypeJob(id,newTypeName)
+          setIsOpen(!isOpen)
+          setIsAdd(!isAdd)
+          notification.success({
+            message:'Rename Successful!'
+          })
+      } catch (error) {
+        notification.error({
+          message:'Rename Failed!',
+          description:error
+        })
+      }
+  }
+
   const handleAddSubType = async (value) => {
     const index = newSubType.dsNhomChiTietLoai.findIndex(
       (i) => i.tenNhom === value.tenChiTiet
@@ -231,6 +256,11 @@ const EditTypeJob = () => {
       }
     }
   };
+
+  const moveEditSubTypeJob = (value) => {
+    movePath(`/jobs/typejob/editsubtype/${value.id}`)
+  }
+
 
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -273,8 +303,29 @@ const EditTypeJob = () => {
             >
               Jobs Managerment / Edit Type Job
             </h4>
-            <div className="d-flex fs-4 text-dark col-12 pb-3">
-              {newSubType.tenLoaiCongViec}
+            <div className="d-flex fs-4 text-dark col-12 pb-3 align-items-baseline">
+              <p className="me-3">{newSubType.tenLoaiCongViec}</p>
+              <button onClick={() => setIsOpen(!isOpen) }>
+                <AiOutlineEdit />
+              </button>
+              <div style={{display : isOpen ? 'flex' : 'none'}} class="input-group mb-3 ms-3 w-25">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Input a new name"
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
+                  onChange={(e) => setvalueType(e.target.value)}
+                />
+                <button
+                onClick={() => handleRenameType(id,newTypeName)}
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon2"
+                >
+                  Confirm
+                </button>
+              </div>
             </div>
             <div className="d-flex">
               <form className="col-8">
