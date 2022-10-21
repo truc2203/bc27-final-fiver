@@ -52,7 +52,7 @@ const CreateJob = () => {
       danhGia: 0,
       giaTien: 0,
       nguoiTao: user.user.id,
-      hinhAnh: '595593-abstract-3D-digital_art.jpg',
+      hinhAnh: 'https://assets-global.website-files.com/606a802fcaa89bc357508cad/62291b5f923ec472a68d77ea_Blog%20-%201%20(2).png',
       moTa: "",
       maChiTietLoaiCongViec: 2,
       moTaNgan: "",
@@ -61,9 +61,9 @@ const CreateJob = () => {
     mode: "onTouched",
   });
 
-  const onSubmit = async (value,id) => {
+  const onSubmit = async (value,) => {
     try {
-      await jobAPI.addJob(value,1);
+      await jobAPI.addJob(value);
       notification.success({
         message: "Add Job Successful!",
       });
@@ -77,24 +77,20 @@ const CreateJob = () => {
   };
 
 
-  const handleChangeImage = (evt) => {
-    // Đối với input type là file, có sẽ không dùng event.target.value mà thay thể bằng event.target.files
-    const file = evt.target.files[0];
+  // const handleChangeImage = (evt) => {
+    
+  //   const file = evt.target.files[0];
 
-    if (!file) return;
+  //   if (!file) return;
 
-    // Lưu file vào field hinhAnh của hook form
-    setValue("hinhAnh", file);
+  //   setValue("hinhAnh", file);
 
-    // Xử lý hiển thị hình ảnh ra giao diện
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file); // bất đồng bộ
-    fileReader.onload = (evt) => {
-      // Đọc file thành công
-      // evt.target.result: string base64
-      setImgPreview(evt.target.result);
-    };
-  };
+  //   const fileReader = new FileReader();
+  //   fileReader.readAsDataURL(file); 
+  //   fileReader.onload = (evt) => {
+  //     setImgPreview(evt.target.result);
+  //   };
+  // };
 
   useEffect(() => {
     if (user === null || user.user.role !== "ADMIN") {
@@ -171,8 +167,7 @@ const CreateJob = () => {
                 })}
               />
             </div>
-            <div className="pb-4">
-                {/* <input cl5ssName="inputAddMovie w-75" type="file" placeholder="Hình Ảnh" {...register("hinhAnh")} /> */}
+            {/* <div className="pb-4">
                 <div className="d-inline-block w-15 text-end">Hình Ảnh : </div>
                 <input
                   className="ms-1 "
@@ -181,7 +176,7 @@ const CreateJob = () => {
                   onChange={handleChangeImage}
                 />
                 {imgPreview && <img src={imgPreview} alt="preview" style={{width:'200px', height:'260px'}} />}
-              </div>
+              </div> */}
           </div>
          
         </div>

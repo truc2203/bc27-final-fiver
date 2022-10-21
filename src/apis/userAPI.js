@@ -33,7 +33,7 @@ const userAPI = {
     return axiosClient.get(`thue-cong-viec/${id}`);
   },
   getBookedById: () => {
-    return axiosClient.get(`thue-cong-viec/lay-danh-sach-da-thue`);
+    return axiosClient.get(`cong-viec/?nguoiTao=30`);
   },
 
 };

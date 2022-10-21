@@ -9,15 +9,13 @@ const jobAPI = {
       `cong-viec/lay-danh-sach-cong-viec-theo-ten/${value}`
     );
   },
-  addJob : (value,id) => {
+  addJob : (value) => {
+    return axiosClient.post(`cong-viec`,value)
+  },
+  editJob : (value,id) => {
     const formData = new FormData();
-    for (let key in value) {
-      if (key === "id") continue;
-      formData.append(key, value[key]);
-    }
-    formData.append("id", 1058);
-    console.log(formData.get('hinhAnh'));
-    return axiosClient.post(`cong-viec/upload-hinh-cong-viec/1058`,formData)
+    formData.append("formFile", value.hinhAnh);
+    return axiosClient.post(`cong-viec/upload-hinh-cong-viec/${id}`,formData)
   },
   deleteJob: (id) => {
     return axiosClient.delete(`cong-viec/${id}`);

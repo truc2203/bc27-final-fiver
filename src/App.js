@@ -20,6 +20,7 @@ import TypeJobAdmin from "./modules/JobAdmin/page/TypeJobAdmin";
 import EditTypeJob from "./modules/JobAdmin/page/EditTypeJob";
 import EditSubTypeJob from "./modules/JobAdmin/page/EditSubTypeJob";
 import CreateJob from "./modules/Profile/pages/CreateJob";
+import EditJob from "./modules/Profile/pages/EditJob";
 function App() {
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
@@ -30,7 +31,8 @@ function App() {
           <Route path="detail/:id/:name" element={<JobDetail />} />
           <Route path="typejob/:job" element={<TypeJob />} />
           <Route path="profile/:id" element={<Profile />} />
-          <Route path="createJob" element={<CreateJob />} />
+          <Route path="profile/createJob" element={<CreateJob />} />
+          <Route path="profile/editJob/:id" element={<EditJob />} />
         </Route>
         <Route path="/" element={<Admin />}>
           <Route path="user" element={<UserAdmin />}/>
@@ -40,8 +42,6 @@ function App() {
           <Route path="jobs/typejob" element={<TypeJobAdmin/>} />
           <Route path="jobs/typejob/edittype/:id" element={<EditTypeJob/>} />
           <Route path="jobs/typejob/editsubtype/:id" element={<EditSubTypeJob/>} />
-
-
         </Route>
         <Route path="/" element={<Auth />}>
           <Route path="login" element={<Login />} />
