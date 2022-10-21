@@ -22,8 +22,7 @@ const Information = ({userId}) => {
   const { data: user } = useRequest(() => userAPI.getUserById(userId), {
     deps: [valueSkill, valueCer],
   });
-  console.log(user);
-  console.log(user);
+
   const defaultValue = {
     name: user?.name,
     email: user?.email,
@@ -74,7 +73,7 @@ const Information = ({userId}) => {
       >
         <div className="profile-user-info pb-4">
           <div className="profile-user-img">
-            <img className="profile-user-pic" src='http://sc04.alicdn.com/kf/Hc3e61591078043e09dba7808a6be5d21n.jpg' alt="" />
+            <img className="profile-user-pic" src={user?.avatar} alt="" />
           </div>
           <div className="profile-user-label">
             <p>{user?.name}</p>

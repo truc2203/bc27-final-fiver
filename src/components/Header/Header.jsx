@@ -17,18 +17,6 @@ const Header = () => {
   const [value, setValue] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [isLogout, setisLogout] = useState(false)
-  // const [fix, setFix] = useState(false)
-
-  // const setFixed = () => {
-  //   if(window.scrollY >= 100)
-  //   {
-  //     setFix(true)
-  //   } else {
-  //     setFix(false)
-  //   }
-  // }
-
-  // window.addEventListener('scroll',setFixed())
 
   const navigate = useNavigate();
 
@@ -49,12 +37,12 @@ const Header = () => {
 
   const { data: typeJob } = useRequest(() => jobAPI.getTypeJob());
 
-
   const handleLogout = () => {
     setisLogout(!isLogout)
     dispatch(logout())
     navigate('../')
   }
+
 
   return (
     <div className="header-nav-fixed">
@@ -148,7 +136,7 @@ const Header = () => {
                   {" "}
                   <img
                     className="header-nav-avatar rounded-circle"
-                    src="https://fiverr-res.cloudinary.com/t_mobile_web_2,q_auto,f_auto/gigs/142887567/original/850ee22c684fd9c1f572ef5f1cc8248013080eeb.png"
+                    src={user.user?.avatar === undefined  ? '' : user.user.avatar}
                     alt=""
                   />
                 </button>
