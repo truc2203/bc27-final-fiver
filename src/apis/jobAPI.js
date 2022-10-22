@@ -23,6 +23,13 @@ const jobAPI = {
   getTypeJob: () => {
     return axiosClient.get("cong-viec/lay-menu-loai-cong-viec");
   },
+  getTypeJobById : (id) => {
+    if(!id)
+    {
+    return axiosClient.get("cong-viec/lay-menu-loai-cong-viec");
+    }
+    return axiosClient.get(`cong-viec/lay-chi-tiet-loai-cong-viec/${id}`)
+  },
   deleteTypeJob : (id) => {
     return axiosClient.delete(`/loai-cong-viec/${id}`)
   },
