@@ -103,25 +103,25 @@ const TypeJobAdmin = () => {
     );
     if (!value.tenLoaiCongViec) {
       notification.warning({
-        message: `Type is required !`,
+        message: `Tên công việc không được để trống !`,
       });
     } else {
       if (index === -1) {
         try {
           await jobAPI.addTypeJob(value);
           notification.success({
-            message: `Add Type Successful!`,
+            message: `Thêm công việc thành công!`,
           });
           setIsAdd(!isAdd);
         } catch (error) {
           notification.error({
-            message: "Add Type Failed!",
+            message: "Thêm công việc thất bại!",
             description: error,
           });
         }
       } else {
         notification.error({
-          message: `Type is already exist !`,
+          message: `Công việc đã tồn tại !`,
         });
       }
     }

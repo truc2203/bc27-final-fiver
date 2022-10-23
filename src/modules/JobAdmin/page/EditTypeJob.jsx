@@ -99,31 +99,6 @@ const EditTypeJob = () => {
     { deps: [isAdd, isDelete] }
   );
 
-  // const raw = async () => {
-  //   let i = 0
-  //   let arr = []
-  //     while(i  < 200)
-  //     {
-  //       try {
-  //         const data = await jobAPI.testAPI(i);
-  //         if(data && data.tenChiTiet !== undefined)
-  //         {
-  //           const value = {...data,id:data.id,tenChiTiet:data.tenChiTiet}
-  //           arr.push(value)
-  //           i++
-  //         }
-  //         else{
-  //           i++
-  //         }
-  //         console.log(arr);
-  //       } catch (error) {
-  //         i++
-  //       }
-  //     }
-
-  // };
-  // raw()
-  // await call API success
   const newSubType = subType ? subType[0] : {};
 
   const columns = [
@@ -217,11 +192,11 @@ const EditTypeJob = () => {
           setIsOpen(!isOpen)
           setIsAdd(!isAdd)
           notification.success({
-            message:'Rename Successful!'
+            message:'Đổi tên thành công!'
           })
       } catch (error) {
         notification.error({
-          message:'Rename Failed!',
+          message:'Đổi tên thất bại!',
           description:error
         })
       }
@@ -233,25 +208,25 @@ const EditTypeJob = () => {
     );
     if (!value.tenChiTiet) {
       notification.warning({
-        message: `Type is required !`,
+        message: `Tên công việc phụ không được để trống !`,
       });
     } else {
       if (index === -1) {
         try {
           await jobAPI.addSubTypeJob(value);
           notification.success({
-            message: `Add Sub Type Successful!`,
+            message: `Thêm công việc phụ thành công!`,
           });
           setIsAdd(!isAdd);
         } catch (error) {
           notification.error({
-            message: "Add Sub Type Failed!",
+            message: "Thêm công việc phụ thất bại!",
             description: error,
           });
         }
       } else {
         notification.error({
-          message: `Sub Type is already exist !`,
+          message: `Tên công việc phụ đã tồn tại !`,
         });
       }
     }

@@ -1,98 +1,62 @@
-import React, { useState, useEffect } from "react";
-import authAPI from "../../../apis/authAPI";
-import { NavLink, useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { VideoCameraOutlined, UserOutlined } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, notification } from "antd";
-
+import {notification } from "antd";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import jobAPI from "../../../apis/jobAPI";
 
-const { Header, Content, Footer, Sider } = Layout;
-
-function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
 
 const EditJob = () => {
-  const items = [
-    getItem(
-      <NavLink to="/user">Users Manage</NavLink>,
-      "sub1",
-      <UserOutlined />
-    ),
-    getItem(
-      <NavLink to="../jobs">Jobs Manage</NavLink>,
-      "sub2",
-      <VideoCameraOutlined />
-    ),
-  ];
-
+ 
   const user = JSON.parse(localStorage.getItem("user"));
 
-  const {id :jobId} = useParams()
+  const { id: jobId } = useParams();
 
-  const [collapsed, setCollapsed] = useState(false);
+  const {jobDetail} = useSelector((state) => state.jobManage)
 
   const navigate = useNavigate();
 
-  const [imgPreview, setImgPreview] = useState("");
 
   const movePath = (path) => {
     navigate(path);
   };
 
-  const { register, handleSubmit,setValue } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       id: 0,
-      tenCongViec: "",
+      tenCongViec:jobDetail.tenCongViec,
       danhGia: 0,
-      giaTien: 0,
+      giaTien: jobDetail.giaTien,
+      hinhAnh:jobDetail.hinhAnh,
       nguoiTao: user.user.id,
-      hinhAnh: 'https://assets-global.website-files.com/606a802fcaa89bc357508cad/62291b5f923ec472a68d77ea_Blog%20-%201%20(2).png',
-      moTa: "",
-      maChiTietLoaiCongViec: 2,
-      moTaNgan: "",
+      moTa: jobDetail.moTa,
+      maChiTietLoaiCongViec: jobDetail.maChiTietLoaiCongViec,
+      moTaNgan: jobDetail.moTaNgan,
       saoCongViec: 0,
     },
     mode: "onTouched",
   });
 
-  const onSubmit = async (value,id) => {
+  const onSubmit = async (value) => {
     try {
-      await jobAPI.editJob(value,jobId);
+      await jobAPI.editInfoJob(jobId,value)
       notification.success({
-        message: "Add Job Successful!",
+        message: "Cập nhật thông tin công việc thành công!",
       });
       movePath(`../profile/${user.user.id}`);
     } catch (error) {
       notification.error({
-        message: "Add Job Failed!",
+        message: "Cập nhật thông tin công việc thất bại",
         description: error,
       });
     }
   };
 
-
-  const handleChangeImage = (evt) => {
-    
-    const file = evt.target.files[0];
-
-    if (!file) return;
-
-    setValue("hinhAnh", file);
-
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file); 
-    fileReader.onload = (evt) => {
-      setImgPreview(evt.target.result);
-    };
-  };
 
   useEffect(() => {
     if (user === null || user.user.role !== "ADMIN") {
@@ -105,28 +69,140 @@ const EditJob = () => {
 
   return (
     <div className="m-container">
-      <div className="pb-5"></div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="d-flex justify-content-center">
-          <div className="col-6 m-2">
-
-            <div className="pb-4">
-                <div className="d-inline-block w-15 text-end">Hình Ảnh : </div>
-                <input
-                  className="ms-1 "
-                  type="file"
-                  placeholder="Hình Ảnh"
-                  onChange={handleChangeImage}
-                />
-                {imgPreview && <img src={imgPreview} alt="preview" style={{width:'320px', height:'240px'}} />}
+      <div className="p-5">
+        <div className="d-flex justify-content-center create-box">
+          <form className="border p-4" onSubmit={handleSubmit(onSubmit)}>
+            <div className="d-flex justify-content-center col-12 pb-5">
+              <div className="d-flex col-12">
+                <div className="d-flex flex-column col-3 pe-4">
+                  <p className="jobDetail-gig">Gig Title</p>
+                  <p>
+                    As your Gig storefront, your title is the most important
+                    place to include keywords that buyers would likely use to
+                    search for a service like yours.
+                  </p>
+                </div>
+                <div className="pb-4 d-flex flex-column justify-content-end align-items-baseline col-9 ps-4">
+                  <input
+                    style={{ height: "80px" }}
+                    className="form-control w-100"
+                    type="text"
+                    defaultValue={jobDetail?.tenCongViec}
+                    placeholder="I will do something I'm really good at"
+                    {...register("tenCongViec", {
+                      required: {
+                        value: true,
+                        message: "Title is required",
+                      },
+                      minLength: {
+                        value: 5,
+                        message: "Tilte must have 5 - 80 characters",
+                      },
+                      maxLength: {
+                        value: 80,
+                        message: "Tilte must have 5 - 80 characters",
+                      },
+                    })}
+                  />
+                  {errors.tenCongViec && (
+                    <p className="pb-3" style={{ color: "red" }}>
+                      {errors.tenCongViec.message}
+                    </p>
+                  )}
+                </div>
               </div>
-          </div>
-         
+            </div>
+
+            <div className="d-flex justify-content-center col-12 mb-4">
+              <div className="d-flex col-12">
+                <div className="d-flex col-3 pe-4  flex-column">
+                  <p className="jobDetail-gig">Price</p>
+                  <p>
+                    Enter search terms you feel your buyers will use when
+                    looking for your service.
+                  </p>
+                </div>
+                <div className="pb-4 col-9 ps-4 d-flex flex-column justify-content-end align-items-baseline">
+                  <input
+                    className="form-control w-100"
+                    type="text"
+                    defaultValue={jobDetail?.giaTien}
+                    placeholder="Price"
+                    {...register("giaTien", {
+                      required: {
+                        value: true,
+                        message: "Price is required",
+                      },
+                      pattern: {
+                        value: /[0-9]/,
+                        message: "Price must be a number",
+                      },
+                    })}
+                  />
+                  {errors.giaTien && (
+                    <p className="pb-3" style={{ color: "red" }}>
+                      {errors.giaTien.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="d-flex justify-content-center col-12 mb-4">
+              <div className="d-flex col-12">
+                <div className="d-flex col-3 pe-4  flex-column">
+                  <p className="jobDetail-gig">Descrice</p>
+                  <p>
+                    Enter search terms you feel your buyers will use when
+                    looking for your service.
+                  </p>
+                </div>
+                <div className="pb-4 col-9 ps-4 d-flex justify-content-end align-items-baseline">
+                  <input
+                    defaultValue={jobDetail?.moTa}
+                    className="form-control w-100"
+                    type="text"
+                    placeholder="Descrice"
+                    {...register("moTa", {
+                      required: {
+                        value: true,
+                        message: "",
+                      },
+                    })}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="d-flex justify-content-center col-12 mb-4">
+              <div className="d-flex col-12">
+                <div className="d-flex col-3  flex-column">
+                  <p className="jobDetail-gig">Sort Descrice</p>
+                  <p>
+                    Enter search terms you feel your buyers will use when
+                    looking for your service.
+                  </p>
+                </div>
+                <div className="pb-4 col-9 ps-4 d-flex justify-content-end align-items-baseline">
+                  <input
+                    defaultValue={jobDetail?.moTaNgan}
+                    className="form-control w-100"
+                    type="text"
+                    placeholder="Sort Descrice"
+                    {...register("moTaNgan", {
+                      required: {
+                        value: true,
+                        message: "",
+                      },
+                    })}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="text-center pb-4">
+              <button className="header-nav-btn">Xác Nhận</button>
+            </div>
+          </form>
         </div>
-        <div className="text-center pb-4">
-          <button className="header-nav-btn">Xác Nhận</button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };

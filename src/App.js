@@ -21,6 +21,8 @@ import EditTypeJob from "./modules/JobAdmin/page/EditTypeJob";
 import EditSubTypeJob from "./modules/JobAdmin/page/EditSubTypeJob";
 import CreateJob from "./modules/Profile/pages/CreateJob";
 import EditJob from "./modules/Profile/pages/EditJob";
+import EditGallary from "./modules/Profile/pages/EditGallary";
+import Settings from "./modules/Profile/component/Settings";
 function App() {
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
@@ -33,6 +35,9 @@ function App() {
           <Route path="profile/:id" element={<Profile />} />
           <Route path="profile/createJob" element={<CreateJob />} />
           <Route path="profile/editJob/:id" element={<EditJob />} />
+          <Route path="profile/editGallary/:id" element={<EditGallary />} />
+          <Route path="profile/account/:name" element={<Settings />} />
+
         </Route>
         <Route path="/" element={<Admin />}>
           <Route path="user" element={<UserAdmin />}/>

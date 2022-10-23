@@ -32,8 +32,8 @@ const userAPI = {
   getBookedByUser: (id) => {
     return axiosClient.get(`thue-cong-viec/${id}`);
   },
-  getBookedById: () => {
-    return axiosClient.get(`cong-viec/?nguoiTao=30`);
+  getBookedById: (id) => {
+    return axiosClient.get(`cong-viec/?nguoiTao=${id}`);
   },
 
 };

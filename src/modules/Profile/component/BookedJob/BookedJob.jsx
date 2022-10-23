@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import useRequest from "../../../../hook/useRequest";
 import userAPI from "../../../../apis/userAPI";
 import { BiDetail, BiEdit, BiTrash } from "react-icons/bi";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 import jobAPI from "../../../../apis/jobAPI";
 import { notification } from "antd";
 const BookedJob = ({ userId }) => {
   const [isDelete,setIsDelete] = useState(false)
-
-  const { data: booked } = useRequest(() => userAPI.getBookedById(),{deps:[isDelete]});
+  const { data: booked } = useRequest(() => userAPI.getBookedById(userId),{deps:[isDelete]});
   const navigate = useNavigate()
   const movePath = (path) => {
     navigate(`../${path}`)
@@ -29,6 +29,13 @@ const BookedJob = ({ userId }) => {
       }
   }
 
+  const dispatch = useDispatch()
+
+  const moveEditJob = (booked) => {
+    dispatch({type:'editJob',booked})
+    movePath(`profile/editJob/${booked.id}`)
+  }
+
   return (
     <div>
       <div className="d-flex p-4 rounded-1 border justify-content-between align-items-center mb-4">
@@ -39,7 +46,7 @@ const BookedJob = ({ userId }) => {
       <div className="d-flex p-3 rounded-1 border flex-column">
         <p className="profile-user-label pb-2">Your Job</p>
         {booked?.map((booked) => {
-          if(booked.nguoiTao === 30)
+          if(booked.nguoiTao === Number(userId))
           {
             return (
               <div
@@ -49,16 +56,16 @@ const BookedJob = ({ userId }) => {
                 <div className="d-flex flex-column col-3 pe-3">
                   <img className="rounded-2" src={booked.hinhAnh} alt="" />
                   <div className=" d-flex justify-content-evenly pt-2">
-                    <button className="position-relative bookedJob-item ">
+                    <button onClick={() => movePath(`profile/editGallary/${booked.id}`)} className="position-relative bookedJob-item ">
                       <BiDetail fontSize="20px" />
                       <div
                         style={{ fontSize: "14px" }}
                         className="position-absolute bookedJob-item-detail gig"
                       >
-                        View Detail
+                        Gallary
                       </div>
                     </button>
-                    <button onClick={() => movePath(`profile/editJob/${booked.id}`)} className="position-relative bookedJob-item">
+                    <button onClick={() => moveEditJob(booked)} className="position-relative bookedJob-item">
                       <BiEdit fontSize="20px" />
                       <div
                         style={{ fontSize: "14px" }}

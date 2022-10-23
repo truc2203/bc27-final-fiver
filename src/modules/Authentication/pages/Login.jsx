@@ -24,11 +24,11 @@ const Login = () => {
       await dispatch(login(values)).unwrap();
       navigate("/");
       notification.success({
-        message: "Login successful!",
+        message: "Đăng nhập thành công!",
       });
     } catch (error) {
       notification.error({
-        message: "Login Failed!",
+        message: "Đăng nhập thất bại!",
         description: error,
       });
     }

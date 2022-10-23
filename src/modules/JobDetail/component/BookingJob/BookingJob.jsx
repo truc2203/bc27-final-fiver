@@ -45,17 +45,17 @@ const BookingJob = ({jobId}) => {
       if(user.user?.id === undefined)
       {
         notification.warning({
-          message : 'You need login to book this job !'
+          message : 'Bạn cần đăng nhập để đặt công việc !'
         })
       }
       try {
         await jobAPI.bookingJob(value)
         notification.success({
-          message:'Booking successful !'
+          message:'Đặt công việc thành công !'
         })
       } catch (error) {
         notification.error({
-          message : 'Booking Failed !',
+          message : 'Đặt công việc thất bại!',
           description:error
         })
       }

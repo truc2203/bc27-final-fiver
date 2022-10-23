@@ -41,13 +41,14 @@ const AddUser = () => {
     navigate(path);
   };
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit,formState:{errors}} = useForm({
     defaultValues: {
       name: "",
       email: "",
       phone: "",
       birthday: "",
-      gender: "",
+      gender: null,
+      password: "",
       role: "",
       skill: [],
       certification: [],
@@ -64,12 +65,12 @@ const AddUser = () => {
 
       await authAPI.register(newValues);
       notification.success({
-        message: "Add User Successful!",
+        message: "Thêm User thành công!",
       });
       movePath("../user");
     } catch (error) {
       notification.error({
-        message: "Add User Failed!",
+        message: "Thêm User thất bại!",
         description: error,
       });
     }
@@ -80,7 +81,8 @@ const AddUser = () => {
   useEffect(() => {
     if (user === null || user.user.role !== "ADMIN") {
       notification.warning({
-        message: "You need to ADMIN account to access this page !",
+        message:
+          "Tài khoản của bạn không có quyền quản trị để truy cập trang này!",
       });
       movePath("/");
     }
@@ -125,7 +127,7 @@ const AddUser = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="d-flex">
                 <div className="col-6 m-2">
-                  <div className="pb-5">
+                  <div className="pb-4">
                     <span>Email :</span>
 
                     <input
@@ -144,8 +146,13 @@ const AddUser = () => {
                         },
                       })}
                     />
+                    {errors.email && (
+                        <p className="" style={{ color: "red" }}>
+                          {errors.email.message}
+                        </p>
+                      )}
                   </div>
-                  <div className="pb-5">
+                  <div className="pb-4">
                     <span>Name :</span>
                     <input
                       className="form-control w-75"
@@ -166,9 +173,34 @@ const AddUser = () => {
                         },
                       })}
                     />
+                                          {errors.name && (
+                        <p className="" style={{ color: "red" }}>
+                          {errors.name.message}
+                        </p>
+                      )}
                   </div>
 
-                  <div className="pb-5">
+                  <div className="pb-4">
+                  <span>Password :</span>
+                      <input
+                        className="form-control w-75"
+                        type="password"
+                        placeholder="Password"
+                        {...register("password", {
+                          required: {
+                            value: true,
+                            message: "Mật khẩu không được để trống",
+                          },
+                        })}
+                      />
+                      {errors.password && (
+                        <p className="" style={{ color: "red" }}>
+                          {errors.password.message}
+                        </p>
+                      )}
+                    </div>
+
+                  <div className="pb-4">
                     <span>Phone</span>
                     <input
                       className="form-control w-75"
@@ -177,12 +209,17 @@ const AddUser = () => {
                       {...register("phone", {
                         required: {
                           value: true,
-                          message: "Mật khẩu không được để trống",
+                          message: "SDT không được để trống",
                         },
                       })}
                     />
+                     {errors.phone && (
+                        <p className="" style={{ color: "red" }}>
+                          {errors.phone.message}
+                        </p>
+                      )}
                   </div>
-                  <div className="pb-5">
+                  <div className="pb-4">
                     <span>Birdthday</span>
                     <input
                       className="form-control w-75"
@@ -191,14 +228,19 @@ const AddUser = () => {
                       {...register("birthday", {
                         required: {
                           value: true,
-                          message: "Số Điện Thoại không được để trống",
+                          message: "Ngày sinh không được để trống",
                         },
                       })}
                     />
+                     {errors.birthday && (
+                        <p className="" style={{ color: "red" }}>
+                          {errors.birthday.message}
+                        </p>
+                      )}
                   </div>
                 </div>
                 <div className="col-6 m-2">
-                  <div className="pb-5">
+                  <div className="pb-4">
                     <span>Gender</span>
                     <select
                       className="form-control w-75"
@@ -210,7 +252,7 @@ const AddUser = () => {
                       <option value="false">Female</option>
                     </select>
                   </div>
-                  <div className="pb-5">
+                  <div className="pb-4">
                     <span>Role</span>
                     <select
                       className="form-control w-75"
@@ -221,8 +263,13 @@ const AddUser = () => {
                       <option value="USER">USER</option>
                       <option value="ADMIN">ADMIN</option>
                     </select>
+                    {errors.gender && (
+                        <p className="" style={{ color: "red" }}>
+                          {errors.gender.message}
+                        </p>
+                      )}
                   </div>
-                  <div className="pb-5 ">
+                  <div className="pb-4 ">
                     <span>Skill</span>
                     <input
                       className="form-control w-75"
@@ -231,12 +278,12 @@ const AddUser = () => {
                       {...register("skill", {
                         required: {
                           value: true,
-                          message: "Họ tên không được để trống",
+                          message: "",
                         },
                       })}
                     />
                   </div>
-                  <div className="pb-5 ">
+                  <div className="pb-4 ">
                     <span>Certification</span>
                     <input
                       className="form-control w-75"
@@ -245,7 +292,7 @@ const AddUser = () => {
                       {...register("certification", {
                         required: {
                           value: true,
-                          message: "Họ tên không được để trống",
+                          message: "",
                         },
                       })}
                     />

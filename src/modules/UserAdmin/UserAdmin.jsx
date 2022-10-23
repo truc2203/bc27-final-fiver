@@ -114,11 +114,11 @@ const UserAdmin = () => {
       await userAPI.deleteUser(userId);
       setIsDelete(!isDelete);
       notification.success({
-        message: `Delete ${userName} successful!`,
+        message: `Xóa ${userName} thành công!`,
       });
     } catch (error) {
       notification.error({
-        message: "Delete user failed",
+        message: "Xóa User thất bại",
         description: error,
       });
     }
@@ -133,7 +133,7 @@ const UserAdmin = () => {
 
   if (user === null || user.user.role !== "ADMIN") {
     notification.warning({
-      message: "You need to ADMIN account to access this page !",
+      message: "Tài khoản của bạn không có quyền quản trị để truy cập trang này !",
     });
     return navigate("/");
   }

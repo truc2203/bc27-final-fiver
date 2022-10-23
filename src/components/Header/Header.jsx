@@ -10,6 +10,7 @@ import {
   MdOutlineNotifications,
   MdMailOutline,
   MdOutlineFormatListBulleted,
+  MdOutlineVideoSettings,
 } from "react-icons/md";
 const Header = () => {
   const user = JSON.parse(localStorage.getItem("user")) || "";
@@ -41,6 +42,11 @@ const Header = () => {
     setisLogout(!isLogout)
     dispatch(logout())
     navigate('../')
+  }
+
+  const moveSetttings = (data) => {
+    dispatch({type:'changeInfo',data})
+    movePath(`profile/account/${user.user?.name}`)
   }
 
 
@@ -153,7 +159,7 @@ const Header = () => {
                   </ul>
                   <ul className="py-1 border-bottom">
                     <li className="py-2 header-submenu-item">Become a seller</li>
-                    <li className="pb-2 header-submenu-item">Setting</li>
+                    <li onClick={() => moveSetttings(user)} className="pb-2 header-submenu-item">Setting</li>
                     <li className="pb-2 header-submenu-item">Billing</li>
                   </ul>
                   <ul className="py-1 border-bottom">

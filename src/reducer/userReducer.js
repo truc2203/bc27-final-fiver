@@ -1,5 +1,6 @@
 const initialState = {
-    userData:{}
+    userData:{},
+    userInfo:{}
 }
 
 const userReducer = ( state = initialState, action) => {
@@ -7,7 +8,8 @@ const userReducer = ( state = initialState, action) => {
         case 'editUser':
             
             return {...state,userData:action.data}
-    
+        case 'changeInfo' :
+            return {...state,userInfo:action.data}
         default:
             return state;
     }

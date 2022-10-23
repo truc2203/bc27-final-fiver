@@ -46,8 +46,6 @@ const EditSubTypeJob = () => {
 
   const [collapsed, setCollapsed] = useState(false);
 
-  const [valueSub, setValueSub] = useState("");
-
   const [imgPreview, setImgPreview] = useState("");
 
   const { register, handleSubmit, setValue } = useForm({

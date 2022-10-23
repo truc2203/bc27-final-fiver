@@ -1,46 +1,16 @@
 import React, { useState, useEffect } from "react";
-import authAPI from "../../../apis/authAPI";
-import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { VideoCameraOutlined, UserOutlined } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, notification } from "antd";
-
+import {  notification } from "antd";
 import { useNavigate } from "react-router-dom";
 import jobAPI from "../../../apis/jobAPI";
 import useRequest from "../../../hook/useRequest";
-const { Header, Content, Footer, Sider } = Layout;
-
-function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
 
 const CreateJob = () => {
-  const items = [
-    getItem(
-      <NavLink to="/user">Users Manage</NavLink>,
-      "sub1",
-      <UserOutlined />
-    ),
-    getItem(
-      <NavLink to="../jobs">Jobs Manage</NavLink>,
-      "sub2",
-      <VideoCameraOutlined />
-    ),
-  ];
-
   const user = JSON.parse(localStorage.getItem("user"));
 
   const [category, setCategory] = useState(0);
 
-
   const [subCategory, setSubCategory] = useState(0);
-
-  console.log(subCategory);
 
   const navigate = useNavigate();
 
@@ -53,12 +23,20 @@ const CreateJob = () => {
   const { data: subList } = useRequest(() => jobAPI.getTypeJobById(category), {
     deps: [category],
   });
-  const { register, handleSubmit,setValue } = useForm({
+
+  const {data:handleAddJob} = useRequest((value) => jobAPI.addJob(value),{ isManual: true })
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       id: 0,
       tenCongViec: "",
       danhGia: 0,
-      giaTien: null,
+      giaTien: 0,
       nguoiTao: user.user.id,
       hinhAnh:
         "https://assets-global.website-files.com/606a802fcaa89bc357508cad/62291b5f923ec472a68d77ea_Blog%20-%201%20(2).png",
@@ -70,29 +48,29 @@ const CreateJob = () => {
     mode: "onTouched",
   });
 
-  const handleSubCategory = (e) =>{
-    setSubCategory(e.target.value)
-    setValue('maChiTietLoaiCongViec',subCategory)
-  }
+  const handleSubCategory = (e) => {
+    setSubCategory(e.target.value);
+    setValue("maChiTietLoaiCongViec", subCategory);
+    console.log(subCategory);
+  };
 
   const onSubmit = async (value) => {
     try {
-      await jobAPI.addJob(value);
+      await handleAddJob(value);
       notification.success({
-        message: "Add Job Successful!",
+        message: "Thêm công việc mới thành công!",
       });
-      console.log(value);
       movePath(`../profile/${user.user.id}`);
     } catch (error) {
       notification.error({
-        message: "Add Job Failed!",
+        message: "Thêm công việc mới thất bại!",
         description: error,
       });
     }
   };
 
   useEffect(() => {
-    if (user === null || user.user.role !== "ADMIN") {
+    if (user === null || user.user.role !== "ADMIN" ) {
       notification.warning({
         message: "You need to ADMIN account to access this page !",
       });
@@ -107,7 +85,7 @@ const CreateJob = () => {
           <form className="border p-4" onSubmit={handleSubmit(onSubmit)}>
             <div className="d-flex justify-content-center col-12 pb-5">
               <div className="d-flex col-12">
-                <div className="d-flex flex-column col-3 pe-4" >
+                <div className="d-flex flex-column col-3 pe-4">
                   <p className="jobDetail-gig">Gig Title</p>
                   <p>
                     As your Gig storefront, your title is the most important
@@ -115,7 +93,7 @@ const CreateJob = () => {
                     search for a service like yours.
                   </p>
                 </div>
-                <div className="pb-4 d-flex justify-content-end align-items-baseline col-9 ps-4">
+                <div className="pb-4 d-flex flex-column justify-content-end align-items-baseline col-9 ps-4">
                   <input
                     style={{ height: "80px" }}
                     className="form-control w-100"
@@ -124,24 +102,29 @@ const CreateJob = () => {
                     {...register("tenCongViec", {
                       required: {
                         value: true,
-                        message: "Tên công việc không được để trống",
+                        message: "Title is required",
                       },
                       minLength: {
                         value: 5,
-                        message: "Tên công việc phải từ 5 đến 80 ký tự",
+                        message: "Tilte must have 5 - 80 characters",
                       },
                       maxLength: {
                         value: 80,
-                        message: "Tên công việc phải từ 5 đến 80 ký tự",
+                        message: "Tilte must have 5 - 80 characters",
                       },
                     })}
                   />
+                  {errors.tenCongViec && (
+                        <p className="pb-3" style={{ color: "red" }}>
+                          {errors.tenCongViec.message}
+                        </p>)}
                 </div>
               </div>
             </div>
+
             <div className="d-flex justify-content-center col-12 pb-5">
               <div className="d-flex col-12">
-                <div className="d-flex flex-column col-3 pe-4" >
+                <div className="d-flex flex-column col-3 pe-4">
                   <p className="jobDetail-gig">Category</p>
                   <p>
                     Choose the category and sub-category most suitable for your
@@ -150,7 +133,6 @@ const CreateJob = () => {
                 </div>
                 <div className="pb-4 d-flex justify-content-end align-items-baseline col-9 ps-4">
                   <select
-                    
                     class="form-select w-50 me-3"
                     aria-label="Default select example"
                     value={category}
@@ -165,7 +147,6 @@ const CreateJob = () => {
                   </select>
 
                   <select
-                    
                     class="form-select w-50"
                     aria-label="Default"
                     value={subCategory}
@@ -183,39 +164,6 @@ const CreateJob = () => {
                 </div>
               </div>
             </div>
-            <div className="d-flex justify-content-center col-12 pb-5">
-              <div className="d-flex col-12">
-                <div className="d-flex flex-column col-3 pe-4" >
-                  <p className="jobDetail-gig">Gig metadata</p>
-                  <p>
-                    As your Gig storefront, your title is the most important
-                    place to include keywords that buyers would likely use to
-                    search for a service like yours.
-                  </p>
-                </div>
-                <div className="pb-4 d-flex justify-content-end align-items-baseline col-9 ps-4">
-                  <input
-                    className="form-control w-100"
-                    type="text"
-                    placeholder="Name"
-                    {...register("danhGia", {
-                      required: {
-                        value: true,
-                        message: "Tên công việc không được để trống",
-                      },
-                      minLength: {
-                        value: 5,
-                        message: "Tên công việc phải từ 5 đến 20 ký tự",
-                      },
-                      maxLength: {
-                        value: 80,
-                        message: "Tên công việc phải từ 5 đến 80 ký tự",
-                      },
-                    })}
-                  />
-                </div>
-              </div>
-            </div>
             <div className="d-flex justify-content-center col-12 mb-4">
               <div className="d-flex col-12">
                 <div className="d-flex col-3 pe-4  flex-column">
@@ -225,7 +173,7 @@ const CreateJob = () => {
                     looking for your service.
                   </p>
                 </div>
-                <div className="pb-4 col-9 ps-4 d-flex justify-content-end align-items-baseline">
+                <div className="pb-4 col-9 ps-4 d-flex flex-column justify-content-end align-items-baseline">
                   <input
                     className="form-control w-100"
                     type="text"
@@ -233,10 +181,15 @@ const CreateJob = () => {
                     {...register("giaTien", {
                       required: {
                         value: true,
-                        message: "Tên công việc không được để trống",
-                      }
+                        message: "Price must be a number",
+                      },
+                      
                     })}
                   />
+                  {errors.giaTien && (
+                        <p className="pb-3" style={{ color: "red" }}>
+                          {errors.giaTien.message}
+                        </p>)}
                 </div>
               </div>
             </div>
@@ -258,7 +211,7 @@ const CreateJob = () => {
                       required: {
                         value: true,
                         message: "",
-                      }
+                      },
                     })}
                   />
                 </div>
@@ -282,7 +235,7 @@ const CreateJob = () => {
                       required: {
                         value: true,
                         message: "",
-                      }
+                      },
                     })}
                   />
                 </div>

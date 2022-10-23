@@ -69,12 +69,12 @@ const EditUser = () => {
 
       await userAPI.editUser(newValues, userId);
       notification.success({
-        message: "Update User Successful!",
+        message: "Cập nhật User thành công!",
       });
       movePath("../user");
     } catch (error) {
       notification.error({
-        message: "Update User Failed!",
+        message: "Cập nhật User thất bại!",
         description: error,
       });
     }
@@ -85,7 +85,7 @@ const EditUser = () => {
   useEffect(() => {
     if (user === null || user.user.role !== "ADMIN") {
       notification.warning({
-        message: "You need to ADMIN account to access this page !",
+        message: "Tài khoản của bạn không có quyền quản trị để truy cập trang này!",
       });
       movePath("/");
     }
@@ -183,7 +183,7 @@ const EditUser = () => {
                       {...register("phone", {
                         required: {
                           value: true,
-                          message: "Mật khẩu không được để trống",
+                          message: "SDT không được để trống",
                         },
                       })}
                     />
@@ -197,7 +197,7 @@ const EditUser = () => {
                       {...register("birthday", {
                         required: {
                           value: true,
-                          message: "Số Điện Thoại không được để trống",
+                          message: "Ngày sinh không được để trống",
                         },
                       })}
                     />

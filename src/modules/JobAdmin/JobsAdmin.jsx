@@ -56,11 +56,11 @@ const JobsAdmin = () => {
       await jobAPI.deleteJob(id)
       setIsDelete(!isDelete)
       notification.success({
-        message: `Delete job ${id} successful !`
+        message: `Xóa công việc ${id} thành công !`
       })
     } catch (error) {
       notification.error({
-        message: `Delete job ${id} failed !`,
+        message: `Xóa công việc ${id} thất bại !`,
         description:error
       })
     }
@@ -122,7 +122,7 @@ const JobsAdmin = () => {
   useEffect(() => {
     if (user === null || user.user.role !== "ADMIN") {
       notification.warning({
-        message: "You need to ADMIN account to access this page !",
+        message: "Tài khoản của bạn không có quyền quản trị để truy cập trang này!",
       });
       movePath("/");
     }

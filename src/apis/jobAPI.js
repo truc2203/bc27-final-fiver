@@ -9,13 +9,19 @@ const jobAPI = {
       `cong-viec/lay-danh-sach-cong-viec-theo-ten/${value}`
     );
   },
-  addJob : (value) => {
-    return axiosClient.post(`cong-viec`,value)
+  addJob: (value) => {
+    return axiosClient.post(`cong-viec`, value);
   },
-  editJob : (value,id) => {
+  editInfoJob: (id, value) => {
+    return axiosClient.put(`cong-viec/${id}`, value);
+  },
+  editJob: (id, value) => {
     const formData = new FormData();
     formData.append("formFile", value.hinhAnh);
-    return axiosClient.post(`cong-viec/upload-hinh-cong-viec/${id}`,formData)
+    return axiosClient.post(`cong-viec/upload-hinh-cong-viec/${id}`, formData);
+  },
+  getJobById: (id) => {
+    return axiosClient.get(`cong-viec/${id}`);
   },
   deleteJob: (id) => {
     return axiosClient.delete(`cong-viec/${id}`);
@@ -23,18 +29,17 @@ const jobAPI = {
   getTypeJob: () => {
     return axiosClient.get("cong-viec/lay-menu-loai-cong-viec");
   },
-  getTypeJobById : (id) => {
-    if(!id)
-    {
-    return axiosClient.get("cong-viec/lay-menu-loai-cong-viec");
+  getTypeJobById: (id) => {
+    if (!id) {
+      return axiosClient.get("cong-viec/lay-menu-loai-cong-viec");
     }
-    return axiosClient.get(`cong-viec/lay-chi-tiet-loai-cong-viec/${id}`)
+    return axiosClient.get(`cong-viec/lay-chi-tiet-loai-cong-viec/${id}`);
   },
-  deleteTypeJob : (id) => {
-    return axiosClient.delete(`/loai-cong-viec/${id}`)
+  deleteTypeJob: (id) => {
+    return axiosClient.delete(`/loai-cong-viec/${id}`);
   },
-  addTypeJob : (value) => {
-    return axiosClient.post(`loai-cong-viec`,value)
+  addTypeJob: (value) => {
+    return axiosClient.post(`loai-cong-viec`, value);
   },
   getJobDetail: (id) => {
     return axiosClient.get(`cong-viec/lay-cong-viec-chi-tiet/${id}`);
@@ -48,25 +53,28 @@ const jobAPI = {
   getSubTypeJob: (id) => {
     return axiosClient.get(`cong-viec/lay-chi-tiet-loai-cong-viec/${id}`);
   },
-  addSubTypeJob : (value) => {
-    return axiosClient.post(`chi-tiet-loai-cong-viec/them-nhom-chi-tiet-loai`,value)
+  addSubTypeJob: (value) => {
+    return axiosClient.post(
+      `chi-tiet-loai-cong-viec/them-nhom-chi-tiet-loai`,
+      value
+    );
   },
-  deleteSubTypeJob : (id) => {
-    return axiosClient.delete(`chi-tiet-loai-cong-viec/${id}`)
+  deleteSubTypeJob: (id) => {
+    return axiosClient.delete(`chi-tiet-loai-cong-viec/${id}`);
   },
-  renameTypeJob : (id,value) => {
-    return axiosClient.put(`loai-cong-viec/${id}`,value)
+  renameTypeJob: (id, value) => {
+    return axiosClient.put(`loai-cong-viec/${id}`, value);
   },
-  getSubTypeJobById : (id) => {
-    return axiosClient.get(`chi-tiet-loai-cong-viec/${id}`)
+  getSubTypeJobById: (id) => {
+    return axiosClient.get(`chi-tiet-loai-cong-viec/${id}`);
   },
-  editSubTypeJob : (id,form) => {
-    return axiosClient.post(`chi-tiet-loai-cong-viec/upload-hinh-nhom-loai-cong-viec/${id}`,form)
+  editSubTypeJob: (id, form) => {
+    return axiosClient.post(
+      `chi-tiet-loai-cong-viec/upload-hinh-nhom-loai-cong-viec/${id}`,
+      form
+    );
   },
-  //Test data
-  testAPI : (id) => {
-    return axiosClient.get(`chi-tiet-loai-cong-viec/${id}`)
-  }
+
 };
 
 export default jobAPI;
