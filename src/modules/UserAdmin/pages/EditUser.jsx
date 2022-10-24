@@ -40,7 +40,7 @@ const EditUser = () => {
 
   const { userData } = useSelector((state) => state.userManage);
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit,formState:{errors} } = useForm({
     defaultValues: {
       name: userData.name,
       email: userData.email,
@@ -172,6 +172,11 @@ const EditUser = () => {
                         },
                       })}
                     />
+                    {errors.name && (
+                      <p className="" style={{ color: "red" }}>
+                        {errors.name.message}
+                      </p>
+                    )}
                   </div>
 
                   <div className="pb-5">
@@ -185,8 +190,18 @@ const EditUser = () => {
                           value: true,
                           message: "SDT không được để trống",
                         },
+                        pattern: {
+                          value:
+                          /[0-9]/,
+                          message: "SDT phải là ký tự số",
+                        },
                       })}
                     />
+                    {errors.phone && (
+                      <p className="" style={{ color: "red" }}>
+                        {errors.phone.message}
+                      </p>
+                    )}
                   </div>
                   <div className="pb-5">
                     <span>Birdthday</span>
@@ -201,6 +216,11 @@ const EditUser = () => {
                         },
                       })}
                     />
+                    {errors.birthday && (
+                      <p className="" style={{ color: "red" }}>
+                        {errors.birthday.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="col-6 m-2">

@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { notification } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -6,23 +6,22 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import userAPI from "../../../../apis/userAPI";
 import { logout } from "../../../Authentication/slices/authSlice";
-import { BiCertification } from "react-icons/bi";
 
 const Settings = () => {
   const user = JSON.parse(localStorage.getItem("user"));
-const dispatch = useDispatch()
-  const {userInfo} = useSelector((state) => state.userManage)
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.userManage);
   const navigate = useNavigate();
-    const [isChange,setIsChange] = useState(false)
+  const [isChange, setIsChange] = useState(false);
   const movePath = (path) => {
     navigate(path);
   };
-  
+
   const handleLogout = () => {
-    setIsChange(!isChange)
-    dispatch(logout())
-    navigate('/login')
-  }
+    setIsChange(!isChange);
+    dispatch(logout());
+    navigate("/login");
+  };
 
   const {
     register,
@@ -37,19 +36,19 @@ const dispatch = useDispatch()
       birthday: userInfo.user.birthday,
       gender: userInfo.user.gender,
       role: userInfo.user.role,
-      skill : userInfo.user.skill,
-      certification : userInfo.user.certification
+      skill: userInfo.user.skill,
+      certification: userInfo.user.certification,
     },
     mode: "onTouched",
   });
 
   const onSubmit = async (value) => {
     try {
-        await userAPI.editUser(value,userInfo.user.id);
+      await userAPI.editUser(value, userInfo.user.id);
       notification.success({
         message: "Cập nhật thông tin thành công! Vui lòng đăng nhập lại",
       });
-    handleLogout()
+      handleLogout();
     } catch (error) {
       notification.error({
         message: "Cập nhật thông tin thất bại!",
@@ -59,9 +58,9 @@ const dispatch = useDispatch()
   };
 
   useEffect(() => {
-    if (user === null || user.user.role !== "ADMIN") {
+    if (user === null ) {
       notification.warning({
-        message: "You need to ADMIN account to access this page !",
+        message: "Tài khoản của bạn không có quyền quản trị để truy cập trang này !",
       });
       movePath("/");
     }
@@ -69,7 +68,7 @@ const dispatch = useDispatch()
 
   return (
     <div className="m-container">
-      <div className="p-5">
+      <div className="py-5">
         <div className="d-flex flex-column justify-content-center create-box">
           <div className="text-end jobDetail-gig pb-3">
             Need to update your public profile?{" "}
@@ -106,9 +105,9 @@ const dispatch = useDispatch()
                       },
                     })}
                   />
-                  {errors.tenCongViec && (
+                  {errors.name && (
                     <p className="pb-3" style={{ color: "red" }}>
-                      {errors.tenCongViec.message}
+                      {errors.name.message}
                     </p>
                   )}
                 </div>
@@ -119,7 +118,7 @@ const dispatch = useDispatch()
                 <div className="d-flex col-3 pe-4  flex-column">
                   <p className="jobDetail-gig">EMAIL</p>
                 </div>
-                <div className=" col-9 ps-4 d-flex justify-content-end align-items-baseline">
+                <div className=" col-9 flex-column  ps-4 d-flex justify-content-end align-items-baseline">
                   <input
                     className="form-control w-100"
                     type="text"
@@ -136,6 +135,11 @@ const dispatch = useDispatch()
                       },
                     })}
                   />
+                  {errors.email && (
+                    <p className="pb-3" style={{ color: "red" }}>
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -144,7 +148,7 @@ const dispatch = useDispatch()
                 <div className="d-flex col-3 pe-4  flex-column">
                   <p className="jobDetail-gig">PHONE</p>
                 </div>
-                <div className=" col-9 ps-4 d-flex justify-content-end align-items-baseline">
+                <div className=" col-9 flex-column  ps-4 d-flex justify-content-end align-items-baseline">
                   <input
                     className="form-control w-100"
                     type="text"
@@ -154,8 +158,18 @@ const dispatch = useDispatch()
                         value: true,
                         message: "SDT không được để trống",
                       },
+                      pattern: {
+                        value:
+                        /[0-9]/,
+                        message: "SDT phải là ký tự số",
+                      },
                     })}
                   />
+                  {errors.phone && (
+                    <p className="pb-3" style={{ color: "red" }}>
+                      {errors.phone.message}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

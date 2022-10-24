@@ -35,6 +35,10 @@ const userAPI = {
   getBookedById: (id) => {
     return axiosClient.get(`cong-viec/?nguoiTao=${id}`);
   },
-
+  upLoadAvatar : (value) => {
+    const formData = new FormData()
+    formData.append('formFile',value.hinhAnh)
+    return axiosClient.post(`users/upload-avatar`,formData)
+  }
 };
 export default userAPI;

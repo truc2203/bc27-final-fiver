@@ -10,8 +10,8 @@ import {
   MdOutlineNotifications,
   MdMailOutline,
   MdOutlineFormatListBulleted,
-  MdOutlineVideoSettings,
 } from "react-icons/md";
+import userAPI from "../../apis/userAPI";
 const Header = () => {
   const user = JSON.parse(localStorage.getItem("user")) || "";
   const dispatch = useDispatch()
@@ -20,7 +20,7 @@ const Header = () => {
   const [isLogout, setisLogout] = useState(false)
 
   const navigate = useNavigate();
-
+  const {data : userInfo} = useRequest(() => userAPI.getUserById(user.user.id))
   const showMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -142,7 +142,7 @@ const Header = () => {
                   {" "}
                   <img
                     className="header-nav-avatar rounded-circle"
-                    src={user.user?.avatar === undefined  ? '' : user.user.avatar}
+                    src={userInfo?.avatar ?  userInfo.avatar : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png' }
                     alt=""
                   />
                 </button>

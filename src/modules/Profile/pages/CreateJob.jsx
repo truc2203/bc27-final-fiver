@@ -70,9 +70,9 @@ const CreateJob = () => {
   };
 
   useEffect(() => {
-    if (user === null || user.user.role !== "ADMIN" ) {
+    if (user === null) {
       notification.warning({
-        message: "You need to ADMIN account to access this page !",
+        message: "Tài khoản của bạn không có quyền quản trị để truy cập trang này !",
       });
       movePath("/");
     }
@@ -80,20 +80,20 @@ const CreateJob = () => {
 
   return (
     <div className="m-container">
-      <div className="p-5">
+      <div className="py-5">
         <div className="d-flex justify-content-center create-box">
           <form className="border p-4" onSubmit={handleSubmit(onSubmit)}>
             <div className="d-flex justify-content-center col-12 pb-5">
-              <div className="d-flex col-12">
-                <div className="d-flex flex-column col-3 pe-4">
+              <div className="d-flex col-12 flex-column flex-sm-row">
+                <div className="d-flex flex-column col-3 pb-3 pb-sm-0 pe-4">
                   <p className="jobDetail-gig">Gig Title</p>
-                  <p>
+                  <p className="create-subText">
                     As your Gig storefront, your title is the most important
                     place to include keywords that buyers would likely use to
                     search for a service like yours.
                   </p>
                 </div>
-                <div className="pb-4 d-flex flex-column justify-content-end align-items-baseline col-9 ps-4">
+                <div className="pb-0 pb-sm-4 d-flex flex-column justify-content-end align-items-baseline col-12 col-sm-9 ps-0 ps-sm-4">
                   <input
                     style={{ height: "80px" }}
                     className="form-control w-100"
@@ -102,15 +102,15 @@ const CreateJob = () => {
                     {...register("tenCongViec", {
                       required: {
                         value: true,
-                        message: "Title is required",
+                        message: "Tiêu đề không được để trống",
                       },
                       minLength: {
                         value: 5,
-                        message: "Tilte must have 5 - 80 characters",
+                        message: "Tiêu đề phải từ 5 - 80 ký tự",
                       },
                       maxLength: {
                         value: 80,
-                        message: "Tilte must have 5 - 80 characters",
+                        message: "Tiêu đề phải từ 5 - 80 ký tự",
                       },
                     })}
                   />
@@ -123,15 +123,15 @@ const CreateJob = () => {
             </div>
 
             <div className="d-flex justify-content-center col-12 pb-5">
-              <div className="d-flex col-12">
-                <div className="d-flex flex-column col-3 pe-4">
+              <div className="d-flex col-12 flex-column flex-sm-row">
+                <div className="d-flex flex-column col-3 pb-3 pb-sm-0 pe-4">
                   <p className="jobDetail-gig">Category</p>
-                  <p>
+                  <p className="create-subText">
                     Choose the category and sub-category most suitable for your
                     Gig.
                   </p>
                 </div>
-                <div className="pb-4 d-flex justify-content-end align-items-baseline col-9 ps-4">
+                <div className="pb-0 pb-sm-4 d-flex justify-content-end align-items-baseline col-12 col-sm-9 ps-0 ps-sm-4">
                   <select
                     class="form-select w-50 me-3"
                     aria-label="Default select example"
@@ -165,15 +165,15 @@ const CreateJob = () => {
               </div>
             </div>
             <div className="d-flex justify-content-center col-12 mb-4">
-              <div className="d-flex col-12">
-                <div className="d-flex col-3 pe-4  flex-column">
+              <div className="d-flex col-12 flex-column flex-sm-row">
+                <div className="d-flex col-3 pb-3 pb-sm-0 pe-4  flex-column">
                   <p className="jobDetail-gig">Price</p>
-                  <p>
+                  <p className="create-subText">
                     Enter search terms you feel your buyers will use when
                     looking for your service.
                   </p>
                 </div>
-                <div className="pb-4 col-9 ps-4 d-flex flex-column justify-content-end align-items-baseline">
+                <div className="pb-0 pb-sm-4 col-12 col-sm-9 ps-0 ps-sm-4 d-flex flex-column justify-content-end align-items-baseline">
                   <input
                     className="form-control w-100"
                     type="text"
@@ -181,9 +181,13 @@ const CreateJob = () => {
                     {...register("giaTien", {
                       required: {
                         value: true,
-                        message: "Price must be a number",
+                        message: "Giá tiền không được để trống",
                       },
-                      
+                      pattern: {
+                        value:
+                        /[0-9]/,
+                        message: "Giá tiền phải là ký tự số",
+                      },
                     })}
                   />
                   {errors.giaTien && (
@@ -194,15 +198,15 @@ const CreateJob = () => {
               </div>
             </div>
             <div className="d-flex justify-content-center col-12 mb-4">
-              <div className="d-flex col-12">
-                <div className="d-flex col-3 pe-4  flex-column">
+              <div className="d-flex col-12 flex-column flex-sm-row">
+                <div className="d-flex col-3 pb-3 pb-sm-0 pe-4  flex-column">
                   <p className="jobDetail-gig">Descrice</p>
-                  <p>
+                  <p className="create-subText">
                     Enter search terms you feel your buyers will use when
                     looking for your service.
                   </p>
                 </div>
-                <div className="pb-4 col-9 ps-4 d-flex justify-content-end align-items-baseline">
+                <div className="pb-0 pb-sm-4 col-12 col-sm-9 ps-0 ps-sm-4 d-flex flex-column justify-content-end align-items-baseline">
                   <input
                     className="form-control w-100"
                     type="text"
@@ -212,21 +216,29 @@ const CreateJob = () => {
                         value: true,
                         message: "",
                       },
+                      minLength: {
+                        value: 10,
+                        message: "Mô tả phải có ít nhất 10 ký tự ! Hãy viết gì đó",
+                      },
                     })}
                   />
+                  {errors.moTa && (
+                        <p className="pb-3" style={{ color: "red" }}>
+                          {errors.moTa.message}
+                        </p>)}
                 </div>
               </div>
             </div>
             <div className="d-flex justify-content-center col-12 mb-4">
-              <div className="d-flex col-12">
-                <div className="d-flex col-3  flex-column">
+              <div className="d-flex col-12 flex-column flex-sm-row">
+                <div className="d-flex col-3 pb-3 pb-sm-0  flex-column">
                   <p className="jobDetail-gig">Sort Descrice</p>
-                  <p>
+                  <p className="create-subText">
                     Enter search terms you feel your buyers will use when
                     looking for your service.
                   </p>
                 </div>
-                <div className="pb-4 col-9 ps-4 d-flex justify-content-end align-items-baseline">
+                <div className="pb-0 pb-sm-4 col-12 col-sm-9 ps-0 ps-sm-4 d-flex flex-column justify-content-end align-items-baseline">
                   <input
                     className="form-control w-100"
                     type="text"
@@ -236,8 +248,16 @@ const CreateJob = () => {
                         value: true,
                         message: "",
                       },
+                      minLength: {
+                        value: 10,
+                        message: "Mô tả phải có ít nhất 10 ký tự ! Hãy viết gì đó",
+                      },
                     })}
                   />
+                   {errors.moTaNgan && (
+                        <p className="pb-3" style={{ color: "red" }}>
+                          {errors.moTaNgan.message}
+                        </p>)}
                 </div>
               </div>
             </div>

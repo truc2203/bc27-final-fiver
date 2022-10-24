@@ -75,6 +75,9 @@
   .jobDetail-page {
     padding: 0;
   }
+  .create-box{
+    width: 720px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -99,6 +102,12 @@
   .bookingJob-breakpoint {
     display: block !important;
     padding: 24px 0 192px 0;
+  }
+  .create-box{
+    width: 500px;
+  }
+  .create-subText{
+    display: none;
   }
 }
 
@@ -131,9 +140,14 @@
   .infoJob-switch-item {
     flex-direction: column;
   }
-  @media screen and(max-width:400px) {
-    .bookingJob-breakpoint {
-      padding-bottom: 284px;
-    }
+  .create-box{
+    width: 100%;
+  }
+
+}
+
+@media screen and(max-width:445px) {
+  .bookingJob-breakpoint {
+    padding-bottom: 284px;
   }
 }

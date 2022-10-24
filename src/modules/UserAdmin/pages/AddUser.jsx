@@ -41,7 +41,11 @@ const AddUser = () => {
     navigate(path);
   };
 
-  const { register, handleSubmit,formState:{errors}} = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       name: "",
       email: "",
@@ -147,10 +151,10 @@ const AddUser = () => {
                       })}
                     />
                     {errors.email && (
-                        <p className="" style={{ color: "red" }}>
-                          {errors.email.message}
-                        </p>
-                      )}
+                      <p className="" style={{ color: "red" }}>
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
                   <div className="pb-4">
                     <span>Name :</span>
@@ -173,32 +177,36 @@ const AddUser = () => {
                         },
                       })}
                     />
-                                          {errors.name && (
-                        <p className="" style={{ color: "red" }}>
-                          {errors.name.message}
-                        </p>
-                      )}
+                    {errors.name && (
+                      <p className="" style={{ color: "red" }}>
+                        {errors.name.message}
+                      </p>
+                    )}
                   </div>
 
                   <div className="pb-4">
-                  <span>Password :</span>
-                      <input
-                        className="form-control w-75"
-                        type="password"
-                        placeholder="Password"
-                        {...register("password", {
-                          required: {
-                            value: true,
-                            message: "Mật khẩu không được để trống",
-                          },
-                        })}
-                      />
-                      {errors.password && (
-                        <p className="" style={{ color: "red" }}>
-                          {errors.password.message}
-                        </p>
-                      )}
-                    </div>
+                    <span>Password :</span>
+                    <input
+                      className="form-control w-75"
+                      type="password"
+                      placeholder="Password"
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "Mật khẩu không được để trống",
+                        },
+                        minLength: {
+                          value: 8,
+                          message: "Mật khẩu phải có ít nhất 8 ký tự",
+                        },
+                      })}
+                    />
+                    {errors.password && (
+                      <p className="" style={{ color: "red" }}>
+                        {errors.password.message}
+                      </p>
+                    )}
+                  </div>
 
                   <div className="pb-4">
                     <span>Phone</span>
@@ -211,13 +219,18 @@ const AddUser = () => {
                           value: true,
                           message: "SDT không được để trống",
                         },
+                        pattern: {
+                          value:
+                          /[0-9]/,
+                          message: "SDT phải là ký tự số",
+                        },
                       })}
                     />
-                     {errors.phone && (
-                        <p className="" style={{ color: "red" }}>
-                          {errors.phone.message}
-                        </p>
-                      )}
+                    {errors.phone && (
+                      <p className="" style={{ color: "red" }}>
+                        {errors.phone.message}
+                      </p>
+                    )}
                   </div>
                   <div className="pb-4">
                     <span>Birdthday</span>
@@ -232,11 +245,11 @@ const AddUser = () => {
                         },
                       })}
                     />
-                     {errors.birthday && (
-                        <p className="" style={{ color: "red" }}>
-                          {errors.birthday.message}
-                        </p>
-                      )}
+                    {errors.birthday && (
+                      <p className="" style={{ color: "red" }}>
+                        {errors.birthday.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="col-6 m-2">
@@ -264,10 +277,10 @@ const AddUser = () => {
                       <option value="ADMIN">ADMIN</option>
                     </select>
                     {errors.gender && (
-                        <p className="" style={{ color: "red" }}>
-                          {errors.gender.message}
-                        </p>
-                      )}
+                      <p className="" style={{ color: "red" }}>
+                        {errors.gender.message}
+                      </p>
+                    )}
                   </div>
                   <div className="pb-4 ">
                     <span>Skill</span>

@@ -59,7 +59,7 @@ const EditJob = () => {
 
 
   useEffect(() => {
-    if (user === null || user.user.role !== "ADMIN") {
+    if (user === null ) {
       notification.warning({
         message: "You need to ADMIN account to access this page !",
       });

@@ -107,7 +107,7 @@ const UserAdmin = () => {
     deps: [value, isDelete],
   });
 
-
+  console.log(users);
 
   const handleDeleteUser = async (userId, userName) => {
     try {

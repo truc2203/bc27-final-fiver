@@ -62,7 +62,7 @@ const EditGallary = () => {
   };
 
   useEffect(() => {
-    if (user === null || user.user.role !== "ADMIN" ) {
+    if (user === null ) {
       notification.warning({
         message: "Tài khoản của bạn không có quyền quản trị!",
       });
