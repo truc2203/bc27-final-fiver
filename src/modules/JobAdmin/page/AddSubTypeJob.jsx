@@ -12,6 +12,7 @@ import { Breadcrumb, Layout, Menu, notification } from "antd";
 import { useNavigate } from "react-router-dom";
 import UserHello from "../../UserAdmin/UserHello";
 import jobAPI from "../../../apis/jobAPI";
+import useRequest from "../../../hook/useRequest";
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -39,19 +40,19 @@ const items = [
   ),
 ];
 
-const EditSubTypeJob = () => {
+const AddSubTypeJob = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [collapsed, setCollapsed] = useState(false);
 
-  const {subTypeJobInfo} = useSelector((state) => state.jobManage)
-  const { register, handleSubmit,} = useForm({
+
+  const { register, handleSubmit} = useForm({
     defaultValues: {
       id:0,
-      tenChiTiet: subTypeJobInfo.tenNhom,
-      maLoaiCongViec:subTypeJobInfo.maLoaiCongviec,
-      danhSachChiTiet : subTypeJobInfo.dsChiTietLoai.map(item => item.id)
+      tenChiTiet: '',
+      maLoaiCongViec:id,
+      danhSachChiTiet : []
     },
     mode: "onTouched",
   });
@@ -65,14 +66,14 @@ const EditSubTypeJob = () => {
       let newArr = value.danhSachChiTiet.split(',') 
       let newValue = {...value,danhSachChiTiet:newArr}
       console.log(newValue);
-      await jobAPI.editSubTypeJob(id,newValue);
-      movePath(`/jobs/typejob/edittype/${subTypeJobInfo.maLoaiCongviec}`)
+      await jobAPI.addSubTypeJob(newValue);
+      movePath(`/jobs/typejob/edittype/${id}`)
       notification.success({
-        message: "Cập nhập thành công",
+        message: "Thêm công việc phụ thành công",
       });
     } catch (error) {
       notification.error({
-        message: "Cập nhật thông tin thất bại!",
+        message: "Thêm công việc phụ thất bại!",
         description: error,
       });
     }
@@ -117,7 +118,7 @@ const EditSubTypeJob = () => {
               className="text-dark mb-3 col-12"
               style={{ fontSize: "24px", fontWeight: "500" }}
             >
-              Jobs Managerment / Edit Sub Type Job
+              Jobs Managerment / Add New Sub Type
             </h4>
           </Breadcrumb>
           <div
@@ -158,11 +159,11 @@ const EditSubTypeJob = () => {
                       })}
                     />
                   </div>
-                 
+                  
                 </div>
               </div>
 
-              <button className="header-nav-btn">Cập nhật</button>
+              <button className="header-nav-btn">Lưu</button>
             </form>
           </div>
         </Content>
@@ -176,4 +177,4 @@ const EditSubTypeJob = () => {
   );
 };
 
-export default EditSubTypeJob;
+export default AddSubTypeJob;

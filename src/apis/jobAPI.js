@@ -68,13 +68,20 @@ const jobAPI = {
   getSubTypeJobById: (id) => {
     return axiosClient.get(`chi-tiet-loai-cong-viec/${id}`);
   },
-  editSubTypeJob: (id, form) => {
+  upLoadSubTypeJob: (id, value) => {
+    const formData = new FormData()
+    formData.append('formFile',value.hinhAnh)
     return axiosClient.post(
       `chi-tiet-loai-cong-viec/upload-hinh-nhom-loai-cong-viec/${id}`,
-      form
+      formData
     );
   },
-
+  editSubTypeJob : (id,value) => {
+    return axiosClient.put(`chi-tiet-loai-cong-viec/sua-nhom-chi-tiet-loai/${id}`,value)
+  },
+  getListSubType : () => {
+    return axiosClient.get(`chi-tiet-loai-cong-viec`)
+  }
 };
 
 export default jobAPI;

@@ -12,6 +12,7 @@ import { Breadcrumb, Layout, Menu, notification } from "antd";
 import { useNavigate } from "react-router-dom";
 import UserHello from "../../UserAdmin/UserHello";
 import jobAPI from "../../../apis/jobAPI";
+import useRequest from "../../../hook/useRequest";
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -39,19 +40,19 @@ const items = [
   ),
 ];
 
-const EditSubTypeJob = () => {
+const ChangeAvatarSubType = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [collapsed, setCollapsed] = useState(false);
 
+  const [imgPreview, setImgPreview] = useState("");
+
   const {subTypeJobInfo} = useSelector((state) => state.jobManage)
-  const { register, handleSubmit,} = useForm({
+  console.log(subTypeJobInfo);
+  const { handleSubmit, setValue } = useForm({
     defaultValues: {
-      id:0,
-      tenChiTiet: subTypeJobInfo.tenNhom,
-      maLoaiCongViec:subTypeJobInfo.maLoaiCongviec,
-      danhSachChiTiet : subTypeJobInfo.dsChiTietLoai.map(item => item.id)
+      hinhAnh:''
     },
     mode: "onTouched",
   });
@@ -60,12 +61,25 @@ const EditSubTypeJob = () => {
     navigate(path);
   };
 
+
+  const handleChangeImage = (evt) => {
+    const file = evt.target.files[0];
+
+    if (!file) return;
+
+    setValue("hinhAnh", file);
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file); 
+    fileReader.onload = (evt) => {
+
+      setImgPreview(evt.target.result);
+    };
+  };
+
   const onSubmit = async (value) => {
     try {
-      let newArr = value.danhSachChiTiet.split(',') 
-      let newValue = {...value,danhSachChiTiet:newArr}
-      console.log(newValue);
-      await jobAPI.editSubTypeJob(id,newValue);
+      await jobAPI.upLoadSubTypeJob(id,value);
       movePath(`/jobs/typejob/edittype/${subTypeJobInfo.maLoaiCongviec}`)
       notification.success({
         message: "Cập nhập thành công",
@@ -117,7 +131,7 @@ const EditSubTypeJob = () => {
               className="text-dark mb-3 col-12"
               style={{ fontSize: "24px", fontWeight: "500" }}
             >
-              Jobs Managerment / Edit Sub Type Job
+              Jobs Managerment / Change Avatar
             </h4>
           </Breadcrumb>
           <div
@@ -130,35 +144,25 @@ const EditSubTypeJob = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="d-flex">
                 <div className="col-6 m-2">
+ 
                   <div className="pb-4">
+                    <div className="d-inline-block w-15 text-end">
+                      Hình Ảnh :{" "}
+                    </div>
                     <input
-                      className="form-control w-75"
-                      type="text"
-                      placeholder="Nhập tên loại công việc"
-                      {...register("tenChiTiet", {
-                        required: {
-                          value: true,
-                          message: "Loại công việc không được để trống",
-                        },
-                        
-                      })}
+                      className="ms-1 "
+                      type="file"
+                      placeholder="Hình Ảnh"
+                      onChange={handleChangeImage}
                     />
+                    {imgPreview && (
+                      <img
+                        src={imgPreview}
+                        alt="preview"
+                        style={{ width: "320px", height: "240px" }}
+                      />
+                    )}
                   </div>
-                  <div className="pb-4">
-                    <input
-                      className="form-control w-75"
-                      type="text"
-                      placeholder="Nhập danh sách công việc ( ID )"
-                      {...register("danhSachChiTiet", {
-                        required: {
-                          value: true,
-                          message: "",
-                        },
-                        
-                      })}
-                    />
-                  </div>
-                 
                 </div>
               </div>
 
@@ -176,4 +180,4 @@ const EditSubTypeJob = () => {
   );
 };
 
-export default EditSubTypeJob;
+export default ChangeAvatarSubType;

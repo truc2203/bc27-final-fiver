@@ -23,6 +23,8 @@ import CreateJob from "./modules/Profile/pages/CreateJob";
 import EditJob from "./modules/Profile/pages/EditJob";
 import EditGallary from "./modules/Profile/pages/EditGallary";
 import Settings from "./modules/Profile/component/Settings";
+import ChangeAvatarSubType from "./modules/JobAdmin/page/ChangeAvatarSubType";
+import AddSubTypeJob from "./modules/JobAdmin/page/AddSubTypeJob";
 function App() {
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
@@ -45,8 +47,11 @@ function App() {
           <Route path="user/add" element={<AddUser/>} />
           <Route path='jobs' element={<JobsAdmin/>} />
           <Route path="jobs/typejob" element={<TypeJobAdmin/>} />
+          <Route path="jobs/typejob/addsubtype/:id" element={<AddSubTypeJob/>} />
           <Route path="jobs/typejob/edittype/:id" element={<EditTypeJob/>} />
           <Route path="jobs/typejob/editsubtype/:id" element={<EditSubTypeJob/>} />
+          <Route path="jobs/typejob/avatar/:id" element={<ChangeAvatarSubType/>} />
+
         </Route>
         <Route path="/" element={<Auth />}>
           <Route path="login" element={<Login />} />

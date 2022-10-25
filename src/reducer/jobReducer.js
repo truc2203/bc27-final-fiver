@@ -1,5 +1,6 @@
 const initialState = {
-    jobDetail:{}
+    jobDetail:{},
+    subTypeJobInfo:{}
 }
 
 const jobReducer = ( state = initialState, action) => {
@@ -7,7 +8,8 @@ const jobReducer = ( state = initialState, action) => {
         case 'editJob':
             
             return {...state,jobDetail:action.booked}
-    
+        case 'editSubTypeJob' :
+            return {...state,subTypeJobInfo:action.value}
         default:
             return state;
     }

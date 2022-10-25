@@ -60,11 +60,11 @@ const EditUser = () => {
       const skillArr =
         values.skill === userData.skill
           ? userData.skill
-          : values.skill.split(", ");
+          : values.skill.split(",");
       const cerArr =
         values.certification === userData.certification
           ? userData.certification
-          : values.certification.split(", ");
+          : values.certification.split(",");
       const newValues = { ...values, skill: skillArr, certification: cerArr };
 
       await userAPI.editUser(newValues, userId);

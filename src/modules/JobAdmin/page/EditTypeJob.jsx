@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
   VideoCameraOutlined,
   UserOutlined,
   UnorderedListOutlined,
-  CloseOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, notification, Button, Modal } from "antd";
+import { Breadcrumb, Layout, Menu, notification, Modal } from "antd";
 import { useNavigate } from "react-router-dom";
 import UserHello from "../../UserAdmin/UserHello";
-import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlineDelete ,AiOutlineFileImage} from "react-icons/ai";
 import { Table } from "antd";
 import jobAPI from "../../../apis/jobAPI";
 import useRequest from "../../../hook/useRequest";
-import axios from "axios";
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -44,7 +43,7 @@ const items = [
 
 const EditTypeJob = () => {
   // Modal Ant
-
+  const dispatch = useDispatch()
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState(
@@ -84,7 +83,6 @@ const EditTypeJob = () => {
 
   const [collapsed, setCollapsed] = useState(false);
 
-  const [valueSub, setValueSub] = useState("");
 
   const [isAdd, setIsAdd] = useState(false);
 
@@ -132,9 +130,6 @@ const EditTypeJob = () => {
           {record.dsChiTietLoai.map((jobs) => (
             <p key={jobs.id} className="d-flex align-items-baseline">
               {jobs.tenChiTiet}{" "}
-              <button className="d-flex align-items-center ps-3 user-action">
-                <CloseOutlined />
-              </button>
             </p>
           ))}
         </>
@@ -147,10 +142,16 @@ const EditTypeJob = () => {
       render: (record) => (
         <div>
           <button
-            onClick={() => moveEditSubTypeJob(record)}
+            onClick={() => move(record,'/jobs/typejob/editsubtype/')}
             className="user-action px-2"
           >
             <AiOutlineEdit />
+          </button>
+          <button
+            onClick={() => move(record,`/jobs/typejob/avatar/`)}
+            className="user-action px-2"
+          >
+            <AiOutlineFileImage />
           </button>
           <button onClick={() => showModal()} className="user-action ">
             <AiOutlineDelete />
@@ -174,13 +175,6 @@ const EditTypeJob = () => {
     navigate(path);
   };
 
-  const defaultType = {
-    id: 0,
-    tenChiTiet: valueSub,
-    maLoaiCongViec: Number(id),
-    danhSachChiTiet: [],
-  };
-
   const newTypeName = {
     id:0,
     tenLoaiCongViec : valueType
@@ -202,40 +196,13 @@ const EditTypeJob = () => {
       }
   }
 
-  const handleAddSubType = async (value) => {
-    const index = newSubType.dsNhomChiTietLoai.findIndex(
-      (i) => i.tenNhom === value.tenChiTiet
-    );
-    if (!value.tenChiTiet) {
-      notification.warning({
-        message: `Tên công việc phụ không được để trống !`,
-      });
-    } else {
-      if (index === -1) {
-        try {
-          await jobAPI.addSubTypeJob(value);
-          notification.success({
-            message: `Thêm công việc phụ thành công!`,
-          });
-          setIsAdd(!isAdd);
-        } catch (error) {
-          notification.error({
-            message: "Thêm công việc phụ thất bại!",
-            description: error,
-          });
-        }
-      } else {
-        notification.error({
-          message: `Tên công việc phụ đã tồn tại !`,
-        });
-      }
-    }
-  };
-
-  const moveEditSubTypeJob = (value) => {
-    movePath(`/jobs/typejob/editsubtype/${value.id}`)
+  const move = (value,path) => {
+    dispatch({type:'editSubTypeJob',value})
+    movePath(`${path}${value.id}`)
   }
 
+
+  
 
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -303,23 +270,9 @@ const EditTypeJob = () => {
               </div>
             </div>
             <div className="d-flex">
-              <form className="col-8">
-                <div className="mb-3">
-                  <input
-                    type="text"
-                    placeholder="Input a new sub type"
-                    style={{
-                      display: "inline-block",
-                      width: "100%",
-                      borderRadius: "4px",
-                    }}
-                    className="form-control"
-                    onChange={(e) => setValueSub(e.target.value)}
-                  />
-                </div>
-              </form>
+             
               <button
-                onClick={() => handleAddSubType(defaultType)}
+                onClick={() => movePath(`/jobs/typejob/addsubtype/${id}`)}
                 className="col-4 header-nav-btn mb-3 me-4"
                 style={{ width: "160px" }}
               >
