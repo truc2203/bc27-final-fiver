@@ -14,6 +14,7 @@ const ListJob = ({ data }) => {
   }
 
   const { data: jobType } = useRequest(() => jobAPI.searchJob(value),{deps:[value]});
+  console.log(jobType);
   const navigate = useNavigate();
   const handleJobDetail = (name, id) => {
     navigate(`../detail/${id}/${name}`);
@@ -23,7 +24,7 @@ const ListJob = ({ data }) => {
       {jobType?.map((type) => {
         return (
           <div className="col-12 col-xl-3 col-lg-4 col-md-6 p-md-3 py-4 pt-md-3" key={type.id}>
-            <img className="w-100" src={type.congViec.hinhAnh} alt="" />
+            <img className="w-100 img-h" src={type.congViec.hinhAnh} alt="" />
             <div className="p-3 border listJob-main">
               <div className="d-flex align-items-center mb-3">
                 <img

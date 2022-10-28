@@ -262,7 +262,7 @@ const CreateJob = () => {
               </div>
             </div>
             <div className="text-center pb-4">
-              <button className="header-nav-btn">Xác Nhận</button>
+              <button className="header-nav-btn">Confirm</button>
             </div>
           </form>
         </div>

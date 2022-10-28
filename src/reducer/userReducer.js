@@ -1,6 +1,7 @@
 const initialState = {
     userData:{},
-    userInfo:{}
+    userInfo:{},
+    posted: true
 }
 
 const userReducer = ( state = initialState, action) => {
@@ -10,6 +11,8 @@ const userReducer = ( state = initialState, action) => {
             return {...state,userData:action.data}
         case 'changeInfo' :
             return {...state,userInfo:action.data}
+        case 'postComment' : 
+            return {...state,posted:action.isPosted}
         default:
             return state;
     }

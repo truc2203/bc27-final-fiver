@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { VideoCameraOutlined, UserOutlined } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, notification } from "antd";
+import DatePicker from "react-datepicker";
 
+import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import UserHello from "../UserHello";
 
@@ -20,6 +22,8 @@ function getItem(label, key, icon, children) {
 }
 
 const AddUser = () => {
+
+  const [startDate, setStartDate] = useState(new Date());
   const items = [
     getItem(
       <NavLink to="/user">Users Manage</NavLink>,
@@ -65,7 +69,7 @@ const AddUser = () => {
       const skillArr = values.skill.split(", ");
       const cerArr = values.certification.split(", ");
 
-      const newValues = { ...values, skill: skillArr, certification: cerArr };
+      const newValues = { ...values, skill: skillArr, certification: cerArr,birthday: startDate.toLocaleDateString()};
 
       await authAPI.register(newValues);
       notification.success({
@@ -233,23 +237,8 @@ const AddUser = () => {
                     )}
                   </div>
                   <div className="pb-4">
-                    <span>Birdthday</span>
-                    <input
-                      className="form-control w-75"
-                      type="text"
-                      placeholder="Birthday"
-                      {...register("birthday", {
-                        required: {
-                          value: true,
-                          message: "Ngày sinh không được để trống",
-                        },
-                      })}
-                    />
-                    {errors.birthday && (
-                      <p className="" style={{ color: "red" }}>
-                        {errors.birthday.message}
-                      </p>
-                    )}
+                    <span>Birthday</span>
+                    <DatePicker className="form-control w-75" selected={startDate} onChange={(date) => setStartDate(date)} />
                   </div>
                 </div>
                 <div className="col-6 m-2">

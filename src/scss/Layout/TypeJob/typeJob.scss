@@ -7,10 +7,10 @@
     text-align: center;
 }
 .typeJob-btn{
-    @include txtStyle($color-b,$fs-4,$fw-2);
+    @include txtStyle($color-b,$fs-5,$fw-2);
 }
 .typeJob-sub-2{
-    @include txtStyle($color-t,$fs-5,$fw-0);
+    @include txtStyle($color-t,$fs-2,$fw-0);
     &:hover{
         @include txtHover($bg-1);
     }

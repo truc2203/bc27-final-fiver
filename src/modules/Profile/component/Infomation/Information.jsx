@@ -275,12 +275,10 @@ const Information = ({ userId }) => {
           </div>
           <div className="profile-user-text">
             {user?.skill?.map((skill) => (
-              <div className="d-flex justify-content-between pb-4">
+              <div className="d-flex justify-content-between pb-3">
                 <p>{skill}</p>
                 <div className="d-flex">
-                  <button className="profile-skill-edit">
-                    <BiEditAlt />
-                  </button>
+                  
                   <button
                     onClick={() => handleDeleteSkill(skill)}
                     className="profile-skill-del ps-2"
@@ -330,12 +328,10 @@ const Information = ({ userId }) => {
           </div>
           <div className="profile-user-text">
             {user?.certification.map((certification) => (
-              <div className="d-flex justify-content-between pb-4">
+              <div className="d-flex justify-content-between pb-3">
                 <p>{certification}</p>
                 <div className="d-flex">
-                  <button className="profile-skill-edit">
-                    <BiEditAlt />
-                  </button>
+                 
                   <button
                     onClick={() => handleDeleteCer(certification)}
                     className="profile-skill-del ps-2"

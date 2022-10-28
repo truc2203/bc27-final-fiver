@@ -198,7 +198,7 @@ const EditJob = () => {
               </div>
             </div>
             <div className="text-center pb-4">
-              <button className="header-nav-btn">Xác Nhận</button>
+              <button className="header-nav-btn">Save</button>
             </div>
           </form>
         </div>

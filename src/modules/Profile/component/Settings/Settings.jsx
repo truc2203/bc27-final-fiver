@@ -215,7 +215,7 @@ const Settings = () => {
             </div>
 
             <div className="text-center pb-4">
-              <button className="header-nav-btn">Lưu</button>
+              <button className="header-nav-btn">Save</button>
             </div>
           </form>
         </div>

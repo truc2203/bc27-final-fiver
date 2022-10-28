@@ -26,14 +26,14 @@ const TypeJobListLeft = ({ id }) => {
         <>
           {sub.dsNhomChiTietLoai.map((sub2) => (
             <div className="col-12 col-xl-3 col-lg-4 col-md-6 p-3" key={sub2.id}>
-              <img className="pb-3 w-100" src={sub2.hinhAnh} alt="NO IMAGE" />
+              <img className="pb-3 w-100 img-h" src={sub2.hinhAnh} alt="NO IMAGE" />
               <p className="typeJob-btn ">
                 {sub2.tenNhom}
                 {sub2.dsChiTietLoai.map((sub3) => (
                   <button
                     onClick={() => handleGetCategories(sub3.tenChiTiet)}
                     style={{ display: "block" }}
-                    className="typeJob-sub-2 pt-4"
+                    className="typeJob-sub-2 pt-3"
                     key={sub3.id}
                   >
                     {sub3.tenChiTiet}

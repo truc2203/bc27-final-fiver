@@ -39,6 +39,9 @@ const userAPI = {
     const formData = new FormData()
     formData.append('formFile',value.hinhAnh)
     return axiosClient.post(`users/upload-avatar`,formData)
+  },
+  postComment : (value) => {
+    return axiosClient.post(`binh-luan`,value)
   }
 };
 export default userAPI;

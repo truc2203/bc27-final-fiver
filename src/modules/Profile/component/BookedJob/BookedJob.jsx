@@ -50,11 +50,11 @@ const BookedJob = ({ userId }) => {
           {
             return (
               <div
-                className="d-flex align-items-center p-3 border border-3"
+                className="d-flex align-items-start p-3 border border-3"
                 key={booked.id}
               >
                 <div className="d-flex flex-column col-3 pe-3">
-                  <img className="rounded-2" src={booked.hinhAnh} alt="" />
+                  <img style={{height:'132px'}} className="rounded-2" src={booked.hinhAnh} alt="" />
                   <div className=" d-flex justify-content-evenly pt-2">
                     <button onClick={() => movePath(`profile/editGallary/${booked.id}`)} className="position-relative bookedJob-item ">
                       <BiDetail fontSize="20px" />

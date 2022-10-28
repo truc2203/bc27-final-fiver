@@ -3,9 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { notification } from "antd";
 import authAPI from "../../../apis/authAPI";
 import useRequest from "../../../hook/useRequest";
-import Avatar from "react-avatar";
+import { DatePicker, Space } from "antd";
+import { useState } from "react";
 
 const Register = () => {
+  const [pickDate, setPickDate] = useState("");
+  const onChange = (date, dateString) => {
+    return setPickDate(dateString);
+  };
   const {
     register,
     handleSubmit,
@@ -32,22 +37,20 @@ const Register = () => {
   );
 
   const onSubmit = async (values) => {
+    const newValue = {...values,birthday:pickDate} 
     try {
-      await handleRegister(values);
+      await handleRegister(newValue);
       navigate("/login");
       notification.success({
         message: "Đăng ký thành công",
       });
+      console.log(newValue);
     } catch (error) {
       notification.error({
         message: "Đăng ký thất bại",
         description: error,
       });
     }
-  };
-
-  const onError = (error) => {
-    console.log(error);
   };
 
   return (
@@ -66,9 +69,8 @@ const Register = () => {
               </p>
               <form
                 className="form-reg rounded-2"
-                onSubmit={handleSubmit(onSubmit, onError)}
+                onSubmit={handleSubmit(onSubmit)}
               >
-
                 <div className="d-flex flex-column flex-md-row">
                   <div className="col-12 col-md-6 pe-md-3 ">
                     <div>
@@ -144,22 +146,14 @@ const Register = () => {
 
                   <div className="col-12 col-md-6 ps-md-3">
                     <div>
-                      <input
-                        className="ant-input mb-3"
-                        type="text"
+                      
+                      <Space direction="vertical">
+                        <DatePicker
                         placeholder="Birthday"
-                        {...register("birthday", {
-                          required: {
-                            value: true,
-                            message: "Ngày sinh không được để trống",
-                          },
-                        })}
-                      />
-                      {errors.birthday && (
-                        <p className="pb-3" style={{ color: "red" }}>
-                          {errors.birthday.message}
-                        </p>
-                      )}
+                          className="ant-input mb-3"
+                          onChange={onChange}
+                        />
+                      </Space>
                     </div>
 
                     <div>
@@ -190,9 +184,15 @@ const Register = () => {
                           },
                         })}
                       >
-                        <option className="jobDetail-gig"  value="" selected="">Select Gender</option>
-                        <option className="jobDetail-gig"  value="true">Male</option>
-                        <option className="jobDetail-gig"  value="false">Female</option>
+                        <option className="jobDetail-gig" value="" selected="">
+                          Select Gender
+                        </option>
+                        <option className="jobDetail-gig" value="true">
+                          Male
+                        </option>
+                        <option className="jobDetail-gig" value="false">
+                          Female
+                        </option>
                       </select>
                       {errors.gender && (
                         <p className="pb-3" style={{ color: "red" }}>

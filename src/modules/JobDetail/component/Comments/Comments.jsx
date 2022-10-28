@@ -1,6 +1,7 @@
 import React from "react";
 import useRequest from "../../../../hook/useRequest";
 import jobAPI from "../../../../apis/jobAPI";
+import { useSelector } from "react-redux";
 import {
   AiOutlineComment,
   AiFillStar,
@@ -9,17 +10,17 @@ import {
 } from "react-icons/ai";
 import { useState } from "react";
 const Comments = ({ id }) => {
-  const { data: comment } = useRequest(() => jobAPI.getComments(id));
-  console.log(comment);
+  const {posted} = useSelector((state) => state.userManage)
+  const { data: comment } = useRequest(() => jobAPI.getComments(id),{deps:[posted]});
   const [helful, setHelful] = useState(null);
   if (!comment) {
     return;
   }
   return (
-    <div className="pb-3 pb-lg-5">
+    <div className="pb-3 pb-lg-4">
       {comment?.map((cmt) => {
         return (
-          <div key={cmt.id} className="d-flex py-5 border-bottom">
+          <div key={cmt.id} className="d-flex py-4 border-bottom">
             <div className="pe-3">
               <img
                 className="rounded-circle"
@@ -30,11 +31,11 @@ const Comments = ({ id }) => {
             </div>
             <div className="d-flex w-100">
               <div>
-                <p className="jobDetail-gig pb-3">
+                <p className="jobDetail-gig pb-2">
                   {cmt.tenNguoiBinhLuan ? cmt.tenNguoiBinhLuan : "Guest"} <AiOutlineComment />{" "}
                   <span>99 Reviews</span>
                 </p>
-                <div className="d-flex align-items-center pb-3">
+                <div className="d-flex align-items-center pb-2">
                   <img
                     className="me-2"
                     style={{ width: "20px", height: "20px" }}
@@ -43,19 +44,16 @@ const Comments = ({ id }) => {
                   />
                   <div className="comment-country">South Korea</div>
                 </div>
-                <div className="d-flex pb-3 jobDetail-gig ">
+                <div className="d-flex pb-2 jobDetail-gig ">
                   <span style={{ color: "#ffb33e" }}>
                     {cmt.saoBinhLuan}
                     <AiFillStar />
-                    {/* <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar />
-                    <AiFillStar /> */}
+
                   </span>
                   <span className="px-2">|</span>
                   <span>{cmt.ngayBinhLuan}</span>
                 </div>
-                <div className="pb-3 comment-content">{cmt.noiDung}</div>
+                <div className="pb-2 comment-content">{cmt.noiDung}</div>
                 <div className="d-flex jobDetail-gig">
                   <span className="pe-3">Helful?</span>
                   <button

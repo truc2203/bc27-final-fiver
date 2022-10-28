@@ -78,6 +78,9 @@
   .create-box{
     width: 720px;
   }
+  .img-h {
+    height: 240px;
+ }
 }
 
 @media screen and (max-width: 768px) {
@@ -109,11 +112,14 @@
   .create-subText{
     display: none;
   }
+  .img-h {
+    height: 320px;
+ }
 }
 
 @media screen and (max-width: 576px) {
   .sliderSearch-sub {
-    height: 65vw;
+    height: 75vw;
   }
   .sliderSearch-title {
     font-size: 5vw;
@@ -143,7 +149,9 @@
   .create-box{
     width: 100%;
   }
-
+  .img-h {
+    height: 256px;
+ }
 }
 
 @media screen and(max-width:445px) {

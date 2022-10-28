@@ -14,6 +14,17 @@
     font-size: 14px;
     background: #f0f2f5;
 }
+
+.ant-picker-suffix{
+  color:#faad14
+}
+.ant-picker-clear{
+  background:#ffffff;
+  color: #faad14;
+}
+.ant-picker-input>input{
+  color: rgba(255, 255, 255, 0.8) ;
+}
 /* React bootstrap */
 .carousel-control-next,
 .carousel-control-prev,
