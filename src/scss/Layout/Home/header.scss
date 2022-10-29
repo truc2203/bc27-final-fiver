@@ -91,9 +91,7 @@
   z-index: 1000;
   @include trans;
 }
-// .sub-type {
-//   overflow: hidden;
-// }
+
 .subtypeJob-sub-title{
   @include txtStyle($color-t, $fs-2, $fw-0);
 
@@ -133,3 +131,6 @@
     cursor: pointer;
   }
 }
+
+
+

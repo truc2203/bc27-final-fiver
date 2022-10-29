@@ -43,7 +43,7 @@ const AuthorComment = ({ id }) => {
   if (!user || user.user.name === undefined) {
     return (
       <div className="jobDetail-gig pt-3 ">
-        <NavLink to="/register" style={{ color: "#1dbf73" }}>
+        <NavLink to="/login" style={{ color: "#1dbf73" }}>
           Đăng Nhập
         </NavLink>{" "}
         để bình luận

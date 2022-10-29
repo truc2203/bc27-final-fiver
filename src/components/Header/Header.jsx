@@ -122,17 +122,17 @@ const Header = () => {
               style={{ display: user === "" ? "none" : "flex" }}
               className="justify-content-end align-items-center"
             >
-              <li className="pe-3">
+              <li className="pe-3 d-none d-md-block">
                 <NavLink to="/">
                   <MdOutlineNotifications fontSize="20px" />
                 </NavLink>
               </li>
-              <li className="pe-3">
+              <li className="pe-3 d-none d-md-block">
                 <NavLink to="/">
                   <MdMailOutline fontSize="20px" />
                 </NavLink>
               </li>
-              <li className="pe-3">
+              <li className="pe-3 d-none d-md-block">
                 <NavLink to="/">
                   <MdOutlineFormatListBulleted fontSize="20px" />
                 </NavLink>
@@ -182,7 +182,7 @@ const Header = () => {
           {typeJob?.map((type) => {
             return (
               <li className="subtypeJob-sub-title p-3" key={type.id}>
-                <button onClick={() => movePath(`typejob/${type.id}`)}>
+                <button className="subtype-sub-btnHeight" onClick={() => movePath(`typejob/${type.id}`)}>
                   {type.tenLoaiCongViec}
                 </button>
                 <div className="subtypeJob position-absolute p-4 pb-0">

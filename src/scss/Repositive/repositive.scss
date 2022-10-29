@@ -85,14 +85,15 @@
 
 @media screen and (max-width: 768px) {
   .sliderSearch-sub {
-    height: 55vw;
+    height: 48vw;
   }
   .sliderSearch-sub-heading {
-    padding: 0px 100px;
+    padding: 0px 64px;
   }
   .header-submenu-scroll{
     overflow: scroll;
   }
+  
   .header-nav-seller {
     display: none;
   }
@@ -115,17 +116,23 @@
   .img-h {
     height: 320px;
  }
+ .subtype-sub-btnHeight{
+  width: 160px;
+}
+.subtypeJob-sub-title:hover .subtypeJob{
+  display: none;
+}
 }
 
 @media screen and (max-width: 576px) {
   .sliderSearch-sub {
-    height: 75vw;
+    height: 60vw;
   }
   .sliderSearch-title {
     font-size: 5vw;
   }
   .sliderSearch-sub-heading {
-    padding: 0px 16px;
+    padding: 0px 24px;
   }
   .trusted {
     display: none;

@@ -1,7 +1,7 @@
 .sliderSearch {
   position: absolute;
   z-index: 999;
-  top: 40%;
+  top: 30%;
 }
 .sliderSearch-btn{
   @include btnStyle($bg-1,$pd-1,$pd-2,$color-w);
