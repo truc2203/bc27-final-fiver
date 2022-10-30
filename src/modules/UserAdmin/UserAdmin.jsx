@@ -124,6 +124,7 @@ const UserAdmin = () => {
 
   const moveEditUser = async (data) => {
     await dispatch({ type: "editUser", data });
+    
     movePath(`edit/${data.id}`);
   };
 

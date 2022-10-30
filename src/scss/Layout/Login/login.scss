@@ -2,7 +2,6 @@ body {
   font-size: 14px;
   line-height: 1.8;
   font-weight: normal;
-  background: #fbd1b7;
   color: gray;
 }
 .login-box {
@@ -21,7 +20,7 @@ body {
   letter-spacing: 2px;
 }
 .login-img {
-  background-image: url("https://fiverr-res.cloudinary.com/q_auto,f_auto,w_450,dpr_2.0/v1/attachments/generic_asset/asset/d532c0ad4feed007b3899cebad595286-1599611560155/guide-create-a-logo-552-x2.png");
+  background-image: url("https://fiverr-res.cloudinary.com/npm-assets/layout-server/fiverr-og-logo.5fd6463.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -38,6 +37,7 @@ body {
 }
 .login-wrapper {
   padding: 40px 40px;
+background: #fbd1b7;
 }
 .login-container {
   max-width: 1200px;

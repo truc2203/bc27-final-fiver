@@ -64,7 +64,6 @@ const EditSubTypeJob = () => {
     try {
       let newArr = value.danhSachChiTiet.split(',') 
       let newValue = {...value,danhSachChiTiet:newArr}
-      console.log(newValue);
       await jobAPI.editSubTypeJob(id,newValue);
       movePath(`/jobs/typejob/edittype/${subTypeJobInfo.maLoaiCongviec}`)
       notification.success({

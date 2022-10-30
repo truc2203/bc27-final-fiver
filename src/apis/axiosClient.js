@@ -23,12 +23,10 @@ axiosClient.interceptors.request.use((config) => {
   });
   
   axiosClient.interceptors.response.use(
-    // thành công
     (response) => {
 
       return response.data.content;
     },
-    // thất bại
     (error) => {
     
       return Promise.reject(error.response?.data.content);

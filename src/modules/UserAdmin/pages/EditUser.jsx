@@ -8,6 +8,7 @@ import { Breadcrumb, Layout, Menu, notification } from "antd";
 
 import {useNavigate } from "react-router-dom";
 import UserHello from "../UserHello";
+import { string } from "prop-types";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -48,8 +49,8 @@ const EditUser = () => {
       birthday: userData.birthday,
       gender: userData.gender,
       role: userData.role,
-      skill: userData.skill,
-      certification: userData.certification,
+      skill: typeof(userData.skill) === 'string' ? JSON.parse(userData.skill) : userData.skill,
+      certification: typeof(userData.certification) === 'string' ? JSON.parse(userData.certification) : userData.certification,
     },
     mode: "onTouched",
   });

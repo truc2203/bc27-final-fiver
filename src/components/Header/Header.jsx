@@ -123,17 +123,17 @@ const Header = () => {
               className="justify-content-end align-items-center"
             >
               <li className="pe-3 d-none d-md-block">
-                <NavLink to="/">
+                <NavLink>
                   <MdOutlineNotifications fontSize="20px" />
                 </NavLink>
               </li>
               <li className="pe-3 d-none d-md-block">
-                <NavLink to="/">
+                <NavLink>
                   <MdMailOutline fontSize="20px" />
                 </NavLink>
               </li>
               <li className="pe-3 d-none d-md-block">
-                <NavLink to="/">
+                <NavLink>
                   <MdOutlineFormatListBulleted fontSize="20px" />
                 </NavLink>
               </li>

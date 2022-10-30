@@ -1,33 +1,36 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
+import { Spin } from 'antd';
 import MainLayout from "./components/MainLayout/MainLayout";
-import Home from "./modules/Home/pages/Home";
-import Categories from "./modules/Categories/pages/Categories";
 import "./overwrite.css";
 import "./main.scss";
-import JobDetail from "./modules/JobDetail/pages/JobDetail";
-import Auth from "./components/Auth/Auth";
-import Login from "./modules/Authentication/pages/Login";
-import Register from "./modules/Authentication/pages/Register";
-import TypeJob from "./modules/TypeJob/pages/TypeJob";
-import Profile from "./modules/Profile/pages/Profile";
-import Admin from "./components/Admin/Admin";
-import EditUser from "./modules/UserAdmin/pages/EditUser";
-import AddUser from "./modules/UserAdmin/pages/AddUser";
-import UserAdmin from "./modules/UserAdmin/UserAdmin";
-import JobsAdmin from "./modules/JobAdmin/JobsAdmin";
-import TypeJobAdmin from "./modules/JobAdmin/page/TypeJobAdmin";
-import EditTypeJob from "./modules/JobAdmin/page/EditTypeJob";
-import EditSubTypeJob from "./modules/JobAdmin/page/EditSubTypeJob";
-import CreateJob from "./modules/Profile/pages/CreateJob";
-import EditJob from "./modules/Profile/pages/EditJob";
-import EditGallary from "./modules/Profile/pages/EditGallary";
-import Settings from "./modules/Profile/component/Settings";
-import ChangeAvatarSubType from "./modules/JobAdmin/page/ChangeAvatarSubType";
-import AddSubTypeJob from "./modules/JobAdmin/page/AddSubTypeJob";
+import Home from './modules/Home/pages/Home.jsx'
+const Categories = lazy(() => import("./modules/Categories/pages/Categories"));
+const JobDetail = lazy(() => import("./modules/JobDetail/pages/JobDetail")) ;
+const Auth = lazy(() => import("./components/Auth/Auth")) ;
+const Login =  lazy(() => import("./modules/Authentication/pages/Login")) ;
+const Register = lazy(() => import("./modules/Authentication/pages/Register")) ;
+const TypeJob = lazy(() => import   ("./modules/TypeJob/pages/TypeJob")) 
+const Profile = lazy(() =>import   ("./modules/Profile/pages/Profile") ) ;
+const Admin = lazy(() => import   ("./components/Admin/Admin")) ;
+const EditUser = lazy(() => import   ("./modules/UserAdmin/pages/EditUser")) ;
+const AddUser = lazy(() =>  import   ("./modules/UserAdmin/pages/AddUser"));
+const UserAdmin= lazy(() => import   ("./modules/UserAdmin/UserAdmin")) ;
+const JobsAdmin = lazy(() => import   ("./modules/JobAdmin/JobsAdmin")) ;
+const TypeJobAdmin = lazy(() => import   ("./modules/JobAdmin/page/TypeJobAdmin")) ;
+const EditTypeJob= lazy(() =>  import   ("./modules/JobAdmin/page/EditTypeJob"));
+const EditSubTypeJob = lazy(() =>  import   ("./modules/JobAdmin/page/EditSubTypeJob"));
+const CreateJob= lazy(() => import   ("./modules/Profile/pages/CreateJob")) ;
+const EditJob = lazy(() => import   ("./modules/Profile/pages/EditJob")) ;
+const EditGallary = lazy(() => import   ("./modules/Profile/pages/EditGallary")) ;
+const Settings = lazy(() => import   ("./modules/Profile/component/Settings")) ;
+const ChangeAvatarSubType = lazy(() => import   ("./modules/JobAdmin/page/ChangeAvatarSubType")) ;
+const AddSubTypeJob = lazy(() => import   ("./modules/JobAdmin/page/AddSubTypeJob")) ;
+
+
 function App() {
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense fallback={<div className="example"><Spin/></div>}>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
