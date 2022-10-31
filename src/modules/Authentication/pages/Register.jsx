@@ -110,6 +110,10 @@ const Register = () => {
                             value: true,
                             message: "Mật khẩu không được để trống",
                           },
+                          minLength: {
+                            value: 8,
+                            message: "Mật khẩu phải có ít nhất 8 ký tự",
+                          },
                         })}
                       />
                       {errors.password && (
