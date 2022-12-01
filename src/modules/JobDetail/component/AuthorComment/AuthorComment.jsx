@@ -24,7 +24,6 @@ const AuthorComment = ({ id }) => {
   };
 
   const handlePostComment = async (value) => {
-    console.log(value);
     try {
       await userAPI.postComment(value);
       notification.success({
